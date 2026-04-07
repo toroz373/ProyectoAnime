@@ -1,0 +1,23 @@
+<div class="top-right">
+    <a routerLink="/guest" class="guest-button">Entrar sin usuario</a>
+</div>
+
+<div class="login-container">
+    <img src="/Logo MiruZone.png" alt="Logo MiruZone" class="logo">
+
+    <form (ngSubmit)="login()">
+        <input type="text" [(ngModel)]="usuario" name="usuario" placeholder="Usuario" required>
+        <input type="password" [(ngModel)]="password" name="password" placeholder="Contraseña" required>
+
+        <button type="submit">Acceder</button>
+    </form>
+
+    <div class="extra-buttons">
+        <a routerLink="/nuevacontraseña">Nueva contraseña</a>
+        <a routerLink="/nuevousuario">Nuevo usuario</a>
+    </div>
+</div>
+
+<footer>
+    <p>MiruZone | @create account</p>
+</footer>

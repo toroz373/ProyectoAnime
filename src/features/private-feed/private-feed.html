@@ -1,0 +1,19 @@
+<div class="feed-container">
+  <div class="feed-header">
+    <div class="header-content">
+      <h1>Mi Feed</h1>
+      <p>Bienvenido/a, {{ authService.currentUser()?.name }}</p>
+    </div>
+  </div>
+  
+  <div class="feed-content">
+    @for (anime of animes(); track anime.id) {
+      <app-anime-card 
+        [anime]="anime"
+        [isLoggedIn]="true"
+        [currentUserName]="authService.currentUser()?.name || ''"
+        [showStatusButtons]="true">
+      </app-anime-card>
+    }
+  </div>
+</div>

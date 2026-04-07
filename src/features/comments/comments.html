@@ -1,0 +1,58 @@
+<div class="comments-container">
+  <div class="comments-header">
+    <h4>💬 Comentarios ({{ (comments | async)?.length || 0 }})</h4>
+  </div>
+
+  <div class="comments-list">
+    @if ((comments | async)?.length === 0 || !(comments | async)) {
+      <div class="no-comments">
+        Sé el primero en comentar
+      </div>
+    } @else {
+      @for (c of comments | async; track c.id) {
+        <div class="comment-item">
+          <div class="comment-user">
+            <strong>@{{ c.user }}</strong>
+          </div>
+          <p class="comment-text">{{ c.text }}</p>
+          <div class="comment-meta">
+            <span class="comment-rating">⭐ {{ c.rating }}/5</span>
+          </div>
+        </div>
+      }
+    }
+  </div>
+
+  @if (!isLoggedIn) {
+    <div class="add-comment-form">
+      <p class="form-hint">✨ Inicia sesión para comentar</p>
+    </div>
+  } @else {
+    <div class="add-comment-form">
+      <textarea 
+        [(ngModel)]="commentText" 
+        placeholder="Comparte tu opinión del anime..."
+        class="comment-input"
+        rows="3">
+      </textarea>
+      
+      <div class="rating-input">
+        <label for="rating">Valoración:</label>
+        <select [(ngModel)]="rating" id="rating" class="rating-select">
+          <option [value]="1">⭐ 1 - Muy malo</option>
+          <option [value]="2">⭐⭐ 2 - Malo</option>
+          <option [value]="3">⭐⭐⭐ 3 - Normal</option>
+          <option [value]="4">⭐⭐⭐⭐ 4 - Muy bueno</option>
+          <option [value]="5">⭐⭐⭐⭐⭐ 5 - Excelente</option>
+        </select>
+      </div>
+      
+      <button 
+        (click)="addComment()" 
+        class="submit-btn"
+        [disabled]="!commentText().trim() || isSubmitting()">
+        {{ isSubmitting() ? 'Enviando...' : 'Comentar' }}
+      </button>
+    </div>
+  }
+</div>

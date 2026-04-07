@@ -1,0 +1,19 @@
+<div class="top-left">
+    <a routerLink="/" class="back-button">Volver</a>
+</div>
+
+<div class="login-container">
+    <img src="/Logo MiruZone.png" alt="Logo MiruZone" class="logo">
+
+    <form (ngSubmit)="register()">
+        <input type="text" [(ngModel)]="usuario" name="usuario" placeholder="Usuario" required>
+        <input type="text" [(ngModel)]="link_usuario" name="link_usuario" placeholder="@usuario" required>
+        <input type="password" [(ngModel)]="password" name="password" placeholder="Contraseña" required>
+
+        <button type="submit">Registrarse</button>
+    </form>
+</div>
+
+<footer>
+    <p>MiruZone | @create account</p>
+</footer>

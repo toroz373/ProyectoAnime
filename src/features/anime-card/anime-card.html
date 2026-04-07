@@ -1,0 +1,102 @@
+<div class="anime-card-wrapper">
+  <!-- Lado izquierdo: imagen, título y controles -->
+  <div class="card-left">
+    <div class="anime-card">
+      <div class="card-image">
+        <img [src]="anime.image" alt="{{ anime.title }}">
+      </div>
+      
+      <div class="card-content">
+        <div class="card-header">
+          <h3>{{ anime.title }}</h3>
+          <!-- Botón de menú de tres puntos -->
+          @if (showStatusButtons && isLoggedIn) {
+            <div class="menu-container">
+              <button class="menu-btn" (click)="toggleMenu()">⋯</button>
+              @if (showMenu()) {
+                <div class="menu-dropdown">
+                  <button 
+                    (click)="setStatus('para_ver')"
+                    [class.active]="currentStatus() === 'para_ver'">
+                    📋 Para ver
+                  </button>
+                  <button 
+                    (click)="setStatus('viendo')"
+                    [class.active]="currentStatus() === 'viendo'">
+                    ▶ Viendo
+                  </button>
+                  <button 
+                    (click)="setStatus('visto')"
+                    [class.active]="currentStatus() === 'visto'">
+                    ✓ Visto
+                  </button>
+                </div>
+              }
+            </div>
+          }
+        </div>
+
+        <!-- Descripción y metadatos -->
+        <div class="anime-meta">
+          <p class="anime-description">{{ anime.description }}</p>
+          
+          <div class="anime-info">
+            <div class="info-item">
+              <span class="info-label">Capítulos:</span>
+              <span class="info-value">{{ anime.episodes }}</span>
+            </div>
+            <div class="info-item">
+              <span class="info-label">Estado:</span>
+              <span class="info-value" [class.airing]="anime.isAiring" [class.finished]="!anime.isAiring">
+                {{ anime.isAiring ? 'En emisión' : 'Finalizado' }}
+              </span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="card-footer">
+          <div class="rating-section" [class.interactive]="isLoggedIn">
+            @if (isLoggedIn) {
+              <div class="rating-info">
+                <div class="rating-stars">
+                  @for (star of [1,2,3,4,5]; track star) {
+                    <button 
+                      (click)="setRating(star)"
+                      class="star-btn"
+                      [class.active]="star <= userRating()">
+                      ★
+                    </button>
+                  }
+                </div>
+                <span class="rating-text">{{ userRating() || anime.rating }}/5</span>
+                <span class="rating-average">(Media: {{ anime.rating }})</span>
+              </div>
+            } @else {
+              <span class="star">★</span>
+              <span class="rating-value">{{ anime.rating }}</span>
+            }
+          </div>
+          
+          <button 
+            class="comments-btn"
+            (click)="toggleComments()"
+            [class.active]="showComments()">
+            <span class="comment-icon">💬</span>
+            {{ commentsCount }}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Lado derecho: comentarios -->
+  @if (showComments()) {
+    <div class="card-right">
+      <app-comments 
+        [animeId]="anime.id"
+        [isLoggedIn]="isLoggedIn"
+        [currentUserName]="currentUserName">
+      </app-comments>
+    </div>
+  }
+</div>
