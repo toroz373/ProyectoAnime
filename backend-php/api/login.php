@@ -7,6 +7,7 @@ $data = json_decode(file_get_contents("php://input"), true);
 $usuario = $data['usuario'];
 $password = $data['password'];
 
+// Buscar el usuario por nombre
 $sql = "SELECT * FROM usuarios WHERE usuario = ?";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("s", $usuario);
@@ -17,10 +18,13 @@ if ($result->num_rows === 1) {
     $user = $result->fetch_assoc();
 
     if (password_verify($password, $user['password'])) {
+        // Devuelve id y usuario
         echo json_encode([
             'success' => true,
-            'message' => 'Login correcto',
-            'usuario' => $user['usuario']
+            'user' => [
+                'id' => $user['id'],
+                'name' => $user['usuario']
+            ]
         ]);
     } else {
         echo json_encode([

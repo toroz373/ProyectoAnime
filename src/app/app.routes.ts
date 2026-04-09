@@ -39,11 +39,6 @@ export const routes: Routes = [
   },
 
   {
-    path: 'sinusuario',
-    component: PublicFeedComponent 
-  },
-
-  {
     path: '**',
     redirectTo: 'login'
   }

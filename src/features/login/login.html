@@ -1,26 +1,22 @@
 <div class="login-page">
   <div class="guest-container">
-    <button class="guest-button">Entrar sin usuario</button>
+    <button class="guest-button" (click)="enterAsGuest()">
+      Entrar sin usuario
+    </button>
   </div>
 
   <div class="login-container">
     <img src="/Logo MiruZone.png" alt="MiruZone" class="logo">
 
     <input type="text" placeholder="Usuario" [(ngModel)]="usuario">
-
     <input type="password" placeholder="Contraseña" [(ngModel)]="password">
 
     <button class="login-button" (click)="login()">
       Acceder
     </button>
 
-    <a routerLink="/nuevacontraseña" class="link-button">
-      Nueva contraseña
-    </a>
-
-    <a routerLink="/nuevousuario" class="link-button">
-      Nuevo usuario
-    </a>
+    <a routerLink="/nuevacontraseña" class="link-button">Nueva contraseña</a>
+    <a routerLink="/nuevousuario" class="link-button">Nuevo usuario</a>
   </div>
 
   <footer class="footer">

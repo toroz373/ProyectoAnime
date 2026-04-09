@@ -9,7 +9,7 @@ import { AuthService } from '../../core/services/auth';
   standalone: true,
   imports: [FormsModule, RouterLink],
   templateUrl: './login.html',
-  styleUrl: './login.css'
+  styleUrls: ['./login.css']
 })
 export class LoginComponent {
   usuario = '';
@@ -21,7 +21,18 @@ export class LoginComponent {
     private authService: AuthService
   ) {}
 
+  // Redirigir como invitado
+  enterAsGuest() {
+    this.router.navigate(['/public-feed']);
+  }
+
+  // Login con usuario y contraseña
   login() {
+    if (!this.usuario || !this.password) {
+      alert('Por favor ingresa usuario y contraseña');
+      return;
+    }
+
     this.http.post<any>('http://localhost/backend-php/api/login.php', {
       usuario: this.usuario,
       password: this.password
@@ -30,14 +41,16 @@ export class LoginComponent {
         console.log(response);
 
         if (response.success) {
+          // Guardar info del usuario en AuthService usando id real
           this.authService.login({
             id: response.user.id,
             name: response.user.name
           });
 
+          // Redirigir a private-feed
           this.router.navigate(['/private-feed']);
         } else {
-          alert('Usuario o contraseña incorrectos');
+          alert(response.message || 'Usuario o contraseña incorrectos');
         }
       },
       error: (error) => {
