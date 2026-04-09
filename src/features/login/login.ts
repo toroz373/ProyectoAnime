@@ -33,7 +33,7 @@ export class LoginComponent {
       return;
     }
 
-    this.http.post<any>('http://localhost/backend-php/api/login.php', {
+    this.http.post<any>('http://localhost/ProyectoAnime/backend-php/api/login.php', {
       usuario: this.usuario,
       password: this.password
     }).subscribe({

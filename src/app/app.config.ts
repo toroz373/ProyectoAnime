@@ -4,7 +4,7 @@ import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
 import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
 
-import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClient, withFetch } from '@angular/common/http';
 
 // Configuración de la aplicación - define los providers globales
 export const appConfig: ApplicationConfig = {
@@ -16,6 +16,6 @@ export const appConfig: ApplicationConfig = {
     // Hidratación del cliente y manejo de eventos
     provideClientHydration(withEventReplay()),
     // Proveedor HttpClient
-    provideHttpClient()
+    provideHttpClient(withFetch())
   ]
 };
