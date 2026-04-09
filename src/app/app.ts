@@ -1,9 +1,8 @@
 import { Component, signal, inject, OnInit } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterOutlet, Router, NavigationEnd } from '@angular/router';
 import { AuthService } from '../core/services/auth';
 import { HeaderComponent } from '../core/layout/header';
 
-// Componente raíz de toda la aplicación
 @Component({
   selector: 'app-root',
   imports: [RouterOutlet, HeaderComponent],
@@ -11,11 +10,20 @@ import { HeaderComponent } from '../core/layout/header';
   styleUrl: './app.css'
 })
 export class App implements OnInit {
-  // Título de la aplicación
   protected readonly title = signal('MiruZone');
+
   private authService = inject(AuthService);
 
-  // Al iniciar: cargar el estado de la sesión anterior
+  isLoginPage = false;
+
+  constructor(private router: Router) {
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        this.isLoginPage = event.url.includes('/login')
+      }
+    });
+  }
+
   ngOnInit() {
     this.authService.loadAuthState();
   }

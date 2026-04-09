@@ -4,6 +4,8 @@ import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
 import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
 
+import { provideHttpClient } from '@angular/common/http';
+
 // Configuración de la aplicación - define los providers globales
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -12,6 +14,8 @@ export const appConfig: ApplicationConfig = {
     // Proveedor de rutas
     provideRouter(routes),
     // Hidratación del cliente y manejo de eventos
-    provideClientHydration(withEventReplay())
+    provideClientHydration(withEventReplay()),
+    // Proveedor HttpClient
+    provideHttpClient()
   ]
 };

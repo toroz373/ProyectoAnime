@@ -1,0 +1,85 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  background-color: #fff;
+  height: 100%;
+}
+
+.top-left {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+
+.back-button {
+  text-decoration: none;
+  color: #57A0FF; /* solo el back button es azul */
+  font-weight: bold;
+  font-size: 14px;
+  padding: 8px 12px;
+  border: 1px solid #57A0FF;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.back-button:hover {
+  background-color: #57A0FF;
+  color: white;
+}
+
+.login-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  padding: 0 20px;
+}
+
+.logo {
+  width: 380px;
+  margin-bottom: -60px; /* igual que en login */
+}
+
+.login-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+  max-width: 320px;
+}
+
+.login-container input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc; /* mismo gris que login */
+  border-radius: 12px;
+  font-size: 14px;
+  outline: none;
+}
+
+.login-container button {
+  width: 100%;
+  padding: 12px;
+  background-color: #F8CEFF; /* mismo color que login */
+  border: none;
+  border-radius: 12px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.login-container button:hover {
+  opacity: 0.9; /* ligero efecto hover */
+}
+
+footer {
+  margin-top: auto;
+  background-color: #F8CEFF;
+  text-align: center;
+  padding: 5px 0;
+  color: black;
+  font-size: 14px;
+  width: 100%;
+}
