@@ -1,26 +1,33 @@
-body, html {
+html, body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
-  background-color: #fff;
   height: 100%;
 }
 
+.register-page {
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* BOTÓN VOLVER */
 .top-left {
   position: absolute;
   top: 20px;
-  left: 20px;
+  right: 20px;
+  z-index: 20;
 }
 
 .back-button {
   text-decoration: none;
-  color: #57A0FF; /* solo el back button es azul */
+  color: #57A0FF;
   font-weight: bold;
   font-size: 14px;
   padding: 8px 12px;
   border: 1px solid #57A0FF;
   border-radius: 8px;
   transition: all 0.3s ease;
+  background-color: white;
 }
 
 .back-button:hover {
@@ -28,42 +35,47 @@ body, html {
   color: white;
 }
 
+/* CENTRO DE LA PÁGINA */
 .login-container {
-  min-height: 100vh;
+  flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 15px;
-  padding: 0 20px;
+  transform: translateY(20px);
 }
 
+/* LOGO (CONTROLADO, SIN ROMPER LAYOUT) */
 .logo {
-  width: 380px;
-  margin-bottom: -60px; /* igual que en login */
+  width: 480px;
+  margin-bottom: -190px;
+  transform: translateY(-160px);
 }
 
+/* FORM */
 .login-container form {
   display: flex;
   flex-direction: column;
   gap: 15px;
-  width: 100%;
-  max-width: 320px;
+  width: 280px;
 }
 
+/* INPUTS */
 .login-container input {
   width: 100%;
   padding: 12px;
-  border: 1px solid #ccc; /* mismo gris que login */
+  border: 1px solid #7A7A7A;
   border-radius: 12px;
   font-size: 14px;
-  outline: none;
+  box-sizing: border-box;
 }
 
+/* BUTTON */
 .login-container button {
   width: 100%;
   padding: 12px;
-  background-color: #F8CEFF; /* mismo color que login */
+  background-color: #F8CEFF;
   border: none;
   border-radius: 12px;
   font-size: 15px;
@@ -71,15 +83,26 @@ body, html {
 }
 
 .login-container button:hover {
-  opacity: 0.9; /* ligero efecto hover */
+  opacity: 0.9;
 }
 
+.mensaje {
+  position: absolute;
+  top: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 8px 14px;
+  border-radius: 10px;
+  font-weight: bold;
+  background-color: white;
+  z-index: 1000;
+}
+
+/* FOOTER FIJO ABAJO */
 footer {
-  margin-top: auto;
+  height: 35px;
+  flex-shrink: 0;
   background-color: #F8CEFF;
   text-align: center;
-  padding: 5px 0;
-  color: black;
-  font-size: 14px;
-  width: 100%;
+  line-height: 35px;
 }

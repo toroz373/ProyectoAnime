@@ -1,19 +1,46 @@
-<div class="top-left">
-    <a routerLink="/" class="back-button">Volver</a>
-</div>
+<div class="register-page">
 
-<div class="login-container">
-    <img src="/Logo MiruZone.png" alt="Logo MiruZone" class="logo">
+    <div class="top-left">
+        <a routerLink="/" class="back-button">Volver</a>
+    </div>
 
-    <form (ngSubmit)="register()">
-        <input type="text" [(ngModel)]="usuario" name="usuario" placeholder="Usuario" required>
-        <input type="text" [(ngModel)]="link_usuario" name="link_usuario" placeholder="@usuario" required>
-        <input type="password" [(ngModel)]="password" name="password" placeholder="Contraseña" required>
+    <!-- 🔥 MENSAJE FLOTANTE -->
+    <div *ngIf="mensaje"
+         class="mensaje"
+         [style.color]="error ? 'red' : 'green'">
+        {{ mensaje }}
+    </div>
 
-        <button type="submit">Registrarse</button>
-    </form>
+    <div class="login-container">
+
+        <img src="/Logo MiruZone.png" alt="Logo MiruZone" class="logo">
+
+        <form (ngSubmit)="register()">
+
+            <input type="text"
+                [(ngModel)]="usuario"
+                name="usuario"
+                placeholder="Usuario"
+                required>
+
+            <input type="text"
+                [(ngModel)]="link"
+                name="link"
+                placeholder="@usuario"
+                required>
+
+            <input type="password"
+                [(ngModel)]="password"
+                name="password"
+                placeholder="Contraseña"
+                required>
+
+            <button type="submit">Registrarse</button>
+        </form>
+    </div>
+
 </div>
 
 <footer>
-       <p>@MiruZone © 2026</p>
+    <p>@MiruZone © 2026</p>
 </footer>
