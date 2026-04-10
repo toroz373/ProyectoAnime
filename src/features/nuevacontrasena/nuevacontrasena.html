@@ -1,0 +1,45 @@
+<div class="register-page">
+
+    <div class="top-left">
+        <a routerLink="/login" class="back-button">Volver</a>
+    </div>
+
+    <div *ngIf="mensaje"
+         class="mensaje"
+         [style.color]="error ? 'red' : 'green'">
+        {{ mensaje }}
+    </div>
+
+    <div class="login-container">
+
+        <img src="/Logo MiruZone.png" alt="Logo MiruZone" class="logo">
+
+        <form (ngSubmit)="changePassword()">
+
+            <input type="text"
+                [(ngModel)]="usuario"
+                name="usuario"
+                placeholder="Usuario"
+                required>
+
+            <input type="password"
+                [(ngModel)]="nuevaPassword"
+                name="nuevaPassword"
+                placeholder="Nueva contraseña"
+                required>
+
+            <input type="password"
+                [(ngModel)]="confirmarPassword"
+                name="confirmarPassword"
+                placeholder="Confirmar contraseña"
+                required>
+
+            <button type="submit">Cambiar contraseña</button>
+        </form>
+    </div>
+
+</div>
+
+<footer>
+    <p>@MiruZone © 2026</p>
+</footer>
