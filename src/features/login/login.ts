@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { AuthService } from '../../core/services/auth';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [FormsModule, RouterLink],
+  imports: [FormsModule, RouterLink, HttpClientModule],
   templateUrl: './login.html',
   styleUrl: './login.css'
 })
@@ -22,7 +22,7 @@ export class LoginComponent {
   ) {}
 
   login() {
-    this.http.post<any>('http://localhost/backend-php/api/login.php', {
+    this.http.post<any>('http://localhost/miruzone/backend-php/api/login.php', {
       usuario: this.usuario,
       password: this.password
     }).subscribe({
@@ -37,7 +37,7 @@ export class LoginComponent {
 
           this.router.navigate(['/private-feed']);
         } else {
-          alert('Usuario o contraseña incorrectos');
+          alert(response.message || 'Usuario o contraseña incorrectos');
         }
       },
       error: (error) => {
