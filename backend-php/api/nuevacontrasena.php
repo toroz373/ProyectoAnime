@@ -9,15 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     exit();
 }
 
-require_once '../database.php';
-
-if ($conexion->connect_error) {
-    echo json_encode([
-        "success" => false,
-        "message" => "Error de conexión con la base de datos"
-    ]);
-    exit;
-}
+require_once '../config/database.php';
 
 $data = json_decode(file_get_contents("php://input"), true);
 
@@ -40,18 +32,12 @@ if (empty($usuario) || empty($nuevaPassword)) {
     exit;
 }
 
+// 🔐 HASH (CLAVE)
+$passwordHash = password_hash($nuevaPassword, PASSWORD_DEFAULT);
 
-$stmt = $conexion->prepare("SELECT id FROM usuarios WHERE usuario = ?");
-
-if (!$stmt) {
-    echo json_encode([
-        "success" => false,
-        "message" => "Error al preparar la consulta de usuario"
-    ]);
-    exit;
-}
-
-$stmt->bind_param("s", $usuario);
+// comprobar usuario
+$stmt = $conn->prepare("SELECT id FROM usuarios WHERE usuario = ? OR link = ?");
+$stmt->bind_param("ss", $usuario, $usuario);
 $stmt->execute();
 $stmt->store_result();
 
@@ -61,24 +47,15 @@ if ($stmt->num_rows === 0) {
         "message" => "El usuario no existe"
     ]);
     $stmt->close();
-    $conexion->close();
+    $conn->close();
     exit;
 }
 
 $stmt->close();
 
-$stmt = $conexion->prepare("UPDATE usuarios SET password = ? WHERE usuario = ?");
-
-if (!$stmt) {
-    echo json_encode([
-        "success" => false,
-        "message" => "Error al preparar la actualización"
-    ]);
-    $conexion->close();
-    exit;
-}
-
-$stmt->bind_param("ss", $nuevaPassword, $usuario);
+// update
+$stmt = $conn->prepare("UPDATE usuarios SET password = ? WHERE usuario = ? OR link = ?");
+$stmt->bind_param("sss", $passwordHash, $usuario, $usuario);
 
 if ($stmt->execute()) {
     echo json_encode([
@@ -93,6 +70,6 @@ if ($stmt->execute()) {
 }
 
 $stmt->close();
-$conexion->close();
+$conn->close();
 exit;
 ?>
