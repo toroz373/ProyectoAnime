@@ -5,6 +5,7 @@ import { PublicFeedComponent } from '../features/public-feed/public-feed';
 import { PrivateFeedComponent } from '../features/private-feed/private-feed';
 import { NuevoUsuarioComponent } from '../features/nuevousuario/nuevousuario';
 import { NuevaContrasenaComponent } from '../features/nuevacontrasena/nuevacontrasena';
+import { AjustesComponent } from '../features/ajustes/ajustes';
 
 export const routes: Routes = [
   {
@@ -36,6 +37,11 @@ export const routes: Routes = [
   {
     path: 'nuevacontrasena',
     component: NuevaContrasenaComponent
+  },
+
+  {
+    path: 'ajustes',
+    component: AjustesComponent
   },
 
   {
