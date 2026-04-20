@@ -1,0 +1,100 @@
+/* 🌙MODO OSCURO GLOBAL */
+
+body.dark-mode {
+  background-color: #222222;
+  color: white;
+}
+
+/* SIDEBAR */
+body.dark-mode app-sidebar,
+body.dark-mode .sidebar {
+  background-color: rgba(248, 206, 255, 0.864);
+}
+
+/* HEADER */
+body.dark-mode app-header,
+body.dark-mode .header {
+  background-color: #F8CEFF;
+}
+
+/* BUSCADOR SIEMPRE BLANCO (PRIORIDAD TOTAL) */
+body.dark-mode .header input,
+.header input {
+  background-color: white !important;
+  color: black !important;
+  border: none !important;
+}
+
+/* CONTENIDO GENERAL */
+body.dark-mode .contenido {
+  background-color: #222222 !important;
+}
+
+/* INPUTS Y TEXTAREA */
+body.dark-mode input,
+body.dark-mode textarea {
+  background-color: #1e1e1e !important;
+  color: white !important;
+  border: 1px solid #555;
+}
+
+/* PLACEHOLDERS */
+body.dark-mode input::placeholder {
+  color: #aaa;
+}
+
+/* BOTONES */
+body.dark-mode button {
+  opacity: 0.95;
+}
+
+/* ARREGLAR FONDOS SUELTOS */
+body.dark-mode .pagina-ajustes {
+  background-color: #222222 !important;
+}
+
+/*  FOOTER SIEMPRE NEGRO */
+footer,
+footer p {
+  color: black !important;
+}
+
+/* (refuerzo en dark por si acaso) */
+body.dark-mode footer,
+body.dark-mode footer p {
+  color: black !important;
+}
+
+/*  BOTÓN VOLVER (GLOBAL) */
+body.dark-mode .back-button {
+  background-color: #222222 !important;
+  color: white !important;
+  border: 1px solid white !important; 
+}
+
+body.dark-mode .back-button:hover {
+  background-color: #333 !important;
+  color: white !important;
+}
+
+/*  INPUT BUSCADOR HEADER */
+.header input {
+  background-color: white !important;
+  color: black !important;
+}
+
+/*  BOTÓN LOGOUT */
+.btn-logout {
+  background-color: #555;
+  color: white;
+  border: none;
+}
+
+.btn-logout:hover {
+  background-color: #2f2f2f;
+}
+
+/*  TRANSICIÓN SUAVE ENTRE MODOS */
+body {
+  transition: background-color 0.3s, color 0.3s;
+}

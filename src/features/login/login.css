@@ -1,0 +1,192 @@
+.login-page {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* botón de sin usuario arriba a la derecha */
+.guest-container {
+  display: flex;
+  justify-content: flex-end;
+  padding: 20px;
+}
+
+/* botón de entrar sin usuario */
+.guest-button {
+  background-color: #F8CEFF;
+  border: none;
+  border-radius: 12px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+/* contenedor principal del login */
+.login-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  transform: translateY(-20px);
+}
+
+/* logo grande de la app */
+.logo {
+  width: 480px;
+  margin-bottom: -190px;
+  transform: translateY(-160px);
+}
+
+/* inputs normales */
+.login-container input {
+  width: 280px;
+  padding: 12px;
+  border: 1px solid #7A7A7A;
+  border-radius: 12px;
+  font-size: 14px;
+}
+
+/* botón de login */
+.login-button {
+  width: 308px;
+  padding: 12px;
+  background-color: #F8CEFF;
+  border: none;
+  border-radius: 12px;
+  font-size: 15px;
+  cursor: pointer;
+  transform: translateX(13px);
+}
+
+/* links de abajo */
+.link-button {
+  color: #006EFF;
+  text-decoration: none;
+  font-size: 14px;
+  transform: translateX(13px);
+}
+
+/* efecto hover en links */
+.link-button:hover {
+  text-decoration: underline;
+}
+
+/* mensaje de error del login */
+.login-error {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: #ffe5e5;
+  border: 1px solid #ff5c5c;
+  padding: 10px 15px;
+  border-radius: 12px;
+  width: 273px;
+  font-size: 13px;
+  color: #b00020;
+  transform: translateX(14px);
+  margin-bottom: -5px;
+  animation: fadeIn 0.2s ease;
+}
+
+/* errores debajo de inputs */
+.field-error {
+  width: 280px;
+  color: #d10000;
+  font-size: 12px;
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  animation: fadeIn 0.2s ease;
+}
+
+/* animación simple de aparición */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* icono del error */
+.error-icon {
+  width: 44px;
+  height: 44px;
+}
+
+/* grupo de input + error */
+.input-group {
+  display: flex;
+  flex-direction: column;
+  width: 280px;
+}
+
+/* inputs */
+input {
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+/* efecto focus */
+input:focus {
+  border-color: #a855f7;
+  box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.2);
+}
+
+/* error */
+input.error {
+  border: 1px solid red;
+  background-color: #fff5f5;
+}
+
+/* wrapper input de contraseña + ojo */
+.password-wrapper {
+  position: relative;
+  width: 110%;
+}
+
+/* input del wrapper de password */
+.password-wrapper input {
+  width: 100%;
+  padding: 12px 40px 12px 12px;
+  box-sizing: border-box;
+}
+
+/* botón del ojo */
+.eye-button {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  color: #666;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* hover del ojo */
+.eye-button:hover {
+  color: #000;
+}
+
+/* footer */
+.footer {
+  background-color: #F8CEFF;
+  text-align: center;
+  padding: 1px;
+  flex-shrink: 0;
+}

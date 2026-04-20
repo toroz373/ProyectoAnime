@@ -1,0 +1,27 @@
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+
+<div class="content">
+  <!-- tu contenido actual -->
+</div>
+
+<div class="feed-container">
+  <div class="feed-header">
+    <div class="header-content">
+      <h1>Mi Feed</h1>
+      <p>Bienvenido/a, {{ authService.currentUser()?.name }}</p>
+    </div>
+  </div>
+  
+  <div class="feed-content">
+    @for (anime of animeService.filteredAnimes(); track anime.id){
+      <app-anime-card 
+        [anime]="anime"
+        [isLoggedIn]="true"
+        [currentUserId]="currentUserId"
+        [currentUserName]="authService.currentUser()?.name || ''"
+        [showStatusButtons]="true">
+      </app-anime-card>
+    }
+  </div>
+</div>

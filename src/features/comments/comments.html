@@ -1,0 +1,48 @@
+<div class="comments-container">
+  <div class="comments-header">
+    <h4>Comentarios ({{ (comments$ | async)?.length || 0 }})</h4>
+  </div>
+
+  <div class="comments-list">
+    @let commentsList = (comments$ | async);
+    
+    <!-- DEBUG: Mostrar estado -->
+    @if (commentsList === null) {
+      <p style="color: blue; font-size: 12px;">🔄 Cargando comentarios...</p>
+    } @else if (commentsList === undefined) {
+      <p style="color: red; font-size: 12px;">❌ Error: undefined</p>
+    } @else if (commentsList.length === 0) {
+      <p style="color: gray; font-size: 12px;">ℹ️ Sé el primero en comentar (array vacío)</p>
+    } @else {
+      <!-- Mostrar comentarios -->
+      @for (c of commentsList; track c.id) {
+        <div class="comment-item">
+          <strong>{{ c.user_link ? c.user_link : 'Usuario ' + c.user_id }}</strong>
+          <p class="comment-text">{{ c.content }}</p>
+          <div class="comment-meta">
+            ⭐ {{ c.rating }}/5 - {{ c.created_at }}
+          </div>
+        </div>
+      }
+    }
+  </div>
+
+  @if (!isLoggedIn) {
+    <p>Inicia sesión para comentar</p>
+  } @else {
+    <textarea [(ngModel)]="commentText" rows="3" placeholder="Escribe tu comentario..."></textarea>
+
+    <label>Valoración:</label>
+    <select [(ngModel)]="rating">
+      <option [value]="1">1 ⭐</option>
+      <option [value]="2">2 ⭐⭐</option>
+      <option [value]="3">3 ⭐⭐⭐</option>
+      <option [value]="4">4 ⭐⭐⭐⭐</option>
+      <option [value]="5">5 ⭐⭐⭐⭐⭐</option>
+    </select>
+
+    <button (click)="addComment()" [disabled]="isSubmitting">
+      {{ isSubmitting ? 'Enviando...' : 'Comentar' }}
+    </button>
+  }
+</div>

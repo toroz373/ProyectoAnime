@@ -1,0 +1,19 @@
+<app-header></app-header>
+
+<div class="feed-container">
+  <div class="feed-header">
+    <h1>Feed Público</h1>
+    <p>Descubre animes y lee las opiniones de la comunidad</p>
+  </div>
+  
+  <div class="feed-content">
+    @for (anime of animeService.filteredAnimes(); track anime.id) {
+      <app-anime-card 
+        [anime]="anime"
+        [isLoggedIn]="authService.isLoggedIn()"
+        [currentUserId]="currentUserId"
+        [currentUserName]="authService.currentUser()?.name || ''">
+      </app-anime-card>
+    }
+  </div>
+</div>

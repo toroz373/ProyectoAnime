@@ -1,0 +1,124 @@
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+
+<div class="pagina-ajustes" [ngClass]="usuario.theme">
+
+  <div class="contenido">
+
+    <!-- PERFIL -->
+    <div class="perfil">
+
+      <!-- AVATAR -->
+      <div class="avatar">
+
+        <img 
+        [src]="
+          usuario.avatar
+            ? (usuario.avatar.startsWith('data:')
+                ? usuario.avatar
+                : 'http://localhost/ProyectoAnime/backend-php/uploads/' + usuario.avatar)
+            : 'assets/default-avatar.png'
+        ">
+
+        <input type="file" (change)="cambiarImagen($event)" hidden #file>
+
+        <button class="btn-plus" (click)="file.click()">+</button>
+
+      </div>
+
+      <!-- DESCRIPCIÓN -->
+      <div class="desc-container">
+        <textarea
+          class="descripcion"
+          [(ngModel)]="usuario.descripcion"
+          name="descripcion"
+          placeholder="Pon tu descripcion..."
+          maxlength="250"
+        ></textarea>
+
+        <button class="btn-guardar-desc" (click)="guardarDescripcion()">
+          Guardar
+        </button>
+
+        <div class="message-container">
+          <div *ngIf="mensajeDescripcion" class="success-message">
+            <div class="success-text">
+              <span class="title">✔ Correcto</span>
+              <span class="subtitle">{{ mensajeDescripcion }}</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- EDITAR -->
+    <div class="edit-container">
+
+      <button class="btn-rosa" (click)="editar = !editar">
+        Editar perfil
+      </button>
+
+      <div class="panel-edicion" *ngIf="editar">
+
+        <!-- COLUMNA IZQUIERDA -->
+        <div class="columna izquierda">
+
+          <input [(ngModel)]="usuario.usuario" placeholder="Usuario">
+          <input [(ngModel)]="usuario.link" placeholder="Link">
+
+          <button class="btn-rosa btn-aplicar" (click)="guardarCambios()">
+            Aplicar
+          </button>
+
+          <!-- 🔥 CONTENEDOR PARA NO MOVER NADA -->
+          <div class="message-container">
+
+            <!-- ERROR -->
+            <div *ngIf="errorPerfil" class="login-error">
+              <img src="/miruabiertainversa.png" class="error-icon">
+              <div>
+                {{ errorPerfil }}
+              </div>
+            </div>
+
+            <!-- SUCCESS -->
+            <div *ngIf="mensajePerfil" class="success-message">
+              <div class="success-text">
+                <span class="title">✔ Correcto</span>
+                <span class="subtitle">{{ mensajePerfil }}</span>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- COLUMNA DERECHA -->
+        <div class="columna derecha">
+
+          <button class="btn-rosa btn-eliminar-inline" (click)="eliminarAvatar()">
+            Quitar foto
+          </button>
+
+          <div class="toggle-container">
+            <span class="icon">☀️</span>
+
+            <label class="switch">
+              <input type="checkbox"
+                    [checked]="usuario.theme === 'dark'"
+                    (change)="cambiarTema()">
+              <span class="slider"></span>
+            </label>
+
+            <span class="icon">🌙</span>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>

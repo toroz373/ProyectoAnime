@@ -1,0 +1,214 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+/* página completa del registro */
+.register-page {
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* botón de volver arriba a la derecha */
+.top-left {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 20;
+}
+
+/* botón de volver */
+.back-button {
+  text-decoration: none;
+  color: #57A0FF;
+  font-weight: bold;
+  font-size: 14px;
+  padding: 8px 12px;
+  border: 1px solid #57A0FF;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  background-color: white;
+}
+
+/* hover botón volver */
+.back-button:hover {
+  background-color: #57A0FF;
+  color: white;
+}
+
+/* contenedor principal del formulario */
+.login-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  transform: translateY(20px);
+}
+
+/* logo grande */
+.logo {
+  width: 480px;
+  margin-bottom: -190px;
+  transform: translateY(-160px);
+}
+
+/* formulario */
+.login-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 280px;
+}
+
+/* inputs */
+.login-container input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #7A7A7A;
+  border-radius: 12px;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+/* botón principal */
+.login-container button {
+  width: 100%;
+  padding: 12px;
+  background-color: #F8CEFF;
+  border: none;
+  border-radius: 12px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+/* hover botón */
+.login-container button:hover {
+  opacity: 0.9;
+}
+
+/* mensaje flotante */
+.mensaje {
+  position: absolute;
+  top: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 8px 14px;
+  border-radius: 10px;
+  font-weight: bold;
+  background-color: white;
+  z-index: 1000;
+}
+
+/* errores debajo de inputs */
+.field-error {
+  width: 100%;
+  color: #d10000;
+  font-size: 12px;
+  margin-top: -10px;
+  margin-bottom: 5px;
+  text-align: center;
+  animation: fadeIn 0.2s ease;
+}
+
+/* error general */
+.login-error {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: #ffe5e5;
+  border: 1px solid #ff5c5c;
+  padding: 10px 0px;
+  border-radius: 12px;
+  width: 280px;
+  font-size: 13px;
+  color: #b00020;
+  margin-top: 10px;
+}
+
+/* mensaje de éxito */
+.success-message {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  width: 280px;
+  padding: 10px 0px;
+  border-radius: 12px;
+  font-size: 13px;
+  background-color: #e6fff0;
+  border: 1px solid #00c853;
+  color: #007e33;
+  margin-top: 10px;
+}
+
+/* texto del éxito */
+.success-text {
+  display: flex;
+  flex-direction: column;
+}
+
+/* título éxito */
+.title {
+  font-weight: bold;
+}
+
+/* subtítulo éxito */
+.subtitle {
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+/* icono error */
+.error-icon {
+  width: 44px;
+  height: 44px;
+}
+
+/* wrapper de password + ojo */
+.password-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+/* input de password wrapper */
+.password-wrapper input {
+  width: 100%;
+  padding: 12px 40px 12px 12px;
+  box-sizing: border-box;
+}
+
+/* botón del ojo */
+.eye-button {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: auto !important;
+  height: auto !important;
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  font-size: 16px;
+  cursor: pointer;
+  color: #666;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* hover del ojo */
+.eye-button:hover {
+  color: #000;
+}
+
+/* footer */
+footer {
+  height: 35px;
+  flex-shrink: 0;
+  background-color: #F8CEFF;
+  text-align: center;
+  line-height: 35px;
+}
