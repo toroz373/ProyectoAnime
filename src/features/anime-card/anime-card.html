@@ -15,9 +15,9 @@
 
               @if (showMenu()) {
                 <div class="menu-dropdown">
-                  <button (click)="setStatus('para_ver')" [class.active]="currentStatus() === 'para_ver'">📋 Para ver</button>
-                  <button (click)="setStatus('viendo')" [class.active]="currentStatus() === 'viendo'">▶ Viendo</button>
-                  <button (click)="setStatus('visto')" [class.active]="currentStatus() === 'visto'">✓ Visto</button>
+                  <button (click)="setStatus('para_ver')" [class.active]="currentStatus() === 'para_ver'">Deseados</button>
+                  <button (click)="setStatus('viendo')" [class.active]="currentStatus() === 'viendo'">Vistos</button>
+                  <button (click)="setStatus('visto')" [class.active]="currentStatus() === 'visto'">En proceso</button>
                 </div>
               }
             </div>

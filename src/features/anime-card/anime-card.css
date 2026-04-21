@@ -114,11 +114,16 @@
 }
 
 .anime-description {
-  margin: 0 0 12px 0;
+  margin: 0 0 8px 0;
   font-size: 14px;
   color: #555;
-  line-height: 1.6;
-  text-align: justify;
+  line-height: 1.5;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* 👈 número de líneas */
+  -webkit-box-orient: vertical;
+  line-clamp: 3;
+  overflow: hidden;
 }
 
 .anime-info {
@@ -364,7 +369,8 @@
 }
 
 .anime-description.expanded {
-  max-height: none;
+  -webkit-line-clamp: unset;
+  line-clamp: 3;
 }
 
 .anime-description.expanded::after {
