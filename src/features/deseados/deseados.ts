@@ -1,12 +1,32 @@
-import { Component } from '@angular/core';
-import { HeaderComponent } from '../header/header';
-import { SidebarComponent } from '../sidebar/sidebar';
+import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { HeaderComponent } from '../../features/header/header';
+import { SidebarComponent } from '../../features/sidebar/sidebar';
+import { EstadoService } from '../../core/services/estado.service';
+import { AnimeCardComponent } from '../anime-card/anime-card';
 
 @Component({
-  standalone: true,
   selector: 'app-deseados',
-  imports: [ SidebarComponent, HeaderComponent],
+  standalone: true,
+  imports: [
+    CommonModule,
+    HeaderComponent,
+    SidebarComponent,
+    AnimeCardComponent
+  ],
   templateUrl: './deseados.html',
-  styleUrls: ['./deseados.css']
+  styleUrl: './deseados.css'
 })
-export class DeseadosComponent {}
+export class DeseadosComponent implements OnInit {
+
+  animes: any[] = [];
+
+  constructor(private estado: EstadoService) {}
+
+  ngOnInit() {
+    const userId = 1;
+    this.estado.getByEstado(userId, 'deseado').subscribe(data => {
+      this.animes = data;
+    });
+  }
+}

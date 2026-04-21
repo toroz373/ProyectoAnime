@@ -6,14 +6,6 @@
   <div class="comments-list">
     @let commentsList = (comments$ | async);
     
-    <!-- DEBUG: Mostrar estado -->
-    @if (commentsList === null) {
-      <p style="color: blue; font-size: 12px;">🔄 Cargando comentarios...</p>
-    } @else if (commentsList === undefined) {
-      <p style="color: red; font-size: 12px;">❌ Error: undefined</p>
-    } @else if (commentsList.length === 0) {
-      <p style="color: gray; font-size: 12px;">ℹ️ Sé el primero en comentar (array vacío)</p>
-    } @else {
       <!-- Mostrar comentarios -->
       @for (c of commentsList; track c.id) {
         <div class="comment-item">
@@ -24,7 +16,6 @@
           </div>
         </div>
       }
-    }
   </div>
 
   @if (!isLoggedIn) {
