@@ -76,7 +76,7 @@ CREATE TABLE IF NOT EXISTS `comments` (
   CONSTRAINT `fk_comments_user` FOREIGN KEY (`user_id`) REFERENCES `usuarios` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 -- --------------------------------------------------------
--- Tabla: estado sanimes
+-- Tabla: estado animes
 -- --------------------------------------------------------
 CREATE TABLE user_anime_status (
     id INT AUTO_INCREMENT PRIMARY KEY,
