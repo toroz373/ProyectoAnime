@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `password` varchar(255) NOT NULL,
   `avatar` varchar(255) DEFAULT NULL,
   `descripcion` varchar(250) DEFAULT NULL,
-  `theme` varchar(10) DEFAULT 'light'
+  `theme` varchar(10) DEFAULT 'light',
     PRIMARY KEY (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
