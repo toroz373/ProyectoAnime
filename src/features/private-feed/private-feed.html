@@ -9,7 +9,7 @@
   </div>
   
   <div class="feed-content">
-    @for (anime of animeService.filteredAnimes(); track anime.id){
+    @for (anime of animes; track anime.id){
       <app-anime-card 
         [anime]="anime"
         [isLoggedIn]="true"

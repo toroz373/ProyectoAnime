@@ -31,8 +31,10 @@ export class CommentsComponent implements OnChanges {
   comments$: Observable<Comment[]> = of([]);
 
   constructor(private commentsService: CommentsService) {
-    // Inicializar con un array vacío, pero esto se reemplazará en setupCommentsObservable
-    console.log('CommentsComponent constructor');
+    // 🔥 escuchar cambios globales
+    this.commentsService.refreshTrigger.subscribe(() => {
+      this.refreshComments();
+    });
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -112,10 +114,13 @@ export class CommentsComponent implements OnChanges {
 
     this.isSubmitting = true;
 
+    // 🔒 normaliza una sola vez
+    const cleanText = this.commentText.trim().substring(0, 300);
+
     const newComment: Comment = {
       anime_id: this.animeId,
       user_id: this.currentUserId,
-      content: this.commentText.trim(),
+      content: cleanText,
       rating: this.rating
     };
 
@@ -133,6 +138,18 @@ export class CommentsComponent implements OnChanges {
       error: (err) => {
         console.error('Error adding comment:', err);
         this.isSubmitting = false;
+      }
+    });
+  }
+
+  deleteComment(commentId: number) {
+    this.commentsService.deleteComment(commentId, this.currentUserId).subscribe({
+      next: () => {
+        this.refreshComments();
+        this.commentAdded.emit(); // 🔥 actualiza stats arriba
+      },
+      error: (err) => {
+        console.error('Error deleting comment:', err);
       }
     });
   }

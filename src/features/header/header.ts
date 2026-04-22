@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, effect } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterLink, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs';
@@ -13,6 +13,7 @@ import { AnimeService } from '../../core/services/anime';
   styleUrls: ['./header.css'],
 })
 export class HeaderComponent {
+
   private router = inject(Router);
   private authService = inject(AuthService);
   private animeService = inject(AnimeService);
@@ -20,7 +21,22 @@ export class HeaderComponent {
   showSearch = true;
   showLogoLink = true;
 
+  avatarUrl: string = 'assets/default-avatar.png';
+
   constructor() {
+
+    // 🔥 REACTIVO: se actualiza SOLO cuando cambia usuario
+    effect(() => {
+      const user = this.authService.currentUser();
+
+      if (user?.avatar) {
+        this.avatarUrl = this.getAvatarUrl(user.avatar);
+      } else {
+        this.avatarUrl = 'assets/default-avatar.png';
+      }
+    });
+
+    // navegación
     this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
       .subscribe((event: any) => {
@@ -29,9 +45,16 @@ export class HeaderComponent {
         const hiddenRoutes = ['/ajustes'];
         this.showSearch = !hiddenRoutes.some(route => url.startsWith(route));
 
-        // 🔥 NUEVO: control del logo
         this.showLogoLink = !url.startsWith('/public-feed');
       });
+  }
+
+  private getAvatarUrl(avatar: string): string {
+    if (avatar.startsWith('data:') || avatar.startsWith('http')) {
+      return avatar;
+    }
+
+    return `http://localhost/ProyectoAnime/backend-php/uploads/${avatar}`;
   }
 
   logout() {

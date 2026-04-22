@@ -104,3 +104,19 @@
     max-width: 100%;
   }
 }
+
+body.dark-mode .contenedor-bienvenida {
+  background-color: #1e1e1e;
+}
+
+body.dark-mode .resumen {
+  background-color: #1e1e1e;
+}
+
+body.dark-mode .comments-container {
+  background-color: #1e1e1e;
+}
+
+body.dark-mode .feed-container {
+  background: #121212 !important;
+}

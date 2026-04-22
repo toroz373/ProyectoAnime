@@ -98,3 +98,190 @@ body.dark-mode .back-button:hover {
 body {
   transition: background-color 0.3s, color 0.3s;
 }
+
+/*  oscuro el feed de private */
+body.dark-mode .feed-header {
+  background: #302f2f !important;
+  border-bottom: 3px solid #764ba2;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+body.dark-mode .feed-header h1 {
+  background: none !important;
+  -webkit-text-fill-color: rgb(225, 190, 255) !important;
+  color: rgb(255, 255, 255) !important;
+}
+
+body.dark-mode .anime-card-wrapper {
+  background: #1e1e1e;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+body.dark-mode .anime-card {
+  background: #1e1e1e;
+}
+
+body.dark-mode .card-right {
+  background: #1e1e1e;
+  border-top: 1px solid #333;
+}
+
+body.dark-mode .card-content {
+  background: #1e1e1e;
+}
+
+/* 🧾 TEXTO GENERAL */
+body.dark-mode .card-header h3 {
+  color: #e9d5ff;
+}
+
+/* 📄 DESCRIPCIÓN */
+body.dark-mode .anime-description {
+  color: #d1d5db;
+}
+
+/* 📊 INFO BLOQUE (capítulos / estado) */
+body.dark-mode .anime-info {
+  background: #2a2a2a;
+}
+
+body.dark-mode .info-label {
+  color: #9ca3af;
+}
+
+body.dark-mode .info-value {
+  color: #e9d5ff;
+}
+
+/* 🎛 MENÚ */
+body.dark-mode .menu-dropdown {
+  background: #1e1e1e;
+  border: 2px solid #a855f7;
+}
+
+body.dark-mode .menu-dropdown button {
+  background: #1e1e1e;
+  color: #e9d5ff;
+  border: 2px solid #333;
+}
+
+body.dark-mode .menu-dropdown button:hover {
+  background: #a855f7;
+  color: white;
+}
+
+/* ⭐ RATING */
+body.dark-mode .rating-text {
+  color: #e9d5ff;
+}
+
+body.dark-mode .rating-value {
+  color: #e9d5ff;
+}
+
+body.dark-mode .rating-average {
+  color: #aaa;
+}
+
+body.dark-mode .star-btn {
+  color: #555;
+}
+
+/* 💬 BOTÓN COMENTARIOS */
+body.dark-mode .comments-btn {
+  background: #1e1e1e;
+  color: #e9d5ff;
+  border: 2px solid #a855f7;
+}
+
+body.dark-mode .comments-btn:hover {
+  background: #a855f7;
+  color: white;
+}
+
+/* 📜 GRADIENTE DE DESCRIPCIÓN (IMPORTANTE) */
+body.dark-mode .anime-description::after {
+  background: linear-gradient(to bottom, transparent, #1e1e1e);
+}
+
+body.dark-mode .comments-container {
+  background: #1e1e1e !important;
+  color: #e5e7eb;
+}
+
+/* cada comentario */
+body.dark-mode .comment-item {
+  background: #2a2a2a !important;
+  border-left: 2px solid #a855f7;
+}
+
+/* texto comentario */
+body.dark-mode .comment-text {
+  color: #d1d5db;
+}
+
+body.dark-mode .comment-user strong {
+  color: #e9d5ff;
+}
+
+/* input escribir comentario */
+body.dark-mode .comment-input {
+  background: #2a2a2a;
+  color: white;
+  border: 1px solid #444;
+}
+
+/* formulario */
+body.dark-mode .add-comment-form {
+  background: #1e1e1e;
+  border-color: #333;
+}
+
+body.dark-mode select,
+body.dark-mode .rating-select {
+  background: #1e1e1e;
+  color: #e9d5ff;
+  border: 1px solid #444;
+}
+
+/* opciones del desplegable */
+body.dark-mode option {
+  background: #1e1e1e;
+  color: white;
+}
+
+body.dark-mode .submit-btn {
+  background: linear-gradient(135deg, #6d28d9 0%, #38bdf8 100%) !important;
+  color: white !important;
+  border: none !important;
+}
+
+body.dark-mode .submit-btn:hover:not(:disabled) {
+  background: linear-gradient(135deg, #a855f7 0%, #60a5fa 100%) !important;
+  box-shadow: 0 2px 10px rgba(168, 85, 247, 0.3);
+}
+
+body.dark-mode .menu-dropdown {
+  background: #1e1e1e;
+  border: 2px solid #a855f7;
+}
+
+/* botones dentro del desplegable */
+body.dark-mode .menu-dropdown button {
+  background: #1e1e1e !important;
+  color: #e9d5ff !important;
+  border: 2px solid #333 !important;
+}
+
+/* hover */
+body.dark-mode .menu-dropdown button:hover {
+  background: #a855f7 !important;
+  color: white !important;
+}
+
+/* activo */
+body.dark-mode .menu-dropdown button.active {
+  background: linear-gradient(135deg, #a855f7, #9333ea) !important;
+  color: white !important;
+  border-color: #a855f7 !important;
+}

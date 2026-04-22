@@ -1,9 +1,10 @@
-import { Component, Input, OnInit, inject, signal } from '@angular/core';
+import { Component, Input, OnInit, OnDestroy, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Anime } from '../../core/models/anime.model';
 import { CommentsComponent } from '../comments/comments';
 import { CommentsService } from '../../core/services/comments';
 import { AnimeListService, AnimeStatus } from '../../core/services/anime-list';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-anime-card',
@@ -12,7 +13,7 @@ import { AnimeListService, AnimeStatus } from '../../core/services/anime-list';
   templateUrl: './anime-card.html',
   styleUrl: './anime-card.css'
 })
-export class AnimeCardComponent implements OnInit {
+export class AnimeCardComponent implements OnInit, OnDestroy {
 
   @Input() anime!: Anime;
   @Input() isLoggedIn = false;
@@ -21,42 +22,55 @@ export class AnimeCardComponent implements OnInit {
   @Input() showStatusButtons = false;
 
   showComments = signal(false);
-  commentsCount = 0;
-
-  // ⭐ Media real desde tu base de datos
+  commentsCount = signal(0);
   averageRating = signal(0);
 
   currentStatus = signal<AnimeStatus | null>(null);
 
-  get averageStars() {
-    return Math.round(this.averageRating());
-  }
   showMenu = signal(false);
   isExpanded = signal(false);
 
   private commentsService = inject(CommentsService);
   private animeListService = inject(AnimeListService);
 
-  ngOnInit() {
-    console.log('AnimeCardComponent ngOnInit, anime:', this.anime);
-    console.log('AnimeCardComponent - isLoggedIn:', this.isLoggedIn, 'currentUserId:', this.currentUserId, 'currentUserName:', this.currentUserName);
-    this.refreshStats();
+  private sub?: Subscription;
 
-    // Estado del anime
+  ngOnInit() {
+    console.log('AnimeCard init');
+
+    // 🔥 Escuchar cambios globales (CLAVE)
+    this.sub = this.commentsService.refreshTrigger.subscribe(() => {
+      if (this.anime?.id) {
+        console.log('🔄 Refresh global → actualizando stats');
+        this.refreshStats();
+      }
+    });
+
+    // 🔥 Carga inicial
+    setTimeout(() => {
+      if (this.anime?.id) {
+        this.refreshStats();
+      }
+    }, 0);
+
     if (this.showStatusButtons) {
       this.currentStatus.set(this.animeListService.getAnimeStatus(this.anime.id));
     }
   }
 
+  ngOnDestroy() {
+    this.sub?.unsubscribe();
+  }
+
+  get averageStars() {
+    return Math.round(this.averageRating());
+  }
+
   refreshStats() {
-    if (!this.anime || !this.anime.id) {
-      console.warn('refreshStats: anime or anime.id is not set', this.anime);
-      return;
-    }
-    
-    console.log('refreshStats: fetching comments for anime id:', this.anime.id);
+    if (!this.anime?.id) return;
+
     this.commentsService.getComments(this.anime.id).subscribe(comments => {
-      this.commentsCount = comments.length;
+      this.commentsCount.set(comments.length);
     });
 
     this.commentsService.getAverageRating(this.anime.id).subscribe(res => {

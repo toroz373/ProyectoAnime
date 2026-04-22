@@ -17,11 +17,20 @@
       <!-- Mostrar comentarios -->
       @for (c of commentsList; track c.id) {
         <div class="comment-item">
-          <strong>{{ c.user_link ? c.user_link : 'Usuario ' + c.user_id }}</strong>
-          <p class="comment-text">{{ c.content }}</p>
-          <div class="comment-meta">
-            ⭐ {{ c.rating }}/5 - {{ c.created_at }}
+          <div class="comment-content">
+            <strong>{{ c.user_link ? c.user_link : 'Usuario ' + c.user_id }}</strong>
+            <p class="comment-text">{{ c.content }}</p>
+
+            <div class="comment-meta">
+              ⭐ {{ c.rating }}/5 - {{ c.created_at }}
+            </div>
           </div>
+
+          @if (c.user_id === currentUserId) {
+            <button class="delete-btn" (click)="deleteComment(c.id!)">
+              🗑️
+            </button>
+          }
         </div>
       }
     }
@@ -30,7 +39,12 @@
   @if (!isLoggedIn) {
     <p>Inicia sesión para comentar</p>
   } @else {
-    <textarea [(ngModel)]="commentText" rows="3" placeholder="Escribe tu comentario..."></textarea>
+    <textarea 
+      [(ngModel)]="commentText" 
+      rows="3" 
+      placeholder="Escribe tu comentario..."
+      maxlength="300">
+    </textarea>
 
     <label>Valoración:</label>
     <select [(ngModel)]="rating">
@@ -41,7 +55,7 @@
       <option [value]="5">5 ⭐⭐⭐⭐⭐</option>
     </select>
 
-    <button (click)="addComment()" [disabled]="isSubmitting">
+    <button class="submit-btn" (click)="addComment()" [disabled]="isSubmitting">
       {{ isSubmitting ? 'Enviando...' : 'Comentar' }}
     </button>
   }

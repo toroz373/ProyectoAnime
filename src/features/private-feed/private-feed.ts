@@ -29,6 +29,6 @@ export class PrivateFeedComponent {
 
   // Obtener la lista de todos los animes
   get animes() {
-    return this.animeService.getAnimes;
+    return this.animeService.filteredAnimes();
   }
 }

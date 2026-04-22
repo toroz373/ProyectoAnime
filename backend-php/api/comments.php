@@ -19,7 +19,7 @@ if (in_array($origin, $allowedOrigins, true)) {
     header('Access-Control-Allow-Origin: *');
 }
 header('Access-Control-Allow-Headers: Content-Type, Authorization');
-header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
+header('Access-Control-Allow-Methods: GET, POST, DELETE, OPTIONS');
 header('Access-Control-Allow-Credentials: true');
 
 if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
@@ -121,6 +121,20 @@ try {
             'rating' => $data['rating'],
             'created_at' => date('Y-m-d H:i:s')
         ]);
+        exit;
+    }
+
+    if ($_SERVER['REQUEST_METHOD'] === 'DELETE') {
+        if (!isset($_GET['id']) || !isset($_GET['userId'])) {
+            http_response_code(400);
+            echo json_encode(['error' => 'id y userId requeridos']);
+            exit;
+        }
+
+        $stmt = $pdo->prepare("DELETE FROM comments WHERE id = ? AND user_id = ?");
+        $stmt->execute([$_GET['id'], $_GET['userId']]);
+
+        echo json_encode(['success' => true]);
         exit;
     }
 
