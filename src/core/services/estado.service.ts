@@ -10,12 +10,14 @@ export class EstadoService {
 
   private statusUrl = 'http://localhost/ProyectoAnime/backend-php/api/estado.php';
 
+  // Obtener estado de un anime concreto
   getEstado(userId: number, animeId: number): Observable<{ status: AnimeStatus } | null> {
     return this.http.get<{ status: AnimeStatus } | null>(
       `${this.statusUrl}?user_id=${userId}&anime_id=${animeId}`
     );
   }
 
+  // Guardar o actualizar estado
   setEstado(userId: number, animeId: number, status: AnimeStatus) {
     const body = new FormData();
     body.append('user_id', String(userId));
@@ -25,7 +27,10 @@ export class EstadoService {
     return this.http.post(this.statusUrl, body, { responseType: 'json' });
   }
 
-  getByEstado(userId: number, status: AnimeStatus) {
-    return this.http.get<any[]>(`${this.statusUrl}?user_id=${userId}&status=${status}`);
+  // Obtener animes por estado (para deseados, vistos, procesos)
+  getAnimesByStatus(userId: number, status: AnimeStatus): Observable<any[]> {
+    return this.http.get<any[]>(
+      `${this.statusUrl}?user_id=${userId}&status=${status}`
+    );
   }
 }

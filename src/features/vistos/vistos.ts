@@ -1,32 +1,33 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HeaderComponent } from '../../features/header/header';
-import { SidebarComponent } from '../../features/sidebar/sidebar';
 import { EstadoService } from '../../core/services/estado.service';
 import { AnimeCardComponent } from '../anime-card/anime-card';
+import { Anime } from '../../core/models/anime.model';
 
 @Component({
   selector: 'app-vistos',
   standalone: true,
   imports: [
     CommonModule,
-    HeaderComponent,
-    SidebarComponent,
     AnimeCardComponent
   ],
   templateUrl: './vistos.html',
-  styleUrls: ['./vistos.css']
+  styleUrl: './vistos.css'
 })
 export class VistosComponent implements OnInit {
 
-  animes: any[] = [];
+  private estadoService = inject(EstadoService);
 
-  constructor(private estado: EstadoService) {}
+  animes: Anime[] = [];
+  userId = 1;
 
-  ngOnInit() {
-    const userId = 1;
-    this.estado.getByEstado(userId, 'visto').subscribe(data => {
-      this.animes = data;
+ngOnInit() {
+  this.estadoService
+    .getAnimesByStatus(this.userId, 'visto')
+    .subscribe((res: any) => {
+      console.log("RESULTADO DEL BACKEND:", res);
+      this.animes = res;
     });
-  }
+}
+
 }

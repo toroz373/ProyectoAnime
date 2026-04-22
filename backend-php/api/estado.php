@@ -37,31 +37,87 @@ mysqli_report(MYSQLI_REPORT_OFF);
 
 $method = $_SERVER['REQUEST_METHOD'];
 
+
+// ======================================================
+// ======================   GET   ========================
+// ======================================================
+if ($method === 'GET') {
+
+    $user_id = $_GET['user_id'] ?? null;
+    $anime_id = $_GET['anime_id'] ?? null;
+    $status = $_GET['status'] ?? null;
+
+    // ============================
+    // 1️⃣ OBTENER LISTA POR ESTADO
+    // ============================
+    if ($user_id && $status) {
+
+        $valid = ['visto', 'deseado', 'en_proceso'];
+        if (!in_array($status, $valid)) {
+            echo json_encode(["error" => "Invalid status"]);
+            exit;
+        }
+
+        $query = $conn->prepare("
+            SELECT a.*
+            FROM user_anime_status uas
+            JOIN animes a ON a.id = uas.anime_id
+            WHERE uas.user_id = ? AND uas.status = ?
+        ");
+
+        $query->bind_param("is", $user_id, $status);
+        $query->execute();
+
+        $result = $query->get_result()->fetch_all(MYSQLI_ASSOC);
+
+        echo json_encode($result);
+        exit;
+    }
+
+    // ============================
+    // 2️⃣ OBTENER ESTADO DE UN ANIME
+    // ============================
+    if ($user_id && $anime_id) {
+
+        $query = $conn->prepare("
+            SELECT status 
+            FROM user_anime_status 
+            WHERE user_id = ? AND anime_id = ?
+        ");
+        $query->bind_param("ii", $user_id, $anime_id);
+        $query->execute();
+
+        $result = $query->get_result()->fetch_assoc();
+
+        echo json_encode($result ?: ["status" => null]);
+        exit;
+    }
+
+    echo json_encode(["error" => "Missing parameters"]);
+    exit;
+}
+
+
+
+// ======================================================
+// ======================   POST   =======================
+// ======================================================
 if ($method === 'POST') {
 
-    // ============================
-    // ACEPTAR JSON O FORMDATA
-    // ============================
+    // Aceptar JSON o FormData
     $input = json_decode(file_get_contents("php://input"), true);
 
-    $user_id = $_POST['user_id'] 
-            ?? ($input['user_id'] ?? null);
+    $user_id = $_POST['user_id'] ?? ($input['user_id'] ?? null);
+    $anime_id = $_POST['anime_id'] ?? ($input['anime_id'] ?? null);
+    $status = $_POST['status'] ?? ($input['status'] ?? null);
 
-    $anime_id = $_POST['anime_id'] 
-            ?? ($input['anime_id'] ?? null);
-
-    $status = $_POST['status'] 
-            ?? ($input['status'] ?? null);
-
-    // Log temporal para depurar
+    // Log temporal
     file_put_contents("debug_post.txt", print_r([
         "POST" => $_POST,
         "JSON" => $input
     ], true));
 
-    // ============================
-    // VALIDAR PARÁMETROS
-    // ============================
+    // Validación
     if (!$user_id || !$anime_id || !$status) {
         echo json_encode(["error" => "Missing parameters"]);
         exit;
@@ -75,43 +131,30 @@ if ($method === 'POST') {
         exit;
     }
 
-    // ============================
-    // VERIFICAR SI YA EXISTE
-    // ============================
+    // Verificar si ya existe
     $check = $conn->prepare("SELECT id FROM user_anime_status WHERE user_id=? AND anime_id=?");
     $check->bind_param("ii", $user_id, $anime_id);
     $check->execute();
     $check->store_result();
 
     if ($check->num_rows > 0) {
+
         // UPDATE
         $update = $conn->prepare("UPDATE user_anime_status SET status=? WHERE user_id=? AND anime_id=?");
-        if (!$update) error_log("SQL UPDATE ERROR: " . $conn->error);
         $update->bind_param("sii", $status, $user_id, $anime_id);
         $update->execute();
 
-        if ($update->errno) {
-            error_log("UPDATE ERROR: " . $update->error);
-        }
-
     } else {
+
         // INSERT
         $insert = $conn->prepare("INSERT INTO user_anime_status (user_id, anime_id, status) VALUES (?, ?, ?)");
-        if (!$insert) error_log("SQL INSERT ERROR: " . $conn->error);
         $insert->bind_param("iis", $user_id, $anime_id, $status);
         $insert->execute();
-
-        if ($insert->errno) {
-            error_log("INSERT ERROR: " . $insert->error);
-        }
     }
 
-    // ============================
-    // CAPTURAR WARNINGS
-    // ============================
+    // Capturar warnings
     $debug = ob_get_clean();
     if (!empty($debug)) {
-        echo json_encode(["php_warning" => $debug]);
         exit;
     }
 
@@ -119,9 +162,11 @@ if ($method === 'POST') {
     exit;
 }
 
-// ============================
-// SI NO ES POST
-// ============================
+
+
+// ======================================================
+// ===============   MÉTODO NO VÁLIDO   =================
+// ======================================================
 $debug = ob_get_clean();
 if (!empty($debug)) {
     echo json_encode(["php_warning" => $debug]);
