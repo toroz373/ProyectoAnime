@@ -4,9 +4,11 @@ $user = "root";
 $password = "";
 $database = "miruzone";
 
-$conn = new mysqli($host, $user, $password, $database);
+mysqli_report(MYSQLI_REPORT_OFF); // evita warnings visibles
 
-if ($conn->connect_error) {
-    die("Error de conexión: " . $conn->connect_error);
+$conn = @new mysqli($host, $user, $password, $database);
+
+if ($conn->connect_errno) {
+    error_log("DB ERROR: " . $conn->connect_error);
 }
 ?>

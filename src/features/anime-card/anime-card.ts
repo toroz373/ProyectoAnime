@@ -3,7 +3,9 @@ import { CommonModule } from '@angular/common';
 import { Anime } from '../../core/models/anime.model';
 import { CommentsComponent } from '../comments/comments';
 import { CommentsService } from '../../core/services/comments';
-import { AnimeListService, AnimeStatus } from '../../core/services/anime-list';
+import { EstadoService } from '../../core/services/estado.service';
+
+export type AnimeStatus = 'deseado' | 'visto' | 'en_proceso';
 
 @Component({
   selector: 'app-anime-card',
@@ -23,38 +25,51 @@ export class AnimeCardComponent implements OnInit {
   showComments = signal(false);
   commentsCount = 0;
 
-  // ⭐ Media real desde tu base de datos
   averageRating = signal(0);
-
   currentStatus = signal<AnimeStatus | null>(null);
 
   get averageStars() {
     return Math.round(this.averageRating());
   }
+
   showMenu = signal(false);
   isExpanded = signal(false);
 
   private commentsService = inject(CommentsService);
-  private animeListService = inject(AnimeListService);
+  private estadoService = inject(EstadoService);
 
   ngOnInit() {
-    console.log('AnimeCardComponent ngOnInit, anime:', this.anime);
-    console.log('AnimeCardComponent - isLoggedIn:', this.isLoggedIn, 'currentUserId:', this.currentUserId, 'currentUserName:', this.currentUserName);
     this.refreshStats();
 
-    // Estado del anime
-    if (this.showStatusButtons) {
-      this.currentStatus.set(this.animeListService.getAnimeStatus(this.anime.id));
+    if (this.showStatusButtons && this.isLoggedIn) {
+      this.loadStatusFromBackend();
     }
   }
 
+  loadStatusFromBackend() {
+    if (!this.currentUserId || !this.anime?.id) return;
+
+    this.estadoService.getEstado(this.currentUserId, this.anime.id)
+      .subscribe(res => {
+        if (res?.status) {
+          this.currentStatus.set(res.status as AnimeStatus);
+        }
+      });
+  }
+
+  setStatus(status: AnimeStatus) {
+    if (!this.isLoggedIn || !this.currentUserId || !this.anime?.id) return;
+
+    this.estadoService.setEstado(this.currentUserId, this.anime.id, status)
+      .subscribe(() => {
+        this.currentStatus.set(status);
+        this.showMenu.set(false);
+      });
+  }
+
   refreshStats() {
-    if (!this.anime || !this.anime.id) {
-      console.warn('refreshStats: anime or anime.id is not set', this.anime);
-      return;
-    }
-    
-    console.log('refreshStats: fetching comments for anime id:', this.anime.id);
+    if (!this.anime || !this.anime.id) return;
+
     this.commentsService.getComments(this.anime.id).subscribe(comments => {
       this.commentsCount = comments.length;
     });
@@ -74,12 +89,6 @@ export class AnimeCardComponent implements OnInit {
 
   closeMenu() {
     this.showMenu.set(false);
-  }
-
-  setStatus(status: AnimeStatus) {
-    this.animeListService.setAnimeStatus(this.anime.id, status);
-    this.currentStatus.set(status);
-    this.closeMenu();
   }
 
   toggleDescription() {

@@ -10,18 +10,35 @@
           <h3>{{ anime.title }}</h3>
 
           @if (showStatusButtons && isLoggedIn) {
-            <div class="menu-container">
-              <button class="menu-btn" (click)="toggleMenu()">⋯</button>
+  <div class="menu-container">
+    <button class="menu-btn" (click)="toggleMenu()">⋯</button>
 
-              @if (showMenu()) {
-                <div class="menu-dropdown">
-                  <button (click)="setStatus('para_ver')" [class.active]="currentStatus() === 'para_ver'">📋 Para ver</button>
-                  <button (click)="setStatus('viendo')" [class.active]="currentStatus() === 'viendo'">▶ Viendo</button>
-                  <button (click)="setStatus('visto')" [class.active]="currentStatus() === 'visto'">✓ Visto</button>
-                </div>
-              }
-            </div>
-          }
+        @if (showMenu()) {
+          <div class="menu-dropdown">
+
+            <button 
+              (click)="setStatus('deseado')" 
+              [class.active]="currentStatus() === 'deseado'">
+              📋 Deseados
+            </button>
+
+            <button 
+              (click)="setStatus('en_proceso')" 
+              [class.active]="currentStatus() === 'en_proceso'">
+              ▶ En proceso
+            </button>
+
+            <button 
+              (click)="setStatus('visto')" 
+              [class.active]="currentStatus() === 'visto'">
+              ✓ Visto
+            </button>
+
+          </div>
+        }
+      </div>
+        }
+
         </div>
 
         <div class="anime-meta">
