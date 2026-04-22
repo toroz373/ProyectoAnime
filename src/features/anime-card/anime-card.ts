@@ -46,29 +46,19 @@ export class AnimeCardComponent implements OnInit {
     }
   }
 
-  // ============================
-  // Cargar estado desde la BD
-  // ============================
   loadStatusFromBackend() {
-    const userId = this.currentUserId;
-    const animeId = this.anime.id;
+    if (!this.currentUserId || !this.anime?.id) return;
 
-    const estados: AnimeStatus[] = ['deseado', 'visto', 'en_proceso'];
-
-    estados.forEach(estado => {
-      this.estadoService.getByEstado(userId, estado).subscribe(list => {
-        if (list.some(a => a.id === animeId || a.api_id === animeId)) {
-          this.currentStatus.set(estado);
+    this.estadoService.getEstado(this.currentUserId, this.anime.id)
+      .subscribe(res => {
+        if (res?.status) {
+          this.currentStatus.set(res.status as AnimeStatus);
         }
       });
-    });
   }
 
-  // ============================
-  // Guardar estado en BD
-  // ============================
   setStatus(status: AnimeStatus) {
-    if (!this.isLoggedIn) return;
+    if (!this.isLoggedIn || !this.currentUserId || !this.anime?.id) return;
 
     this.estadoService.setEstado(this.currentUserId, this.anime.id, status)
       .subscribe(() => {

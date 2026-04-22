@@ -1,6 +1,7 @@
 import { Injectable, signal, computed } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Anime } from '../models/anime.model';
+import { catchError } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class AnimeService {
@@ -30,43 +31,52 @@ export class AnimeService {
   }
 
   loadAnimes() {
-    this.http.get<any>(this.apiUrl).subscribe(response => {
+    this.http.get<any>(this.backendUrl).pipe(
+      catchError(() => [])
+    ).subscribe(dbResponse => {
 
-      const mapped: Anime[] = response.data.map((a: any) => ({
-        id: a.mal_id,
-        title: a.title,
-        image: a.images.jpg.image_url,
-        rating: 0,
-        description: a.synopsis,
-        episodes: a.episodes,
-        isAiring: a.status === 'Currently Airing'
-      }));
+      if (Array.isArray(dbResponse) && dbResponse.length > 0) {
+        this.setMappedAnimes(dbResponse);
+        return;
+      }
 
-      this.animes.set(mapped);
+      this.http.get<any>(this.apiUrl).pipe(
+        catchError(() => [])
+      ).subscribe(apiResponse => {
 
-      // Guardar cada anime en la BD
-      mapped.forEach(anime => {
-        this.http.post(this.backendUrl, {
-          api_id: anime.id,
-          title: anime.title,
-          image: anime.image,
-          description: anime.description
-        }).subscribe();
-      });
+        if (!apiResponse.data) return;
 
-      // Cargar medias reales
-      mapped.forEach((anime, index) => {
-        this.getAnimeAverage(anime.id).subscribe(avg => {
-          mapped[index].rating = avg?.avg_rating ?? 0;
-          this.animes.set(this.sortByRating(mapped));
+        const apiData = apiResponse.data;
+
+        apiData.forEach((anime: any) => {
+          this.http.post(this.backendUrl, {
+            api_id: anime.mal_id,
+            title: anime.title,
+            image: anime.images.jpg.image_url,
+            description: anime.synopsis
+          }).subscribe();
         });
+
+        this.setMappedAnimes(apiData);
       });
     });
   }
 
-  private sortByRating(animes: Anime[]) {
-    return [...animes].sort((a, b) => b.rating - a.rating);
-  }
+  private setMappedAnimes(data: any[]) {
+  const mapped: Anime[] = data.map((a: any) => ({
+    id: a.id,                     // ID REAL de la BD
+    api_id: a.api_id ?? a.mal_id, // ID de la API externa
+    title: a.title,
+    image: a.images?.jpg?.image_url ?? a.image,
+    rating: a.avg_rating ?? 0,
+    description: a.synopsis ?? a.description,
+    episodes: a.episodes ?? 0,
+    isAiring: a.status ? a.status === 'Currently Airing' : false
+  }));
+
+  this.animes.set(mapped);
+}
+
 
   getAnimeAverage(animeId: number) {
     return this.http.get<any>(`${this.commentsUrl}?average=1&animeId=${animeId}`);
@@ -81,4 +91,3 @@ export class AnimeService {
     });
   }
 }
-

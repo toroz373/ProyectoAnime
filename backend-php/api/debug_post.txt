@@ -1,0 +1,11 @@
+Array
+(
+    [POST] => Array
+        (
+            [user_id] => 1
+            [anime_id] => 24
+            [status] => en_proceso
+        )
+
+    [JSON] => 
+)

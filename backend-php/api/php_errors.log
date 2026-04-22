@@ -1,52 +1,701 @@
-[21-Apr-2026 18:59:25 Europe/Berlin] Fetching comments for animeId: 1
-[21-Apr-2026 18:59:25 Europe/Berlin] Comments found: 1
-[21-Apr-2026 19:38:00 Europe/Berlin] Fetching comments for animeId: 1
-[21-Apr-2026 19:38:00 Europe/Berlin] Fetching comments for animeId: 5
-[21-Apr-2026 19:38:00 Europe/Berlin] Comments found: 1
-[21-Apr-2026 19:38:00 Europe/Berlin] Comments found: 0
-[21-Apr-2026 19:38:00 Europe/Berlin] Fetching comments for animeId: 7
-[21-Apr-2026 19:38:00 Europe/Berlin] Comments found: 0
-[21-Apr-2026 19:38:00 Europe/Berlin] Fetching comments for animeId: 6
-[21-Apr-2026 19:38:00 Europe/Berlin] Comments found: 0
-[21-Apr-2026 19:38:00 Europe/Berlin] Fetching comments for animeId: 16
-[21-Apr-2026 19:38:00 Europe/Berlin] Comments found: 0
-[21-Apr-2026 19:38:00 Europe/Berlin] Fetching comments for animeId: 17
-[21-Apr-2026 19:38:00 Europe/Berlin] Comments found: 0
-[21-Apr-2026 19:38:00 Europe/Berlin] Fetching comments for animeId: 18
-[21-Apr-2026 19:38:00 Europe/Berlin] Comments found: 0
-[21-Apr-2026 19:38:00 Europe/Berlin] Fetching comments for animeId: 15
-[21-Apr-2026 19:38:00 Europe/Berlin] Fetching comments for animeId: 8
-[21-Apr-2026 19:38:00 Europe/Berlin] Comments found: 0
-[21-Apr-2026 19:38:00 Europe/Berlin] Comments found: 0
-[21-Apr-2026 19:38:00 Europe/Berlin] Fetching comments for animeId: 21
-[21-Apr-2026 19:38:00 Europe/Berlin] Comments found: 0
-[21-Apr-2026 19:38:00 Europe/Berlin] Fetching comments for animeId: 19
-[21-Apr-2026 19:38:00 Europe/Berlin] Fetching comments for animeId: 20
-[21-Apr-2026 19:38:00 Europe/Berlin] Comments found: 0
-[21-Apr-2026 19:38:00 Europe/Berlin] Comments found: 0
-[21-Apr-2026 19:38:00 Europe/Berlin] Fetching comments for animeId: 22
-[21-Apr-2026 19:38:00 Europe/Berlin] Comments found: 0
-[21-Apr-2026 19:38:00 Europe/Berlin] Fetching comments for animeId: 23
-[21-Apr-2026 19:38:00 Europe/Berlin] Comments found: 0
-[21-Apr-2026 19:38:00 Europe/Berlin] Fetching comments for animeId: 24
-[21-Apr-2026 19:38:00 Europe/Berlin] Comments found: 0
-[21-Apr-2026 19:38:00 Europe/Berlin] Fetching comments for animeId: 27
-[21-Apr-2026 19:38:00 Europe/Berlin] Comments found: 0
-[21-Apr-2026 19:38:00 Europe/Berlin] Fetching comments for animeId: 29
-[21-Apr-2026 19:38:00 Europe/Berlin] Comments found: 0
-[21-Apr-2026 19:38:00 Europe/Berlin] Fetching comments for animeId: 30
-[21-Apr-2026 19:38:00 Europe/Berlin] Comments found: 0
-[21-Apr-2026 19:38:00 Europe/Berlin] Fetching comments for animeId: 26
-[21-Apr-2026 19:38:00 Europe/Berlin] Fetching comments for animeId: 25
-[21-Apr-2026 19:38:00 Europe/Berlin] Fetching comments for animeId: 28
-[21-Apr-2026 19:38:00 Europe/Berlin] Fetching comments for animeId: 31
-[21-Apr-2026 19:38:00 Europe/Berlin] Comments found: 0
-[21-Apr-2026 19:38:00 Europe/Berlin] Comments found: 0
-[21-Apr-2026 19:38:00 Europe/Berlin] Comments found: 0
-[21-Apr-2026 19:38:00 Europe/Berlin] Comments found: 0
-[21-Apr-2026 19:38:00 Europe/Berlin] Fetching comments for animeId: 32
-[21-Apr-2026 19:38:00 Europe/Berlin] Comments found: 0
-[21-Apr-2026 19:38:00 Europe/Berlin] Fetching comments for animeId: 33
-[21-Apr-2026 19:38:00 Europe/Berlin] Comments found: 0
-[21-Apr-2026 19:38:00 Europe/Berlin] Fetching comments for animeId: 43
-[21-Apr-2026 19:38:00 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:41:32 Europe/Berlin] Fetching comments for animeId: 31
+[22-Apr-2026 20:41:32 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:41:32 Europe/Berlin] Fetching comments for animeId: 16
+[22-Apr-2026 20:41:32 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:41:32 Europe/Berlin] Fetching comments for animeId: 28
+[22-Apr-2026 20:41:32 Europe/Berlin] Fetching comments for animeId: 17
+[22-Apr-2026 20:41:32 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:41:32 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:41:32 Europe/Berlin] Fetching comments for animeId: 21
+[22-Apr-2026 20:41:32 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:41:32 Europe/Berlin] Fetching comments for animeId: 20
+[22-Apr-2026 20:41:32 Europe/Berlin] Fetching comments for animeId: 43
+[22-Apr-2026 20:41:32 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:41:32 Europe/Berlin] Fetching comments for animeId: 27
+[22-Apr-2026 20:41:32 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:41:32 Europe/Berlin] Fetching comments for animeId: 15
+[22-Apr-2026 20:41:32 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:41:32 Europe/Berlin] Fetching comments for animeId: 24
+[22-Apr-2026 20:41:32 Europe/Berlin] Fetching comments for animeId: 23
+[22-Apr-2026 20:41:32 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:41:32 Europe/Berlin] Fetching comments for animeId: 25
+[22-Apr-2026 20:41:32 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:41:32 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:41:32 Europe/Berlin] Fetching comments for animeId: 30
+[22-Apr-2026 20:41:32 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:41:32 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:41:32 Europe/Berlin] Fetching comments for animeId: 26
+[22-Apr-2026 20:41:32 Europe/Berlin] Fetching comments for animeId: 32
+[22-Apr-2026 20:41:32 Europe/Berlin] Fetching comments for animeId: 18
+[22-Apr-2026 20:41:32 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:41:32 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:41:32 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:41:32 Europe/Berlin] Fetching comments for animeId: 33
+[22-Apr-2026 20:41:32 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:41:32 Europe/Berlin] Fetching comments for animeId: 1
+[22-Apr-2026 20:41:32 Europe/Berlin] Fetching comments for animeId: 6
+[22-Apr-2026 20:41:32 Europe/Berlin] Comments found: 2
+[22-Apr-2026 20:41:32 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:41:32 Europe/Berlin] Fetching comments for animeId: 22
+[22-Apr-2026 20:41:32 Europe/Berlin] Fetching comments for animeId: 19
+[22-Apr-2026 20:41:32 Europe/Berlin] Fetching comments for animeId: 7
+[22-Apr-2026 20:41:32 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:41:32 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:41:32 Europe/Berlin] Fetching comments for animeId: 5
+[22-Apr-2026 20:41:32 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:41:32 Europe/Berlin] Fetching comments for animeId: 8
+[22-Apr-2026 20:41:32 Europe/Berlin] Fetching comments for animeId: 29
+[22-Apr-2026 20:41:32 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:41:32 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:41:32 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:43:29 Europe/Berlin] Fetching comments for animeId: 16
+[22-Apr-2026 20:43:29 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:43:29 Europe/Berlin] Fetching comments for animeId: 31
+[22-Apr-2026 20:43:29 Europe/Berlin] Fetching comments for animeId: 28
+[22-Apr-2026 20:43:29 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:43:29 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:43:29 Europe/Berlin] Fetching comments for animeId: 21
+[22-Apr-2026 20:43:29 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:43:29 Europe/Berlin] Fetching comments for animeId: 17
+[22-Apr-2026 20:43:29 Europe/Berlin] Fetching comments for animeId: 19
+[22-Apr-2026 20:43:29 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:43:29 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:43:29 Europe/Berlin] Fetching comments for animeId: 43
+[22-Apr-2026 20:43:29 Europe/Berlin] Fetching comments for animeId: 27
+[22-Apr-2026 20:43:29 Europe/Berlin] Fetching comments for animeId: 20
+[22-Apr-2026 20:43:29 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:43:29 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:43:29 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:43:29 Europe/Berlin] Fetching comments for animeId: 15
+[22-Apr-2026 20:43:29 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:43:29 Europe/Berlin] Fetching comments for animeId: 23
+[22-Apr-2026 20:43:29 Europe/Berlin] Fetching comments for animeId: 25
+[22-Apr-2026 20:43:29 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:43:29 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:43:29 Europe/Berlin] Fetching comments for animeId: 30
+[22-Apr-2026 20:43:29 Europe/Berlin] Fetching comments for animeId: 24
+[22-Apr-2026 20:43:29 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:43:29 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:43:29 Europe/Berlin] Fetching comments for animeId: 26
+[22-Apr-2026 20:43:29 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:43:29 Europe/Berlin] Fetching comments for animeId: 32
+[22-Apr-2026 20:43:29 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:43:29 Europe/Berlin] Fetching comments for animeId: 18
+[22-Apr-2026 20:43:29 Europe/Berlin] Fetching comments for animeId: 33
+[22-Apr-2026 20:43:29 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:43:29 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:43:29 Europe/Berlin] Fetching comments for animeId: 1
+[22-Apr-2026 20:43:29 Europe/Berlin] Comments found: 2
+[22-Apr-2026 20:43:29 Europe/Berlin] Fetching comments for animeId: 6
+[22-Apr-2026 20:43:29 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:43:29 Europe/Berlin] Fetching comments for animeId: 5
+[22-Apr-2026 20:43:29 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:43:30 Europe/Berlin] Fetching comments for animeId: 22
+[22-Apr-2026 20:43:30 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:43:30 Europe/Berlin] Fetching comments for animeId: 7
+[22-Apr-2026 20:43:30 Europe/Berlin] Fetching comments for animeId: 8
+[22-Apr-2026 20:43:30 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:43:30 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:43:30 Europe/Berlin] Fetching comments for animeId: 29
+[22-Apr-2026 20:43:30 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:48:43 Europe/Berlin] Fetching comments for animeId: 31
+[22-Apr-2026 20:48:43 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:48:43 Europe/Berlin] Fetching comments for animeId: 16
+[22-Apr-2026 20:48:43 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:48:43 Europe/Berlin] Fetching comments for animeId: 28
+[22-Apr-2026 20:48:43 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:48:43 Europe/Berlin] Fetching comments for animeId: 21
+[22-Apr-2026 20:48:43 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:48:43 Europe/Berlin] Fetching comments for animeId: 17
+[22-Apr-2026 20:48:43 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:48:43 Europe/Berlin] Fetching comments for animeId: 19
+[22-Apr-2026 20:48:43 Europe/Berlin] Fetching comments for animeId: 20
+[22-Apr-2026 20:48:43 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:48:43 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:48:43 Europe/Berlin] Fetching comments for animeId: 43
+[22-Apr-2026 20:48:43 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:48:43 Europe/Berlin] Fetching comments for animeId: 27
+[22-Apr-2026 20:48:43 Europe/Berlin] Fetching comments for animeId: 15
+[22-Apr-2026 20:48:43 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:48:43 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:48:43 Europe/Berlin] Fetching comments for animeId: 24
+[22-Apr-2026 20:48:43 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:48:43 Europe/Berlin] Fetching comments for animeId: 30
+[22-Apr-2026 20:48:43 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:48:43 Europe/Berlin] Fetching comments for animeId: 26
+[22-Apr-2026 20:48:43 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:48:43 Europe/Berlin] Fetching comments for animeId: 18
+[22-Apr-2026 20:48:43 Europe/Berlin] Fetching comments for animeId: 23
+[22-Apr-2026 20:48:43 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:48:43 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:48:43 Europe/Berlin] Fetching comments for animeId: 6
+[22-Apr-2026 20:48:43 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:48:43 Europe/Berlin] Fetching comments for animeId: 5
+[22-Apr-2026 20:48:43 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:48:43 Europe/Berlin] Fetching comments for animeId: 7
+[22-Apr-2026 20:48:43 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:48:43 Europe/Berlin] Fetching comments for animeId: 8
+[22-Apr-2026 20:48:43 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:48:43 Europe/Berlin] Fetching comments for animeId: 1
+[22-Apr-2026 20:48:43 Europe/Berlin] Fetching comments for animeId: 32
+[22-Apr-2026 20:48:43 Europe/Berlin] Fetching comments for animeId: 25
+[22-Apr-2026 20:48:43 Europe/Berlin] Comments found: 2
+[22-Apr-2026 20:48:43 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:48:43 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:48:43 Europe/Berlin] Fetching comments for animeId: 29
+[22-Apr-2026 20:48:43 Europe/Berlin] Fetching comments for animeId: 33
+[22-Apr-2026 20:48:43 Europe/Berlin] Fetching comments for animeId: 22
+[22-Apr-2026 20:48:43 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:48:43 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:48:43 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:50:25 Europe/Berlin] Fetching comments for animeId: 31
+[22-Apr-2026 20:50:25 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:50:25 Europe/Berlin] Fetching comments for animeId: 16
+[22-Apr-2026 20:50:25 Europe/Berlin] Fetching comments for animeId: 17
+[22-Apr-2026 20:50:25 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:50:25 Europe/Berlin] Fetching comments for animeId: 28
+[22-Apr-2026 20:50:25 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:50:25 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:50:25 Europe/Berlin] Fetching comments for animeId: 20
+[22-Apr-2026 20:50:25 Europe/Berlin] Fetching comments for animeId: 21
+[22-Apr-2026 20:50:25 Europe/Berlin] Fetching comments for animeId: 19
+[22-Apr-2026 20:50:25 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:50:25 Europe/Berlin] Fetching comments for animeId: 15
+[22-Apr-2026 20:50:25 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:50:25 Europe/Berlin] Fetching comments for animeId: 43
+[22-Apr-2026 20:50:25 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:50:25 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:50:25 Europe/Berlin] Fetching comments for animeId: 23
+[22-Apr-2026 20:50:25 Europe/Berlin] Fetching comments for animeId: 25
+[22-Apr-2026 20:50:25 Europe/Berlin] Fetching comments for animeId: 32
+[22-Apr-2026 20:50:25 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:50:25 Europe/Berlin] Fetching comments for animeId: 26
+[22-Apr-2026 20:50:25 Europe/Berlin] Fetching comments for animeId: 18
+[22-Apr-2026 20:50:25 Europe/Berlin] Fetching comments for animeId: 24
+[22-Apr-2026 20:50:25 Europe/Berlin] Fetching comments for animeId: 30
+[22-Apr-2026 20:50:25 Europe/Berlin] Fetching comments for animeId: 1
+[22-Apr-2026 20:50:25 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:50:25 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:50:25 Europe/Berlin] Fetching comments for animeId: 7
+[22-Apr-2026 20:50:25 Europe/Berlin] Fetching comments for animeId: 6
+[22-Apr-2026 20:50:25 Europe/Berlin] Fetching comments for animeId: 8
+[22-Apr-2026 20:50:25 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:50:25 Europe/Berlin] Fetching comments for animeId: 29
+[22-Apr-2026 20:50:25 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:50:25 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:50:25 Europe/Berlin] Fetching comments for animeId: 5
+[22-Apr-2026 20:50:25 Europe/Berlin] Fetching comments for animeId: 22
+[22-Apr-2026 20:50:25 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:50:25 Europe/Berlin] Comments found: 2
+[22-Apr-2026 20:50:25 Europe/Berlin] Fetching comments for animeId: 33
+[22-Apr-2026 20:50:25 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:50:25 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:50:25 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:50:25 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:50:25 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:50:25 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:50:25 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:50:25 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:50:25 Europe/Berlin] Fetching comments for animeId: 27
+[22-Apr-2026 20:50:25 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:51:08 Europe/Berlin] Fetching comments for animeId: 16
+[22-Apr-2026 20:51:08 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:51:08 Europe/Berlin] Fetching comments for animeId: 31
+[22-Apr-2026 20:51:08 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:51:08 Europe/Berlin] Fetching comments for animeId: 19
+[22-Apr-2026 20:51:08 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:51:08 Europe/Berlin] Fetching comments for animeId: 17
+[22-Apr-2026 20:51:08 Europe/Berlin] Fetching comments for animeId: 28
+[22-Apr-2026 20:51:08 Europe/Berlin] Fetching comments for animeId: 21
+[22-Apr-2026 20:51:08 Europe/Berlin] Fetching comments for animeId: 20
+[22-Apr-2026 20:51:08 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:51:08 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:51:08 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:51:08 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:51:08 Europe/Berlin] Fetching comments for animeId: 27
+[22-Apr-2026 20:51:08 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:51:08 Europe/Berlin] Fetching comments for animeId: 15
+[22-Apr-2026 20:51:08 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:51:08 Europe/Berlin] Fetching comments for animeId: 43
+[22-Apr-2026 20:51:08 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:51:08 Europe/Berlin] Fetching comments for animeId: 23
+[22-Apr-2026 20:51:08 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:51:08 Europe/Berlin] Fetching comments for animeId: 25
+[22-Apr-2026 20:51:08 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:51:08 Europe/Berlin] Fetching comments for animeId: 30
+[22-Apr-2026 20:51:08 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:51:08 Europe/Berlin] Fetching comments for animeId: 26
+[22-Apr-2026 20:51:08 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:51:08 Europe/Berlin] Fetching comments for animeId: 24
+[22-Apr-2026 20:51:08 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:51:08 Europe/Berlin] Fetching comments for animeId: 18
+[22-Apr-2026 20:51:08 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:51:08 Europe/Berlin] Fetching comments for animeId: 32
+[22-Apr-2026 20:51:08 Europe/Berlin] Fetching comments for animeId: 33
+[22-Apr-2026 20:51:08 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:51:08 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:51:08 Europe/Berlin] Fetching comments for animeId: 6
+[22-Apr-2026 20:51:08 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:51:08 Europe/Berlin] Fetching comments for animeId: 22
+[22-Apr-2026 20:51:08 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:51:08 Europe/Berlin] Fetching comments for animeId: 1
+[22-Apr-2026 20:51:08 Europe/Berlin] Fetching comments for animeId: 5
+[22-Apr-2026 20:51:08 Europe/Berlin] Fetching comments for animeId: 7
+[22-Apr-2026 20:51:08 Europe/Berlin] Comments found: 2
+[22-Apr-2026 20:51:08 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:51:08 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:51:08 Europe/Berlin] Fetching comments for animeId: 8
+[22-Apr-2026 20:51:08 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:51:08 Europe/Berlin] Fetching comments for animeId: 29
+[22-Apr-2026 20:51:08 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:51:22 Europe/Berlin] Fetching comments for animeId: 31
+[22-Apr-2026 20:51:22 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:51:28 Europe/Berlin] Raw POST data: {"anime_id":31,"user_id":1,"content":"ta guapo","rating":"3"}
+[22-Apr-2026 20:51:28 Europe/Berlin] Fetching comments for animeId: 31
+[22-Apr-2026 20:51:28 Europe/Berlin] Comments found: 1
+[22-Apr-2026 20:51:28 Europe/Berlin] Fetching comments for animeId: 31
+[22-Apr-2026 20:51:28 Europe/Berlin] Comments found: 1
+[22-Apr-2026 20:54:16 Europe/Berlin] Fetching comments for animeId: 31
+[22-Apr-2026 20:54:16 Europe/Berlin] Comments found: 1
+[22-Apr-2026 20:54:16 Europe/Berlin] Fetching comments for animeId: 16
+[22-Apr-2026 20:54:16 Europe/Berlin] Fetching comments for animeId: 28
+[22-Apr-2026 20:54:16 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:54:16 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:54:16 Europe/Berlin] Fetching comments for animeId: 17
+[22-Apr-2026 20:54:16 Europe/Berlin] Fetching comments for animeId: 21
+[22-Apr-2026 20:54:16 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:54:16 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:54:16 Europe/Berlin] Fetching comments for animeId: 19
+[22-Apr-2026 20:54:16 Europe/Berlin] Fetching comments for animeId: 43
+[22-Apr-2026 20:54:16 Europe/Berlin] Fetching comments for animeId: 27
+[22-Apr-2026 20:54:16 Europe/Berlin] Fetching comments for animeId: 15
+[22-Apr-2026 20:54:16 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:54:16 Europe/Berlin] Fetching comments for animeId: 24
+[22-Apr-2026 20:54:16 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:54:16 Europe/Berlin] Fetching comments for animeId: 23
+[22-Apr-2026 20:54:16 Europe/Berlin] Fetching comments for animeId: 20
+[22-Apr-2026 20:54:16 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:54:16 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:54:16 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:54:16 Europe/Berlin] Fetching comments for animeId: 25
+[22-Apr-2026 20:54:16 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:54:16 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:54:16 Europe/Berlin] Fetching comments for animeId: 30
+[22-Apr-2026 20:54:16 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:54:16 Europe/Berlin] Fetching comments for animeId: 26
+[22-Apr-2026 20:54:16 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:54:16 Europe/Berlin] Fetching comments for animeId: 18
+[22-Apr-2026 20:54:16 Europe/Berlin] Fetching comments for animeId: 32
+[22-Apr-2026 20:54:16 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:54:16 Europe/Berlin] Fetching comments for animeId: 1
+[22-Apr-2026 20:54:16 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:54:16 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:54:16 Europe/Berlin] Comments found: 2
+[22-Apr-2026 20:54:16 Europe/Berlin] Fetching comments for animeId: 33
+[22-Apr-2026 20:54:16 Europe/Berlin] Fetching comments for animeId: 6
+[22-Apr-2026 20:54:16 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:54:16 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:54:16 Europe/Berlin] Fetching comments for animeId: 5
+[22-Apr-2026 20:54:16 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:54:16 Europe/Berlin] Fetching comments for animeId: 22
+[22-Apr-2026 20:54:16 Europe/Berlin] Fetching comments for animeId: 7
+[22-Apr-2026 20:54:16 Europe/Berlin] Fetching comments for animeId: 29
+[22-Apr-2026 20:54:16 Europe/Berlin] Fetching comments for animeId: 8
+[22-Apr-2026 20:54:16 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:54:16 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:54:16 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:54:16 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:56:53 Europe/Berlin] Fetching comments for animeId: 31
+[22-Apr-2026 20:56:53 Europe/Berlin] Comments found: 1
+[22-Apr-2026 20:56:53 Europe/Berlin] Fetching comments for animeId: 16
+[22-Apr-2026 20:56:53 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:56:53 Europe/Berlin] Fetching comments for animeId: 28
+[22-Apr-2026 20:56:53 Europe/Berlin] Fetching comments for animeId: 17
+[22-Apr-2026 20:56:53 Europe/Berlin] Fetching comments for animeId: 21
+[22-Apr-2026 20:56:53 Europe/Berlin] Fetching comments for animeId: 19
+[22-Apr-2026 20:56:53 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:56:53 Europe/Berlin] Fetching comments for animeId: 43
+[22-Apr-2026 20:56:53 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:56:53 Europe/Berlin] Fetching comments for animeId: 27
+[22-Apr-2026 20:56:53 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:56:53 Europe/Berlin] Fetching comments for animeId: 20
+[22-Apr-2026 20:56:53 Europe/Berlin] Fetching comments for animeId: 15
+[22-Apr-2026 20:56:53 Europe/Berlin] Fetching comments for animeId: 23
+[22-Apr-2026 20:56:53 Europe/Berlin] Fetching comments for animeId: 25
+[22-Apr-2026 20:56:53 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:56:53 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:56:53 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:56:53 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:56:53 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:56:53 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:56:53 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:56:53 Europe/Berlin] Fetching comments for animeId: 24
+[22-Apr-2026 20:56:53 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:56:53 Europe/Berlin] Fetching comments for animeId: 30
+[22-Apr-2026 20:56:53 Europe/Berlin] Fetching comments for animeId: 26
+[22-Apr-2026 20:56:53 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:56:53 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:56:53 Europe/Berlin] Fetching comments for animeId: 32
+[22-Apr-2026 20:56:53 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:56:53 Europe/Berlin] Fetching comments for animeId: 18
+[22-Apr-2026 20:56:53 Europe/Berlin] Fetching comments for animeId: 33
+[22-Apr-2026 20:56:53 Europe/Berlin] Fetching comments for animeId: 1
+[22-Apr-2026 20:56:53 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:56:53 Europe/Berlin] Fetching comments for animeId: 6
+[22-Apr-2026 20:56:53 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:56:53 Europe/Berlin] Comments found: 2
+[22-Apr-2026 20:56:53 Europe/Berlin] Fetching comments for animeId: 22
+[22-Apr-2026 20:56:53 Europe/Berlin] Fetching comments for animeId: 5
+[22-Apr-2026 20:56:53 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:56:53 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:56:53 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:56:53 Europe/Berlin] Fetching comments for animeId: 8
+[22-Apr-2026 20:56:53 Europe/Berlin] Fetching comments for animeId: 7
+[22-Apr-2026 20:56:53 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:56:53 Europe/Berlin] Comments found: 0
+[22-Apr-2026 20:56:53 Europe/Berlin] Fetching comments for animeId: 29
+[22-Apr-2026 20:56:53 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:01:57 Europe/Berlin] Fetching comments for animeId: 25
+[22-Apr-2026 21:01:57 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:01:57 Europe/Berlin] Fetching comments for animeId: 24
+[22-Apr-2026 21:01:57 Europe/Berlin] Fetching comments for animeId: 23
+[22-Apr-2026 21:01:57 Europe/Berlin] Fetching comments for animeId: 21
+[22-Apr-2026 21:01:57 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:01:57 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:01:57 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:01:57 Europe/Berlin] Fetching comments for animeId: 20
+[22-Apr-2026 21:01:57 Europe/Berlin] Fetching comments for animeId: 19
+[22-Apr-2026 21:01:57 Europe/Berlin] Fetching comments for animeId: 18
+[22-Apr-2026 21:01:57 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:01:57 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:01:57 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:01:57 Europe/Berlin] Fetching comments for animeId: 17
+[22-Apr-2026 21:01:57 Europe/Berlin] Fetching comments for animeId: 22
+[22-Apr-2026 21:01:57 Europe/Berlin] Fetching comments for animeId: 14
+[22-Apr-2026 21:01:57 Europe/Berlin] Fetching comments for animeId: 16
+[22-Apr-2026 21:01:57 Europe/Berlin] Fetching comments for animeId: 15
+[22-Apr-2026 21:01:57 Europe/Berlin] Fetching comments for animeId: 13
+[22-Apr-2026 21:01:57 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:01:57 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:01:57 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:01:57 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:01:57 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:01:57 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:01:57 Europe/Berlin] Fetching comments for animeId: 11
+[22-Apr-2026 21:01:57 Europe/Berlin] Fetching comments for animeId: 9
+[22-Apr-2026 21:01:57 Europe/Berlin] Fetching comments for animeId: 12
+[22-Apr-2026 21:01:57 Europe/Berlin] Fetching comments for animeId: 10
+[22-Apr-2026 21:01:57 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:01:57 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:01:57 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:01:57 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:01:57 Europe/Berlin] Fetching comments for animeId: 8
+[22-Apr-2026 21:01:57 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:01:57 Europe/Berlin] Fetching comments for animeId: 6
+[22-Apr-2026 21:01:57 Europe/Berlin] Fetching comments for animeId: 2
+[22-Apr-2026 21:01:57 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:01:57 Europe/Berlin] Fetching comments for animeId: 1
+[22-Apr-2026 21:01:57 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:01:57 Europe/Berlin] Fetching comments for animeId: 5
+[22-Apr-2026 21:01:57 Europe/Berlin] Comments found: 2
+[22-Apr-2026 21:01:57 Europe/Berlin] Fetching comments for animeId: 3
+[22-Apr-2026 21:01:57 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:01:57 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:01:57 Europe/Berlin] Fetching comments for animeId: 4
+[22-Apr-2026 21:01:57 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:01:57 Europe/Berlin] Fetching comments for animeId: 7
+[22-Apr-2026 21:01:57 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:01:59 Europe/Berlin] Fetching comments for animeId: 25
+[22-Apr-2026 21:01:59 Europe/Berlin] Fetching comments for animeId: 24
+[22-Apr-2026 21:01:59 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:01:59 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:01:59 Europe/Berlin] Fetching comments for animeId: 23
+[22-Apr-2026 21:01:59 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:01:59 Europe/Berlin] Fetching comments for animeId: 22
+[22-Apr-2026 21:01:59 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:01:59 Europe/Berlin] Fetching comments for animeId: 21
+[22-Apr-2026 21:01:59 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:01:59 Europe/Berlin] Fetching comments for animeId: 19
+[22-Apr-2026 21:01:59 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:01:59 Europe/Berlin] Fetching comments for animeId: 18
+[22-Apr-2026 21:01:59 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:01:59 Europe/Berlin] Fetching comments for animeId: 17
+[22-Apr-2026 21:01:59 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:01:59 Europe/Berlin] Fetching comments for animeId: 16
+[22-Apr-2026 21:01:59 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:01:59 Europe/Berlin] Fetching comments for animeId: 13
+[22-Apr-2026 21:01:59 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:01:59 Europe/Berlin] Fetching comments for animeId: 12
+[22-Apr-2026 21:01:59 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:01:59 Europe/Berlin] Fetching comments for animeId: 11
+[22-Apr-2026 21:01:59 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:01:59 Europe/Berlin] Fetching comments for animeId: 10
+[22-Apr-2026 21:01:59 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:01:59 Europe/Berlin] Fetching comments for animeId: 8
+[22-Apr-2026 21:01:59 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:01:59 Europe/Berlin] Fetching comments for animeId: 7
+[22-Apr-2026 21:01:59 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:01:59 Europe/Berlin] Fetching comments for animeId: 6
+[22-Apr-2026 21:01:59 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:01:59 Europe/Berlin] Fetching comments for animeId: 5
+[22-Apr-2026 21:01:59 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:01:59 Europe/Berlin] Fetching comments for animeId: 4
+[22-Apr-2026 21:01:59 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:01:59 Europe/Berlin] Fetching comments for animeId: 3
+[22-Apr-2026 21:01:59 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:01:59 Europe/Berlin] Fetching comments for animeId: 2
+[22-Apr-2026 21:01:59 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:01:59 Europe/Berlin] Fetching comments for animeId: 15
+[22-Apr-2026 21:01:59 Europe/Berlin] Fetching comments for animeId: 14
+[22-Apr-2026 21:01:59 Europe/Berlin] Fetching comments for animeId: 9
+[22-Apr-2026 21:01:59 Europe/Berlin] Fetching comments for animeId: 20
+[22-Apr-2026 21:01:59 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:01:59 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:01:59 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:01:59 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:01:59 Europe/Berlin] Fetching comments for animeId: 1
+[22-Apr-2026 21:01:59 Europe/Berlin] Comments found: 2
+[22-Apr-2026 21:02:34 Europe/Berlin] Fetching comments for animeId: 25
+[22-Apr-2026 21:02:34 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:02:57 Europe/Berlin] Fetching comments for animeId: 1
+[22-Apr-2026 21:02:57 Europe/Berlin] Comments found: 2
+[22-Apr-2026 21:03:12 Europe/Berlin] Fetching comments for animeId: 25
+[22-Apr-2026 21:03:12 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:03:12 Europe/Berlin] Fetching comments for animeId: 23
+[22-Apr-2026 21:03:12 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:03:12 Europe/Berlin] Fetching comments for animeId: 22
+[22-Apr-2026 21:03:12 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:03:12 Europe/Berlin] Fetching comments for animeId: 24
+[22-Apr-2026 21:03:12 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:03:12 Europe/Berlin] Fetching comments for animeId: 19
+[22-Apr-2026 21:03:12 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:03:12 Europe/Berlin] Fetching comments for animeId: 21
+[22-Apr-2026 21:03:12 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:03:12 Europe/Berlin] Fetching comments for animeId: 18
+[22-Apr-2026 21:03:12 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:03:12 Europe/Berlin] Fetching comments for animeId: 17
+[22-Apr-2026 21:03:12 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:03:12 Europe/Berlin] Fetching comments for animeId: 16
+[22-Apr-2026 21:03:12 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:03:12 Europe/Berlin] Fetching comments for animeId: 20
+[22-Apr-2026 21:03:12 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:03:12 Europe/Berlin] Fetching comments for animeId: 15
+[22-Apr-2026 21:03:12 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:03:12 Europe/Berlin] Fetching comments for animeId: 14
+[22-Apr-2026 21:03:12 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:03:12 Europe/Berlin] Fetching comments for animeId: 10
+[22-Apr-2026 21:03:12 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:03:12 Europe/Berlin] Fetching comments for animeId: 11
+[22-Apr-2026 21:03:12 Europe/Berlin] Fetching comments for animeId: 12
+[22-Apr-2026 21:03:12 Europe/Berlin] Fetching comments for animeId: 13
+[22-Apr-2026 21:03:12 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:03:12 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:03:12 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:03:12 Europe/Berlin] Fetching comments for animeId: 9
+[22-Apr-2026 21:03:12 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:03:12 Europe/Berlin] Fetching comments for animeId: 8
+[22-Apr-2026 21:03:12 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:03:12 Europe/Berlin] Fetching comments for animeId: 7
+[22-Apr-2026 21:03:12 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:03:12 Europe/Berlin] Fetching comments for animeId: 6
+[22-Apr-2026 21:03:12 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:03:13 Europe/Berlin] Fetching comments for animeId: 5
+[22-Apr-2026 21:03:13 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:03:13 Europe/Berlin] Fetching comments for animeId: 2
+[22-Apr-2026 21:03:13 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:03:13 Europe/Berlin] Fetching comments for animeId: 4
+[22-Apr-2026 21:03:13 Europe/Berlin] Fetching comments for animeId: 3
+[22-Apr-2026 21:03:13 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:03:13 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:03:15 Europe/Berlin] Fetching comments for animeId: 2
+[22-Apr-2026 21:03:15 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:03:25 Europe/Berlin] Fetching comments for animeId: 25
+[22-Apr-2026 21:03:25 Europe/Berlin] Fetching comments for animeId: 24
+[22-Apr-2026 21:03:25 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:03:25 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:03:25 Europe/Berlin] Fetching comments for animeId: 23
+[22-Apr-2026 21:03:25 Europe/Berlin] Fetching comments for animeId: 22
+[22-Apr-2026 21:03:25 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:03:25 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:03:25 Europe/Berlin] Fetching comments for animeId: 21
+[22-Apr-2026 21:03:25 Europe/Berlin] Fetching comments for animeId: 20
+[22-Apr-2026 21:03:25 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:03:25 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:03:25 Europe/Berlin] Fetching comments for animeId: 19
+[22-Apr-2026 21:03:25 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:03:25 Europe/Berlin] Fetching comments for animeId: 18
+[22-Apr-2026 21:03:25 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:03:25 Europe/Berlin] Fetching comments for animeId: 17
+[22-Apr-2026 21:03:25 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:03:25 Europe/Berlin] Fetching comments for animeId: 13
+[22-Apr-2026 21:03:25 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:03:25 Europe/Berlin] Fetching comments for animeId: 12
+[22-Apr-2026 21:03:25 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:03:25 Europe/Berlin] Fetching comments for animeId: 16
+[22-Apr-2026 21:03:25 Europe/Berlin] Fetching comments for animeId: 15
+[22-Apr-2026 21:03:25 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:03:25 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:03:25 Europe/Berlin] Fetching comments for animeId: 8
+[22-Apr-2026 21:03:25 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:03:25 Europe/Berlin] Fetching comments for animeId: 10
+[22-Apr-2026 21:03:25 Europe/Berlin] Fetching comments for animeId: 11
+[22-Apr-2026 21:03:25 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:03:25 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:03:25 Europe/Berlin] Fetching comments for animeId: 6
+[22-Apr-2026 21:03:25 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:03:25 Europe/Berlin] Fetching comments for animeId: 9
+[22-Apr-2026 21:03:25 Europe/Berlin] Fetching comments for animeId: 7
+[22-Apr-2026 21:03:25 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:03:25 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:03:25 Europe/Berlin] Fetching comments for animeId: 5
+[22-Apr-2026 21:03:25 Europe/Berlin] Fetching comments for animeId: 4
+[22-Apr-2026 21:03:25 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:03:25 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:03:25 Europe/Berlin] Fetching comments for animeId: 3
+[22-Apr-2026 21:03:25 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:03:25 Europe/Berlin] Fetching comments for animeId: 1
+[22-Apr-2026 21:03:25 Europe/Berlin] Comments found: 2
+[22-Apr-2026 21:03:27 Europe/Berlin] Fetching comments for animeId: 14
+[22-Apr-2026 21:03:27 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:03:27 Europe/Berlin] Fetching comments for animeId: 1
+[22-Apr-2026 21:03:27 Europe/Berlin] Comments found: 2
+[22-Apr-2026 21:03:27 Europe/Berlin] Fetching comments for animeId: 11
+[22-Apr-2026 21:03:27 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:03:27 Europe/Berlin] Fetching comments for animeId: 25
+[22-Apr-2026 21:03:27 Europe/Berlin] Fetching comments for animeId: 24
+[22-Apr-2026 21:03:27 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:03:27 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:03:27 Europe/Berlin] Fetching comments for animeId: 23
+[22-Apr-2026 21:03:27 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:03:27 Europe/Berlin] Fetching comments for animeId: 22
+[22-Apr-2026 21:03:27 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:03:27 Europe/Berlin] Fetching comments for animeId: 21
+[22-Apr-2026 21:03:27 Europe/Berlin] Fetching comments for animeId: 20
+[22-Apr-2026 21:03:27 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:03:27 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:03:27 Europe/Berlin] Fetching comments for animeId: 19
+[22-Apr-2026 21:03:27 Europe/Berlin] Fetching comments for animeId: 18
+[22-Apr-2026 21:03:27 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:03:27 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:03:27 Europe/Berlin] Fetching comments for animeId: 17
+[22-Apr-2026 21:03:27 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:03:27 Europe/Berlin] Fetching comments for animeId: 16
+[22-Apr-2026 21:03:27 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:03:27 Europe/Berlin] Fetching comments for animeId: 15
+[22-Apr-2026 21:03:27 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:03:27 Europe/Berlin] Fetching comments for animeId: 13
+[22-Apr-2026 21:03:27 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:03:27 Europe/Berlin] Fetching comments for animeId: 12
+[22-Apr-2026 21:03:27 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:03:27 Europe/Berlin] Fetching comments for animeId: 10
+[22-Apr-2026 21:03:27 Europe/Berlin] Fetching comments for animeId: 8
+[22-Apr-2026 21:03:27 Europe/Berlin] Fetching comments for animeId: 9
+[22-Apr-2026 21:03:27 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:03:27 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:03:27 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:03:27 Europe/Berlin] Fetching comments for animeId: 7
+[22-Apr-2026 21:03:27 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:03:27 Europe/Berlin] Fetching comments for animeId: 6
+[22-Apr-2026 21:03:27 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:03:27 Europe/Berlin] Fetching comments for animeId: 5
+[22-Apr-2026 21:03:27 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:03:27 Europe/Berlin] Fetching comments for animeId: 3
+[22-Apr-2026 21:03:27 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:03:27 Europe/Berlin] Fetching comments for animeId: 2
+[22-Apr-2026 21:03:27 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:03:27 Europe/Berlin] Fetching comments for animeId: 4
+[22-Apr-2026 21:03:27 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:03:36 Europe/Berlin] Fetching comments for animeId: 1
+[22-Apr-2026 21:03:36 Europe/Berlin] Comments found: 2
+[22-Apr-2026 21:03:41 Europe/Berlin] Fetching comments for animeId: 25
+[22-Apr-2026 21:03:41 Europe/Berlin] Fetching comments for animeId: 24
+[22-Apr-2026 21:03:41 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:03:41 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:03:41 Europe/Berlin] Fetching comments for animeId: 23
+[22-Apr-2026 21:03:41 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:03:41 Europe/Berlin] Fetching comments for animeId: 21
+[22-Apr-2026 21:03:41 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:03:41 Europe/Berlin] Fetching comments for animeId: 20
+[22-Apr-2026 21:03:41 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:03:41 Europe/Berlin] Fetching comments for animeId: 22
+[22-Apr-2026 21:03:41 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:03:41 Europe/Berlin] Fetching comments for animeId: 19
+[22-Apr-2026 21:03:41 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:03:41 Europe/Berlin] Fetching comments for animeId: 18
+[22-Apr-2026 21:03:41 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:03:41 Europe/Berlin] Fetching comments for animeId: 15
+[22-Apr-2026 21:03:41 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:03:41 Europe/Berlin] Fetching comments for animeId: 14
+[22-Apr-2026 21:03:41 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:03:41 Europe/Berlin] Fetching comments for animeId: 13
+[22-Apr-2026 21:03:41 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:03:41 Europe/Berlin] Fetching comments for animeId: 17
+[22-Apr-2026 21:03:41 Europe/Berlin] Fetching comments for animeId: 16
+[22-Apr-2026 21:03:41 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:03:41 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:03:41 Europe/Berlin] Fetching comments for animeId: 12
+[22-Apr-2026 21:03:41 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:03:41 Europe/Berlin] Fetching comments for animeId: 10
+[22-Apr-2026 21:03:41 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:03:41 Europe/Berlin] Fetching comments for animeId: 11
+[22-Apr-2026 21:03:41 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:03:41 Europe/Berlin] Fetching comments for animeId: 9
+[22-Apr-2026 21:03:41 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:03:41 Europe/Berlin] Fetching comments for animeId: 7
+[22-Apr-2026 21:03:41 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:03:41 Europe/Berlin] Fetching comments for animeId: 6
+[22-Apr-2026 21:03:41 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:03:41 Europe/Berlin] Fetching comments for animeId: 8
+[22-Apr-2026 21:03:41 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:03:41 Europe/Berlin] Fetching comments for animeId: 3
+[22-Apr-2026 21:03:41 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:03:41 Europe/Berlin] Fetching comments for animeId: 5
+[22-Apr-2026 21:03:41 Europe/Berlin] Fetching comments for animeId: 4
+[22-Apr-2026 21:03:41 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:03:41 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:03:41 Europe/Berlin] Fetching comments for animeId: 2
+[22-Apr-2026 21:03:41 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:03:51 Europe/Berlin] Fetching comments for animeId: 24
+[22-Apr-2026 21:03:51 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:03:51 Europe/Berlin] Fetching comments for animeId: 20
+[22-Apr-2026 21:03:51 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:03:51 Europe/Berlin] Fetching comments for animeId: 22
+[22-Apr-2026 21:03:51 Europe/Berlin] Fetching comments for animeId: 21
+[22-Apr-2026 21:03:51 Europe/Berlin] Fetching comments for animeId: 23
+[22-Apr-2026 21:03:51 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:03:51 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:03:51 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:03:51 Europe/Berlin] Fetching comments for animeId: 16
+[22-Apr-2026 21:03:51 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:03:51 Europe/Berlin] Fetching comments for animeId: 15
+[22-Apr-2026 21:03:51 Europe/Berlin] Fetching comments for animeId: 13
+[22-Apr-2026 21:03:51 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:03:51 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:03:51 Europe/Berlin] Fetching comments for animeId: 11
+[22-Apr-2026 21:03:51 Europe/Berlin] Fetching comments for animeId: 9
+[22-Apr-2026 21:03:51 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:03:51 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:03:51 Europe/Berlin] Fetching comments for animeId: 7
+[22-Apr-2026 21:03:51 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:03:51 Europe/Berlin] Fetching comments for animeId: 5
+[22-Apr-2026 21:03:51 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:03:51 Europe/Berlin] Fetching comments for animeId: 8
+[22-Apr-2026 21:03:51 Europe/Berlin] Fetching comments for animeId: 4
+[22-Apr-2026 21:03:51 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:03:51 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:03:51 Europe/Berlin] Fetching comments for animeId: 3
+[22-Apr-2026 21:03:51 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:03:51 Europe/Berlin] Fetching comments for animeId: 2
+[22-Apr-2026 21:03:51 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:03:51 Europe/Berlin] Fetching comments for animeId: 19
+[22-Apr-2026 21:03:51 Europe/Berlin] Fetching comments for animeId: 18
+[22-Apr-2026 21:03:51 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:03:51 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:03:51 Europe/Berlin] Fetching comments for animeId: 6
+[22-Apr-2026 21:03:51 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:03:51 Europe/Berlin] Fetching comments for animeId: 17
+[22-Apr-2026 21:03:51 Europe/Berlin] Fetching comments for animeId: 14
+[22-Apr-2026 21:03:51 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:03:51 Europe/Berlin] Comments found: 0
+[22-Apr-2026 21:03:51 Europe/Berlin] Fetching comments for animeId: 1
+[22-Apr-2026 21:03:51 Europe/Berlin] Comments found: 2

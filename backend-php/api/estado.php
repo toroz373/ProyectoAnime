@@ -1,83 +1,131 @@
 <?php
-header('Content-Type: application/json');
+ob_start(); // Capturar cualquier warning o echo accidental
 
-// CORS
-header("Access-Control-Allow-Origin: *");
-header("Access-Control-Allow-Headers: Content-Type");
+// ============================
+// CONFIGURACIÓN DE ERRORES
+// ============================
+ini_set('display_errors', 0);
+ini_set('display_startup_errors', 0);
+error_reporting(E_ALL);
+
+// ============================
+// CORS PARA ANGULAR
+// ============================
+header("Access-Control-Allow-Origin: http://localhost:4200");
+header("Access-Control-Allow-Credentials: true");
 header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
+header("Access-Control-Allow-Headers: Content-Type, Authorization");
+header("Content-Type: application/json; charset=utf-8");
 
+// Responder preflight OPTIONS
 if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     http_response_code(200);
     exit;
 }
 
-// Conexión BD
-try {
-    $pdo = new PDO("mysql:host=127.0.0.1;dbname=miruzone;charset=utf8", "root", "", [
-        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
-    ]);
-} catch (PDOException $e) {
-    echo json_encode(['error' => 'DB error', 'detail' => $e->getMessage()]);
+// ============================
+// CONEXIÓN BD
+// ============================
+include '../config/database.php';
+
+if (!$conn || $conn->connect_errno) {
+    echo json_encode(["error" => "DB connection failed"]);
     exit;
 }
 
-/*
- TABLA user_anime_status:
- id | user_id | anime_id | status (ENUM) | created_at | updated_at
-*/
+mysqli_report(MYSQLI_REPORT_OFF);
 
-// =========================
-// GET → obtener animes por estado
-// =========================
-if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+$method = $_SERVER['REQUEST_METHOD'];
 
-    if (!isset($_GET['user_id'], $_GET['status'])) {
-        echo json_encode(['error' => 'Parámetros faltantes']);
+if ($method === 'POST') {
+
+    // ============================
+    // ACEPTAR JSON O FORMDATA
+    // ============================
+    $input = json_decode(file_get_contents("php://input"), true);
+
+    $user_id = $_POST['user_id'] 
+            ?? ($input['user_id'] ?? null);
+
+    $anime_id = $_POST['anime_id'] 
+            ?? ($input['anime_id'] ?? null);
+
+    $status = $_POST['status'] 
+            ?? ($input['status'] ?? null);
+
+    // Log temporal para depurar
+    file_put_contents("debug_post.txt", print_r([
+        "POST" => $_POST,
+        "JSON" => $input
+    ], true));
+
+    // ============================
+    // VALIDAR PARÁMETROS
+    // ============================
+    if (!$user_id || !$anime_id || !$status) {
+        echo json_encode(["error" => "Missing parameters"]);
         exit;
     }
 
-    $stmt = $pdo->prepare("
-        SELECT a.*
-        FROM user_anime_status uas
-        JOIN animes a ON a.id = uas.anime_id
-        WHERE uas.user_id = ? AND uas.status = ?
-        ORDER BY a.title ASC
-    ");
-    $stmt->execute([$_GET['user_id'], $_GET['status']]);
+    $status = strtolower(trim($status));
+    $valid = ['visto', 'deseado', 'en_proceso'];
 
-    echo json_encode($stmt->fetchAll());
-    exit;
-}
-
-// =========================
-// POST → guardar o actualizar estado
-// =========================
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
-    $data = json_decode(file_get_contents("php://input"), true);
-
-    if (!isset($data['user_id'], $data['anime_id'], $data['status'])) {
-        echo json_encode(['error' => 'Datos incompletos']);
+    if (!in_array($status, $valid)) {
+        echo json_encode(["error" => "Invalid status", "received" => $status]);
         exit;
     }
 
-    // Verificar si ya existe
-    $stmt = $pdo->prepare("SELECT id FROM user_anime_status WHERE user_id = ? AND anime_id = ?");
-    $stmt->execute([$data['user_id'], $data['anime_id']]);
-    $exists = $stmt->fetch();
+    // ============================
+    // VERIFICAR SI YA EXISTE
+    // ============================
+    $check = $conn->prepare("SELECT id FROM user_anime_status WHERE user_id=? AND anime_id=?");
+    $check->bind_param("ii", $user_id, $anime_id);
+    $check->execute();
+    $check->store_result();
 
-    if ($exists) {
-        // Actualizar
-        $stmt = $pdo->prepare("UPDATE user_anime_status SET status = ? WHERE id = ?");
-        $stmt->execute([$data['status'], $exists['id']]);
+    if ($check->num_rows > 0) {
+        // UPDATE
+        $update = $conn->prepare("UPDATE user_anime_status SET status=? WHERE user_id=? AND anime_id=?");
+        if (!$update) error_log("SQL UPDATE ERROR: " . $conn->error);
+        $update->bind_param("sii", $status, $user_id, $anime_id);
+        $update->execute();
+
+        if ($update->errno) {
+            error_log("UPDATE ERROR: " . $update->error);
+        }
+
     } else {
-        // Insertar
-        $stmt = $pdo->prepare("INSERT INTO user_anime_status (user_id, anime_id, status) VALUES (?, ?, ?)");
-        $stmt->execute([$data['user_id'], $data['anime_id'], $data['status']]);
+        // INSERT
+        $insert = $conn->prepare("INSERT INTO user_anime_status (user_id, anime_id, status) VALUES (?, ?, ?)");
+        if (!$insert) error_log("SQL INSERT ERROR: " . $conn->error);
+        $insert->bind_param("iis", $user_id, $anime_id, $status);
+        $insert->execute();
+
+        if ($insert->errno) {
+            error_log("INSERT ERROR: " . $insert->error);
+        }
     }
 
-    echo json_encode(['success' => true]);
+    // ============================
+    // CAPTURAR WARNINGS
+    // ============================
+    $debug = ob_get_clean();
+    if (!empty($debug)) {
+        echo json_encode(["php_warning" => $debug]);
+        exit;
+    }
+
+    echo json_encode(["success" => true]);
     exit;
 }
 
-echo json_encode(['error' => 'Método no permitido']);
+// ============================
+// SI NO ES POST
+// ============================
+$debug = ob_get_clean();
+if (!empty($debug)) {
+    echo json_encode(["php_warning" => $debug]);
+    exit;
+}
+
+echo json_encode(["error" => "Invalid request"]);
