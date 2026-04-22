@@ -1,43 +1,52 @@
-.content {
-  margin-left: 90px;   /* espacio sidebar */
-  margin-top: 80px;    /* espacio header */
+.pagina-ajustes {
+  position: fixed;
+  top: 80px;
+  bottom: 0;
+
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: 100%;
+  max-width: 1000px;
+
+  display: flex;
+  flex-direction: column;
+
   padding: 20px;
 }
 
-.pagina-ajustes {
-  display: flex;
-  height: 90vh;
-  background: #fff;
+/* CARD */
+.ajustes-card {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 16px;
+  padding: 30px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
 }
 
-/* SIDEBAR */
-.sidebar {
-  width: 80px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  padding-top: 100px;
-}
-
-.icono {
-  width: 40px;
-  height: 40px;
-  background: gray;
-  border-radius: 8px;
-}
-
-/* CONTENIDO */
-.contenido {
-  margin-left: 300px;
-  padding-top: 130px;
-  width: 100%;
+/* SECCIONES */
+.section {
+  margin-bottom: 30px;
 }
 
 /* PERFIL LAYOUT */
 .perfil {
   display: flex;
-  align-items: flex-start;
   gap: 80px;
+  align-items: flex-start;
+}
+
+/* IZQUIERDA */
+.perfil-izquierda {
+  flex-shrink: 0;
+}
+
+/* DERECHA */
+.perfil-derecha {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 500px;
+  width: 100%;
 }
 
 /* AVATAR */
@@ -46,167 +55,122 @@
 }
 
 .avatar img {
-  width: 200px;
-  height: 200px;
+  width: 180px;
+  height: 180px;
   border-radius: 50%;
   border: 4px solid #F8CEFF;
   object-fit: cover;
 }
 
-/* BOTÓN + */
 .btn-plus {
   position: absolute;
-  bottom: 0;
-  right: 0;
+  bottom: 5px;
+  right: 5px;
   background: #F8CEFF;
   border: none;
   border-radius: 50%;
-  width: 30px;
-  height: 30px;
+  width: 32px;
+  height: 32px;
   cursor: pointer;
-}
-
-/* 🔥 botón eliminar */
-.usuario-row {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.btn-eliminar-inline {
-  padding: 10px 12px;
-  font-size: 13px;
-  background-color: #F8CEFF;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  white-space: nowrap;
-  position: relative;
-  top: -50px;
-  left: -40px;
 }
 
 /* DESCRIPCIÓN */
+.desc-container {
+  position: relative;
+  width: 100%;
+}
+
 .descripcion {
-  width: 500px;
-  height: 140px;
-  border-radius: 12px;
-  border: 2px solid #F8CEFF;
+  width: 100%;
+  height: 120px;
+  border-radius: 10px;
+  border: 3px solid #F8CEFF;
   padding: 10px;
   font-size: 14px;
   resize: none;
-  margin-top: 35px;
 }
 
-.desc-container {
-  position: relative;
-  width: 500px;
+.descripcion:focus {
+  border-color: #667eea;
+  outline: none;
 }
 
 .btn-guardar-desc {
   position: absolute;
-  bottom: 25px;
-  right: -10px;
-  background: #F8CEFF;
+  bottom: 30px;
+  right: 0px;
+  background: #764ba2;
+  color: white;
   border: none;
   border-radius: 10px;
-  padding: 6px 10px;
+  padding: 6px 12px;
   cursor: pointer;
 }
 
-/* BOTÓN EDITAR PERFIL */
+/* BOTONES */
 .btn-rosa {
-  background-color: #F8CEFF;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
   border: none;
   border-radius: 12px;
   padding: 10px 18px;
   cursor: pointer;
-  font-size: 14px;
-  margin-top: 50px;
-  margin-left: 50px;
 }
 
-/* 🔥 CONTENEDOR NUEVO (IMPORTANTE PARA EL PANEL) */
-.edit-container {
-  display: flex;
-  align-items: flex-start;
-  gap: 130px;
-  margin-top: 20px;
+.btn-editar {
+  align-self: flex-start;
 }
 
 /* PANEL EDICIÓN */
 .panel-edicion {
   display: flex;
-  flex-direction: row;
+  width: 100%;
   gap: 60px;
-  align-items: flex-start;
-  margin-top: 50px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+  margin-left: 150px; /* ajusta este valor a gusto */
+
 }
 
-/* columnas */
 .columna {
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
 
-/* opcional: alinear mejor inputs */
-.columna.izquierda input {
-  width: 250px;
-}
-
-
 /* INPUTS */
 .panel-edicion input {
-  width: 250px;
   padding: 10px;
   border-radius: 12px;
-  border: 1px solid #7A7A7A;
+  border: 1px solid #ddd;
+}
+
+.panel-edicion input:focus {
+  border-color: #667eea;
+  outline: none;
 }
 
 .btn-aplicar {
-  align-self: flex-start;
-  margin-top: 0px;
-  margin-left: 0px;
-  padding: 10px 115px;
+  width: 100%;
+}
+
+/* ELIMINAR */
+.btn-eliminar-inline {
+  background: #f44336;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 8px 12px;
+  cursor: pointer;
 }
 
 /* TOGGLE */
-.toggle {
-  display: flex;
-  align-items: center;
-  gap: 0px;
-  font-size: 15px;
-  margin-top: 10px;
-  margin-left: 5px;
-}
-
-.pagina-ajustes.dark {
-  background: #111;
-  color: white;
-}
-
-.pagina-ajustes.light {
-  background: #fff;
-  color: black;
-}
-
-/* textarea en dark */
-.pagina-ajustes.dark textarea,
-.pagina-ajustes.dark input {
-  background: #1e1e1e;
-  color: white;
-  border: 1px solid #555;
-}
-
 .toggle-container {
   display: flex;
   align-items: center;
-  gap: 3px;
-  margin-left: 12px; /* ajusta a gusto */
+  gap: 10px;
 }
 
-/* switch */
 .switch {
   position: relative;
   width: 50px;
@@ -217,20 +181,14 @@
   display: none;
 }
 
-/* fondo */
 .slider {
   position: absolute;
   cursor: pointer;
   background-color: #ccc;
   border-radius: 30px;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  transition: 0.3s;
+  inset: 0;
 }
 
-/* círculo */
 .slider::before {
   content: "";
   position: absolute;
@@ -240,93 +198,76 @@
   bottom: 3px;
   background-color: white;
   border-radius: 50%;
-  transition: 0.3s;
 }
 
-/* activo */
 input:checked + .slider {
-  background-color: #F8CEFF;
+  background-color: #667eea;
 }
 
 input:checked + .slider::before {
   transform: translateX(24px);
 }
 
-.success-box {
-  background-color: #4CAF50;
+.btn-eliminar-cuenta {
+  background: #f44336;
   color: white;
-  padding: 10px;
-  margin-top: 10px;
-  border-radius: 5px;
+  border: none;
+  border-radius: 10px;
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: 0.2s ease;
+  margin-top: 80px;
 }
 
+.btn-eliminar-cuenta:hover {
+  background: #b91c1c;
+}
+
+/* MENSAJES */
 .message-container {
-  min-height: 70px; /* 🔥 más espacio para error + success */
+  min-height: 60px;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-/* errores debajo de inputs */
-.field-error {
-  width: 100%;
-  color: #d10000;
-  font-size: 12px;
-  margin-top: -10px;
-  margin-bottom: 5px;
-  text-align: center;
-  animation: fadeIn 0.2s ease;
-}
-
-/* error general */
 .login-error {
   display: flex;
   align-items: center;
   gap: 10px;
   background-color: #ffe5e5;
   border: 1px solid #ff5c5c;
-  padding: 10px 0px;
+  padding: 10px;
   border-radius: 12px;
   width: 270px;
   font-size: 13px;
   color: #b00020;
-  margin-top: 10px;
 }
 
-/* mensaje de éxito */
+.error-icon {
+  width: 40px;
+  height: 40px;
+}
+
 .success-message {
-  display: flex;
-  justify-content: center;
-  text-align: center;
   width: 270px;
-  padding: 10px 0px;
+  padding: 10px;
   border-radius: 12px;
   font-size: 13px;
   background-color: #e6fff0;
   border: 1px solid #00c853;
   color: #007e33;
-  margin-top: 10px;
 }
 
-/* texto del éxito */
-.success-text {
-  display: flex;
-  flex-direction: column;
+/* DARK MODE */
+.pagina-ajustes.dark .ajustes-card {
+  background: #1e1e1e;
+  color: white;
 }
 
-/* título éxito */
-.title {
-  font-weight: bold;
-}
-
-/* subtítulo éxito */
-.subtitle {
-  font-size: 12px;
-  opacity: 0.8;
-}
-
-/* icono error */
-.error-icon {
-  width: 44px;
-  height: 44px;
+.pagina-ajustes.dark input,
+.pagina-ajustes.dark textarea {
+  background: #2a2a2a;
+  color: white;
+  border: 1px solid #555;
 }

@@ -28,7 +28,23 @@ export class PrivateFeedComponent {
   }
 
   // Obtener la lista de todos los animes
-  get animes() {
-    return this.animeService.getAnimes;
+   get animes() {
+    return this.animeService.filteredAnimes;
+  }
+  
+  isSortOpen = false;
+
+  selectedSortLabel = 'Valoraciones';
+
+  toggleSort() {
+    this.isSortOpen = !this.isSortOpen;
+  }
+
+  selectSort(option: 'rating' | 'az') {
+    this.animeService.setSortOption(option);
+
+    this.selectedSortLabel = option === 'rating' ? 'Valoraciones' : 'A-Z';
+
+    this.isSortOpen = false;
   }
 }

@@ -17,3 +17,18 @@
     }
   </div>
 </div>
+
+<div class="sort-container">
+  <span class="sort-label">Ordenar por:</span>
+
+  <div class="sort-dropdown" (click)="toggleSort()">
+    <span>{{ selectedSortLabel }}</span>
+    <span class="arrow">▼</span>
+  </div>
+
+  <div class="sort-options" *ngIf="isSortOpen">
+    <div (click)="selectSort('rating')">Valoraciones</div>
+    <div (click)="selectSort('az')">A-Z</div>
+  </div>
+</div>
+  

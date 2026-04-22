@@ -1,13 +1,11 @@
 import { Injectable, signal, computed } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Anime } from '../models/anime.model';
-import { catchError } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class AnimeService {
 
   private apiUrl = 'https://api.jikan.moe/v4/anime';
-  private backendUrl = 'http://localhost/ProyectoAnime/backend-php/api/anime.php';
   private commentsUrl = 'http://localhost/ProyectoAnime/backend-php/api/comments.php';
 
   private animes = signal<Anime[]>([]);
@@ -18,12 +16,35 @@ export class AnimeService {
     this.searchTerm.set(term);
   }
 
+  // 🔹 NUEVO: opción de ordenación
+  private sortOption = signal<'rating' | 'az'>('rating');
+
+  setSortOption(option: 'rating' | 'az') {
+    this.sortOption.set(option);
+  }
+
+  // 🔹 MODIFICADO: ahora también ordena
   filteredAnimes = computed(() => {
     const term = this.searchTerm().toLowerCase().trim();
-    if (!term) return this.animes();
-    return this.animes().filter(anime =>
-      anime.title.toLowerCase().includes(term)
-    );
+    let list = this.animes();
+
+    if (term) {
+      list = list.filter(anime =>
+        anime.title.toLowerCase().includes(term)
+      );
+    }
+
+    const sort = this.sortOption();
+
+    if (sort === 'rating') {
+      return [...list].sort((a, b) => b.rating - a.rating);
+    }
+
+    if (sort === 'az') {
+      return [...list].sort((a, b) => a.title.localeCompare(b.title));
+    }
+
+    return list;
   });
 
   constructor(private http: HttpClient) {
@@ -31,30 +52,25 @@ export class AnimeService {
   }
 
   loadAnimes() {
-    this.http.get<any>(this.backendUrl).pipe(
-      catchError(() => [])
-    ).subscribe(dbResponse => {
+    this.http.get<any>(this.apiUrl).subscribe(response => {
 
-      if (Array.isArray(dbResponse) && dbResponse.length > 0) {
-        this.setMappedAnimes(dbResponse);
-        return;
-      }
+      const mapped: Anime[] = response.data.map((a: any) => ({
+        id: a.mal_id,
+        title: a.title,
+        image: a.images.jpg.image_url,
+        rating: 0,
+        description: a.synopsis,
+        episodes: a.episodes,
+        isAiring: a.status === 'Currently Airing'
+      }));
 
-      this.http.get<any>(this.apiUrl).pipe(
-        catchError(() => [])
-      ).subscribe(apiResponse => {
+      this.animes.set(mapped);
 
-        if (!apiResponse.data) return;
-
-        const apiData = apiResponse.data;
-
-        apiData.forEach((anime: any) => {
-          this.http.post(this.backendUrl, {
-            api_id: anime.mal_id,
-            title: anime.title,
-            image: anime.images.jpg.image_url,
-            description: anime.synopsis
-          }).subscribe();
+      // Cargar medias reales SIN ordenar aquí
+      mapped.forEach((anime, index) => {
+        this.getAnimeAverage(anime.id).subscribe(avg => {
+          mapped[index].rating = avg?.avg_rating ?? 0;
+          this.animes.set([...mapped]); // 👈 solo refresca
         });
 
         this.setMappedAnimes(apiData);

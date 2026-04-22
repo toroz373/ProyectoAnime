@@ -4,6 +4,7 @@
   left: 0px; /* 👈 separación lateral */
   width: 50px;
   height: calc(100vh - 320px); /* 👈 no toca abajo */
+  z-index: 1000; /* alto */
   
   background-color: rgba(248, 206, 255, 0.7); /* 👈 transparente */
   

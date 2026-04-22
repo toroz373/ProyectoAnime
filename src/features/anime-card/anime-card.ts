@@ -1,11 +1,10 @@
-import { Component, Input, OnInit, inject, signal } from '@angular/core';
+import { Component, Input, OnInit, OnDestroy, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Anime } from '../../core/models/anime.model';
 import { CommentsComponent } from '../comments/comments';
 import { CommentsService } from '../../core/services/comments';
-import { EstadoService } from '../../core/services/estado.service';
-
-export type AnimeStatus = 'deseado' | 'visto' | 'en_proceso';
+import { AnimeListService, AnimeStatus } from '../../core/services/anime-list';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-anime-card',
@@ -14,7 +13,7 @@ export type AnimeStatus = 'deseado' | 'visto' | 'en_proceso';
   templateUrl: './anime-card.html',
   styleUrl: './anime-card.css'
 })
-export class AnimeCardComponent implements OnInit {
+export class AnimeCardComponent implements OnInit, OnDestroy {
 
   @Input() anime!: Anime;
   @Input() isLoggedIn = false;
@@ -23,14 +22,9 @@ export class AnimeCardComponent implements OnInit {
   @Input() showStatusButtons = false;
 
   showComments = signal(false);
-  commentsCount = 0;
-
+  commentsCount = signal(0);
   averageRating = signal(0);
   currentStatus = signal<AnimeStatus | null>(null);
-
-  get averageStars() {
-    return Math.round(this.averageRating());
-  }
 
   showMenu = signal(false);
   isExpanded = signal(false);
@@ -38,40 +32,44 @@ export class AnimeCardComponent implements OnInit {
   private commentsService = inject(CommentsService);
   private estadoService = inject(EstadoService);
 
-  ngOnInit() {
-    this.refreshStats();
+  private sub?: Subscription;
 
-    if (this.showStatusButtons && this.isLoggedIn) {
-      this.loadStatusFromBackend();
+  ngOnInit() {
+    console.log('AnimeCard init');
+
+    // 🔥 Escuchar cambios globales (CLAVE)
+    this.sub = this.commentsService.refreshTrigger.subscribe(() => {
+      if (this.anime?.id) {
+        console.log('🔄 Refresh global → actualizando stats');
+        this.refreshStats();
+      }
+    });
+
+    // 🔥 Carga inicial
+    setTimeout(() => {
+      if (this.anime?.id) {
+        this.refreshStats();
+      }
+    }, 0);
+
+    if (this.showStatusButtons) {
+      this.currentStatus.set(this.animeListService.getAnimeStatus(this.anime.id));
     }
   }
 
-  loadStatusFromBackend() {
-    if (!this.currentUserId || !this.anime?.id) return;
-
-    this.estadoService.getEstado(this.currentUserId, this.anime.id)
-      .subscribe(res => {
-        if (res?.status) {
-          this.currentStatus.set(res.status as AnimeStatus);
-        }
-      });
+  ngOnDestroy() {
+    this.sub?.unsubscribe();
   }
 
-  setStatus(status: AnimeStatus) {
-    if (!this.isLoggedIn || !this.currentUserId || !this.anime?.id) return;
-
-    this.estadoService.setEstado(this.currentUserId, this.anime.id, status)
-      .subscribe(() => {
-        this.currentStatus.set(status);
-        this.showMenu.set(false);
-      });
+  get averageStars() {
+    return Math.round(this.averageRating());
   }
 
   refreshStats() {
-    if (!this.anime || !this.anime.id) return;
+    if (!this.anime?.id) return;
 
     this.commentsService.getComments(this.anime.id).subscribe(comments => {
-      this.commentsCount = comments.length;
+      this.commentsCount.set(comments.length);
     });
 
     this.commentsService.getAverageRating(this.anime.id).subscribe(res => {

@@ -212,4 +212,34 @@ export class AjustesComponent implements OnInit {
       }
     ).subscribe();
   }
+
+  confirmarEliminarCuenta() {
+    const confirmacion = window.confirm(
+      '⚠️ ¿Estás seguro de que quieres eliminar tu perfil? Esta acción no se puede deshacer.'
+    );
+
+    if (confirmacion) {
+      this.eliminarCuenta();
+    }
+  }
+
+  eliminarCuenta() {
+    this.http.post<any>(
+      'http://localhost/ProyectoAnime/backend-php/api/eliminar_usuario.php',
+      { id: this.usuario.id }
+    ).subscribe({
+      next: (res) => {
+        if (res.ok) {
+          localStorage.removeItem('user');
+          this.auth.currentUser.set(null);
+          this.router.navigate(['/login']);
+        } else {
+          console.error('No se pudo eliminar:', res);
+        }
+      },
+      error: (err) => {
+        console.error('Error eliminando cuenta:', err);
+      }
+    });
+  }
 }

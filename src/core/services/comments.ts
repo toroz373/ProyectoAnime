@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { tap, shareReplay } from 'rxjs/operators';
+import { Observable, BehaviorSubject } from 'rxjs';
+import { tap } from 'rxjs/operators';
 import { Comment } from '../models/comment.model';
 
 @Injectable({
@@ -11,20 +11,35 @@ export class CommentsService {
 
   private apiUrl = 'http://localhost/ProyectoAnime/backend-php/api/comments.php';
 
+  // 🔥 NUEVO → sistema reactivo global
+  private refresh$ = new BehaviorSubject<void>(undefined);
+
   constructor(private http: HttpClient) {}
 
+  // 🔁 Observable para escuchar cambios
+  get refreshTrigger() {
+    return this.refresh$.asObservable();
+  }
+
+  // 🔥 Lanzar actualización global
+  triggerRefresh() {
+    this.refresh$.next();
+  }
+
   getComments(animeId: number): Observable<Comment[]> {
-    console.log('getComments called with animeId:', animeId);
-    if (!animeId || animeId === 0) {
-      console.warn('getComments: Invalid animeId:', animeId);
-    }
-    return this.http.get<Comment[]>(`${this.apiUrl}?animeId=${animeId}`).pipe(
-      tap(comments => console.log('getComments: received data:', comments))
-    );
+    return this.http.get<Comment[]>(`${this.apiUrl}?animeId=${animeId}`);
   }
 
   addComment(comment: Comment): Observable<Comment> {
-    return this.http.post<Comment>(this.apiUrl, comment);
+    return this.http.post<Comment>(this.apiUrl, comment).pipe(
+      tap(() => this.triggerRefresh()) // 🔥 actualiza TODO
+    );
+  }
+
+  deleteComment(commentId: number, userId: number) {
+    return this.http.delete(`${this.apiUrl}?id=${commentId}&userId=${userId}`).pipe(
+      tap(() => this.triggerRefresh()) // 🔥 actualiza TODO
+    );
   }
 
   saveAnime(anime: { api_id: number; title: string; image?: string; description?: string }): Observable<any> {

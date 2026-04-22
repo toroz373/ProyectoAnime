@@ -1,6 +1,12 @@
 import { Injectable, signal, inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 
+export interface User {
+  id: number;
+  name: string;
+  avatar?: string;
+}
+
 @Injectable({ providedIn: 'root' })
 export class AuthService {
 
@@ -10,18 +16,20 @@ export class AuthService {
   isLoggedIn = signal(
     this.isBrowser && localStorage.getItem('isLoggedIn') === 'true'
   );
-  currentUser = signal<{ id: number; name: string } | null>(
+
+  currentUser = signal<User | null>(
     this.isBrowser && localStorage.getItem('user')
       ? JSON.parse(localStorage.getItem('user')!)
       : null
   );
 
   constructor() {
-    this.loadAuthState(); //  IMPORTANTE
+    this.loadAuthState(); // IMPORTANTE
   }
 
-  login(user: { id: number; name: string }) {
+  login(user: { id: number; name: string; avatar?: string }) {
     console.log('AuthService.login called with user:', user);
+
     this.isLoggedIn.set(true);
     this.currentUser.set(user);
 
@@ -34,6 +42,7 @@ export class AuthService {
 
   logout() {
     console.log('AuthService.logout called');
+
     this.isLoggedIn.set(false);
     this.currentUser.set(null);
 
@@ -52,6 +61,7 @@ export class AuthService {
     if (user) {
       const parsedUser = JSON.parse(user);
       console.log('Parsed user:', parsedUser);
+
       this.currentUser.set(parsedUser);
       this.isLoggedIn.set(true);
     } else {
