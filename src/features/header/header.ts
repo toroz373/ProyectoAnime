@@ -54,7 +54,8 @@ export class HeaderComponent {
       return avatar;
     }
 
-    return `http://localhost/ProyectoAnime/backend-php/uploads/${avatar}`;
+    const BASE_URL = 'http://localhost/ProyectoAnime/backend-php/uploads/';
+    return BASE_URL + avatar;
   }
 
   logout() {

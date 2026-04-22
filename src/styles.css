@@ -285,3 +285,47 @@ body.dark-mode .menu-dropdown button.active {
   color: white !important;
   border-color: #a855f7 !important;
 }
+
+/* 🔽 BOTÓN ORDENAR - DARK MODE */
+
+/* label */
+body.dark-mode .sort-label {
+  color: #e9d5ff; /* mismo tono que textos destacados */
+}
+
+/* botón principal */
+body.dark-mode .sort-dropdown {
+  background: #1e1e1e;
+  color: #e9d5ff;
+  border: 2px solid #a855f7;
+
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
+}
+
+/* hover botón */
+body.dark-mode .sort-dropdown:hover {
+  background: #2a2a2a;
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.7);
+}
+
+/* flecha */
+body.dark-mode .arrow {
+  color: #e9d5ff;
+}
+
+/* dropdown opciones */
+body.dark-mode .sort-options {
+  background: #1e1e1e;
+  border: 1px solid #333;
+}
+
+/* cada opción */
+body.dark-mode .sort-options div {
+  color: #e9d5ff;
+}
+
+/* hover opción */
+body.dark-mode .sort-options div:hover {
+  background: #a855f7;
+  color: white;
+}

@@ -110,3 +110,95 @@
     font-size: 22px;
   }
 }
+
+.sort-container {
+  position: fixed;
+  right: 30px;
+  top: 110px;
+  z-index: 1000;
+}
+
+/* BOTÓN PRINCIPAL */
+.sort-dropdown {
+  background: #a855f7; /* 🔥 color principal */
+  color: #fff; /* texto blanco */
+  padding: 10px 16px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+
+  border: none;
+
+  box-shadow: 0 6px 18px rgba(118, 75, 162, 0.4);
+  transition: all 0.2s ease;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 160px;
+}
+
+/* EFECTO HOVER PRO */
+.sort-dropdown:hover {
+  background: #6a4194; /* un poco más oscuro */
+  transform: translateY(-1px);
+  box-shadow: 0 10px 22px rgba(118, 75, 162, 0.5);
+}
+
+/* FLECHA */
+.arrow {
+  font-size: 11px;
+  margin-left: 10px;
+  opacity: 0.7;
+}
+
+/* DROPDOWN OPCIONES */
+.sort-options {
+  margin-top: 8px;
+  background: rgba(255, 255, 255, 0.97);
+  border-radius: 12px;
+  overflow: hidden;
+
+  border: 1px solid rgba(102, 126, 234, 0.2);
+
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+
+  animation: fadeIn 0.2s ease;
+}
+
+/* OPCIONES */
+.sort-options div {
+  padding: 12px 16px;
+  cursor: pointer;
+  font-weight: 500;
+  color: #444;
+  transition: all 0.2s ease;
+}
+
+/* HOVER OPCIONES */
+.sort-options div:hover {
+  background: linear-gradient(135deg, #667eea20, #764ba220);
+  color: #333;
+}
+
+/* LABEL */
+.sort-label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #000; 
+}
+
+/* ANIMACIÓN SUAVE */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
