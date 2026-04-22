@@ -9,7 +9,6 @@ import { AjustesComponent } from '../features/ajustes/ajustes';
 import { DeseadosComponent } from '../features/deseados/deseados';
 import { VistosComponent } from '../features/vistos/vistos';
 import { ProcesosComponent } from '../features/procesos/procesos';
-import { SidebarComponent } from '../features/sidebar/sidebar';
 
 export const routes: Routes = [
   {
@@ -61,11 +60,6 @@ export const routes: Routes = [
   {
     path: 'procesos',
     component: ProcesosComponent
-  },
-
-  {
-    path: 'sidebar',
-    component: SidebarComponent
   },
 
   {

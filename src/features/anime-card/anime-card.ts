@@ -24,14 +24,13 @@ export class AnimeCardComponent implements OnInit, OnDestroy {
   showComments = signal(false);
   commentsCount = signal(0);
   averageRating = signal(0);
-
   currentStatus = signal<AnimeStatus | null>(null);
 
   showMenu = signal(false);
   isExpanded = signal(false);
 
   private commentsService = inject(CommentsService);
-  private animeListService = inject(AnimeListService);
+  private estadoService = inject(EstadoService);
 
   private sub?: Subscription;
 
@@ -88,12 +87,6 @@ export class AnimeCardComponent implements OnInit, OnDestroy {
 
   closeMenu() {
     this.showMenu.set(false);
-  }
-
-  setStatus(status: AnimeStatus) {
-    this.animeListService.setAnimeStatus(this.anime.id, status);
-    this.currentStatus.set(status);
-    this.closeMenu();
   }
 
   toggleDescription() {

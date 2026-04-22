@@ -72,13 +72,27 @@ export class AnimeService {
           mapped[index].rating = avg?.avg_rating ?? 0;
           this.animes.set([...mapped]); // 👈 solo refresca
         });
+
+        this.setMappedAnimes(apiData);
       });
     });
   }
 
-  private sortByRating(animes: Anime[]) {
-    return [...animes].sort((a, b) => b.rating - a.rating);
-  }
+  private setMappedAnimes(data: any[]) {
+  const mapped: Anime[] = data.map((a: any) => ({
+    id: a.id,                     // ID REAL de la BD
+    api_id: a.api_id ?? a.mal_id, // ID de la API externa
+    title: a.title,
+    image: a.images?.jpg?.image_url ?? a.image,
+    rating: a.avg_rating ?? 0,
+    description: a.synopsis ?? a.description,
+    episodes: a.episodes ?? 0,
+    isAiring: a.status ? a.status === 'Currently Airing' : false
+  }));
+
+  this.animes.set(mapped);
+}
+
 
   getAnimeAverage(animeId: number) {
     return this.http.get<any>(`${this.commentsUrl}?average=1&animeId=${animeId}`);
