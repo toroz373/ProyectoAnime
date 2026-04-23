@@ -67,15 +67,15 @@ export class AnimeService {
       this.animes.set(mapped);
 
       // Cargar medias reales SIN ordenar aquí
+      // Cargar medias reales SIN ordenar aquí
       mapped.forEach((anime, index) => {
-        this.getAnimeAverage(anime.id).subscribe(avg => {
-          mapped[index].rating = avg?.avg_rating ?? 0;
-          this.animes.set([...mapped]); // 👈 solo refresca
-        });
-
-        this.setMappedAnimes(apiData);
+      this.getAnimeAverage(anime.id).subscribe(avg => {
+      mapped[index].rating = avg?.avg_rating ?? 0;
+      this.animes.set([...mapped]); // 👈 solo refresca
       });
-    });
+      });
+
+      });
   }
 
   private setMappedAnimes(data: any[]) {

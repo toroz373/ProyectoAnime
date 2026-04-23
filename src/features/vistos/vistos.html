@@ -1,15 +1,16 @@
-<h2>✓ Animes vistos</h2>
+<app-header></app-header>
 
-<div class="anime-list">
-  <app-anime-card
-    *ngFor="let anime of animes"
-    [anime]="anime"
-    [isLoggedIn]="true"
-    [currentUserId]="userId"
-    [showStatusButtons]="true">
-  </app-anime-card>
-</div>
+<div class="layout">
+  <app-sidebar></app-sidebar>
 
-<div class="content">
-  <h1>Vistos</h1>
+  <main class="content">
+    <h2>Animes vistos</h2>
+
+    <div class="anime-list">
+      <app-anime-mini-card
+        *ngFor="let anime of animes"
+        [anime]="anime">
+      </app-anime-mini-card>
+    </div>
+  </main>
 </div>

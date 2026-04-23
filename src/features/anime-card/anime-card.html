@@ -15,9 +15,26 @@
 
               @if (showMenu()) {
                 <div class="menu-dropdown">
-                  <button (click)="setStatus('para_ver')" [class.active]="currentStatus() === 'para_ver'">Deseados</button>
-                  <button (click)="setStatus('viendo')" [class.active]="currentStatus() === 'viendo'">Vistos</button>
-                  <button (click)="setStatus('visto')" [class.active]="currentStatus() === 'visto'">En proceso</button>
+
+                  <!-- ESTADOS CORREGIDOS -->
+                  <button 
+                    (click)="setStatus('deseado')" 
+                    [class.active]="currentStatus() === 'deseado'">
+                    Deseado
+                  </button>
+
+                  <button 
+                    (click)="setStatus('en_proceso')" 
+                    [class.active]="currentStatus() === 'en_proceso'">
+                    En proceso
+                  </button>
+
+                  <button 
+                    (click)="setStatus('visto')" 
+                    [class.active]="currentStatus() === 'visto'">
+                    Visto
+                  </button>
+
                 </div>
               }
             </div>
@@ -43,7 +60,9 @@
 
             <div class="info-item">
               <span class="info-label">Estado:</span>
-              <span class="info-value" [class.airing]="anime.isAiring" [class.finished]="!anime.isAiring">
+              <span class="info-value" 
+                    [class.airing]="anime.isAiring" 
+                    [class.finished]="!anime.isAiring">
                 {{ anime.isAiring ? 'En emisión' : 'Finalizado' }}
               </span>
             </div>
@@ -87,7 +106,9 @@
           </div>
 
           <!-- BOTÓN DE COMENTARIOS -->
-          <button class="comments-btn" (click)="toggleComments()" [class.active]="showComments()">
+          <button class="comments-btn" 
+                  (click)="toggleComments()" 
+                  [class.active]="showComments()">
             <span class="comment-icon">💬</span>
             {{ commentsCount() }}
           </button>

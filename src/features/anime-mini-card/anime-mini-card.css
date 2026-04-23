@@ -1,0 +1,30 @@
+.mini-card {
+  display: flex;
+  gap: 12px;
+  padding: 10px;
+  border-radius: 8px;
+  background: #e29191;
+  margin-bottom: 12px;
+}
+
+.mini-card img {
+  width: 90px;
+  height: 130px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.mini-card .info {
+  flex: 1;
+}
+
+.mini-card h3 {
+  margin: 0 0 6px;
+  font-size: 18px;
+}
+
+.mini-card p {
+  margin: 0;
+  opacity: 0.8;
+  font-size: 14px;
+}
