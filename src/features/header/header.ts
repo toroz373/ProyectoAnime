@@ -21,13 +21,18 @@ export class HeaderComponent {
   showSearch = true;
   showLogoLink = true;
 
+  // 🔥 NUEVO: control de sesión
+  isLoggedIn = false;
+
   avatarUrl: string = 'assets/default-avatar.png';
 
   constructor() {
 
-    // 🔥 REACTIVO: se actualiza SOLO cuando cambia usuario
+    // 🔥 REACTIVO usuario + avatar
     effect(() => {
       const user = this.authService.currentUser();
+
+      this.isLoggedIn = !!user;
 
       if (user?.avatar) {
         this.avatarUrl = this.getAvatarUrl(user.avatar);
@@ -43,9 +48,15 @@ export class HeaderComponent {
         const url = event.urlAfterRedirects;
 
         const hiddenRoutes = ['/ajustes'];
+
         this.showSearch = !hiddenRoutes.some(route => url.startsWith(route));
 
         this.showLogoLink = !url.startsWith('/public-feed');
+
+        // 🔥 OCULTAR AVATAR EN PUBLIC FEED
+        if (url.startsWith('/public-feed')) {
+          this.isLoggedIn = false;
+        }
       });
   }
 
