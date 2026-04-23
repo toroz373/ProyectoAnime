@@ -1,59 +1,93 @@
-# Proyectoanime
+Proyectoanime
+Este proyecto fue generado utilizando Angular CLI versión 21.2.3.
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.3.
+Instalación inicial del proyecto
+Antes de ejecutar el proyecto, sigue estos pasos:
 
-## Development server
+Descomprime la carpeta del proyecto.
 
-To start a local development server, run:
+Abre una terminal dentro de la carpeta del proyecto.
 
-```bash
+Instala todas las dependencias necesarias ejecutando:
+
+bash
+npm install
+Esto descargará todos los módulos requeridos para que Angular pueda funcionar correctamente.
+
+Preparación del proyecto en XAMPP
+Para que el proyecto funcione junto con la base de datos:
+
+Copia la carpeta del proyecto descomprimido dentro de:
+
+Código
+C:\xampp\htdocs\
+Inicia XAMPP y activa:
+
+Apache
+
+MySQL
+
+Despliegue de la base de datos
+Dentro del proyecto encontrarás un archivo SQL con la base de datos llamada miruzon.
+
+Para importarla:
+
+Abre phpMyAdmin desde:
+
+Código
+http://localhost/phpmyadmin/
+Crea una nueva base de datos llamada:
+
+Código
+miruzon
+Ve a Importar.
+
+Selecciona el archivo SQL incluido en el proyecto.
+
+Ejecuta la importación.
+
+La base de datos quedará lista para ser utilizada.
+
+Servidor de desarrollo
+Para iniciar un servidor de desarrollo local, ejecuta:
+
+bash
 ng serve
-```
+Luego abre en tu navegador:
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Código
+http://localhost:4200/
+La aplicación se recargará automáticamente al modificar archivos fuente.
 
-## Code scaffolding
+Generación de código
+Para crear un nuevo componente:
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+bash
+ng generate component nombre-del-componente
+Para ver todos los schematics disponibles:
 
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
+bash
 ng generate --help
-```
+Construcción del proyecto
+Para compilar el proyecto:
 
-## Building
-
-To build the project run:
-
-```bash
+bash
 ng build
-```
+Los archivos generados se guardarán en dist/, optimizados para producción.
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+Pruebas unitarias
+Para ejecutar pruebas unitarias con Vitest:
 
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
+bash
 ng test
-```
+Pruebas end-to-end
+Para ejecutar pruebas e2e:
 
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
+bash
 ng e2e
-```
+Angular CLI no incluye un framework e2e por defecto, así que puedes elegir el que prefieras.
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+Recursos adicionales
+Más información sobre Angular CLI:
 
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Angular CLI Overview and Command Reference
