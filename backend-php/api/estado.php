@@ -43,7 +43,7 @@ $method = $_SERVER['REQUEST_METHOD'];
 if ($method === 'GET') {
 
     $user_id = $_GET['user_id'] ?? null;
-    $anime_id = $_GET['anime_id'] ?? null;
+    $anime_id = $_GET['id'] ?? null;
     $status = $_GET['status'] ?? null;
 
     // ============================
