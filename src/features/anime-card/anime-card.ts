@@ -6,7 +6,6 @@ import { CommentsService } from '../../core/services/comments';
 import { AnimeListService, AnimeStatus } from '../../core/services/anime-list';
 import { EstadoService } from '../../core/services/estado.service';
 import { Subscription } from 'rxjs';
-import { EstadoService } from '../../core/services/estado.service';
 
 @Component({
   selector: 'app-anime-card',
@@ -59,17 +58,15 @@ export class AnimeCardComponent implements OnInit, OnDestroy {
     return Math.round(this.averageRating());
   }
 
+  // ✅ Versión correcta (sin duplicado)
   setStatus(status: AnimeStatus) {
-    this.currentStatus.set(status);
+    if (!this.currentUserId || !this.anime?.id) return;
 
-    this.estadoService.setEstado(
-      this.currentUserId,
-      this.anime.id,
-      status
-    ).subscribe();
-
-    // opcional: actualizar lista local
-    this.animeListService.setAnimeStatus(this.anime.id, status);
+    this.estadoService.setEstado(this.currentUserId, this.anime.id, status)
+      .subscribe(() => {
+        this.currentStatus.set(status);
+        this.animeListService.setAnimeStatus(this.anime.id, status);
+      });
   }
 
   refreshStats() {
@@ -98,16 +95,5 @@ export class AnimeCardComponent implements OnInit, OnDestroy {
 
   toggleDescription() {
     this.isExpanded.update(v => !v);
-  }
-
-  // 🔥 AQUÍ SE ACTUALIZA EL ESTADO
-  setStatus(status: AnimeStatus) {
-    if (!this.currentUserId || !this.anime?.id) return;
-
-    this.estadoService.setEstado(this.currentUserId, this.anime.id, status)
-      .subscribe(() => {
-        this.currentStatus.set(status);
-        this.animeListService.setAnimeStatus(this.anime.id, status);
-      });
   }
 }
