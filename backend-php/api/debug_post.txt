@@ -3,8 +3,8 @@ Array
     [POST] => Array
         (
             [user_id] => 1
-            [anime_id] => 21
-            [status] => para_ver
+            [anime_id] => 8
+            [status] => en_proceso
         )
 
     [JSON] => 

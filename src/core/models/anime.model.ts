@@ -2,6 +2,7 @@
 // Define la estructura que debe tener cada anime
 export interface Anime {
   id: number;        // ID único del anime
+  api_id: number;    // ID del anime en la API externa
   title: string;     // Nombre del anime
   image: string;     // Ruta de la imagen
   rating: number;    // Valoración promedio (1-5)
@@ -9,3 +10,4 @@ export interface Anime {
   episodes: number;  // Número de capítulos
   isAiring: boolean; // Si sigue en emisión
 }
+

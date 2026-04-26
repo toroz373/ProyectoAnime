@@ -1,32 +1,83 @@
-import { Component, OnInit, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, OnInit, OnDestroy, inject, PLATFORM_ID, ChangeDetectorRef } from '@angular/core';
+import { isPlatformBrowser, CommonModule } from '@angular/common';
+import { Subject, takeUntil } from 'rxjs';
+
 import { EstadoService } from '../../core/services/estado.service';
-import { AnimeCardComponent } from '../anime-card/anime-card';
-import { Anime } from '../../core/models/anime.model';
+import { AnimeMiniCardComponent } from '../anime-mini-card/anime-mini-card';
+import { HeaderComponent } from '../header/header';
+import { SidebarComponent } from '../sidebar/sidebar';
 
 @Component({
   selector: 'app-procesos',
   standalone: true,
-  imports: [
-    CommonModule,
-    AnimeCardComponent
-  ],
+  imports: [CommonModule, AnimeMiniCardComponent, HeaderComponent, SidebarComponent],
   templateUrl: './procesos.html',
-  styleUrl: './procesos.css'
+  styleUrls: ['./procesos.css']
 })
-export class ProcesosComponent implements OnInit {
+export class ProcesosComponent implements OnInit, OnDestroy {
 
   private estadoService = inject(EstadoService);
+  private platformId = inject(PLATFORM_ID);
+  private cdr = inject(ChangeDetectorRef);
 
-  animes: Anime[] = [];
-  userId = 1;
+  private destroy$ = new Subject<void>();
 
- ngOnInit() {
-  this.estadoService
-    .getAnimesByStatus(this.userId, 'visto')
-    .subscribe((res: any) => {
-      console.log("RESULTADO DEL BACKEND:", res);
-      this.animes = res;
-    });
-}
+  animes: any[] = [];
+  userId: number = 0;
+  loading = true;
+
+  ngOnInit() {
+    if (!isPlatformBrowser(this.platformId)) return;
+
+    const userStr = localStorage.getItem('user');
+
+    if (!userStr) {
+      this.loading = false;
+      return;
+    }
+
+    try {
+      const user = JSON.parse(userStr);
+
+      if (!user?.id) {
+        this.loading = false;
+        return;
+      }
+
+      this.userId = user.id;
+
+      this.load();
+
+      this.estadoService.refreshTrigger
+        .pipe(takeUntil(this.destroy$))
+        .subscribe(() => this.load());
+
+    } catch {
+      this.loading = false;
+    }
+  }
+
+  load() {
+    if (!this.userId) return;
+
+    this.loading = true;
+
+    this.estadoService.getAnimesByStatus(this.userId, 'en_proceso')
+      .pipe(takeUntil(this.destroy$))
+      .subscribe({
+        next: (res) => {
+          this.animes = res || [];
+          this.loading = false;
+          this.cdr.detectChanges();
+        },
+        error: () => {
+          this.loading = false;
+        }
+      });
+  }
+
+  ngOnDestroy() {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
 }

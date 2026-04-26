@@ -1,5 +1,4 @@
 <?php
-ob_start(); // Capturar cualquier warning o echo accidental
 
 // ============================
 // CONFIGURACIÓN DE ERRORES
@@ -44,7 +43,7 @@ $method = $_SERVER['REQUEST_METHOD'];
 if ($method === 'GET') {
 
     $user_id = $_GET['user_id'] ?? null;
-    $anime_id = $_GET['anime_id'] ?? null;
+    $anime_id = $_GET['id'] ?? null;
     $status = $_GET['status'] ?? null;
 
     // ============================
@@ -111,12 +110,6 @@ if ($method === 'POST') {
     $anime_id = $_POST['anime_id'] ?? ($input['anime_id'] ?? null);
     $status = $_POST['status'] ?? ($input['status'] ?? null);
 
-    // Log temporal
-    file_put_contents("debug_post.txt", print_r([
-        "POST" => $_POST,
-        "JSON" => $input
-    ], true));
-
     // Validación
     if (!$user_id || !$anime_id || !$status) {
         echo json_encode(["error" => "Missing parameters"]);
@@ -152,11 +145,8 @@ if ($method === 'POST') {
         $insert->execute();
     }
 
-    // Capturar warnings
-    $debug = ob_get_clean();
-    if (!empty($debug)) {
-        exit;
-    }
+    // 🔥 Esperar a que MySQL termine de escribir
+    $conn->query("SELECT SLEEP(0.1)");
 
     echo json_encode(["success" => true]);
     exit;
@@ -167,10 +157,5 @@ if ($method === 'POST') {
 // ======================================================
 // ===============   MÉTODO NO VÁLIDO   =================
 // ======================================================
-$debug = ob_get_clean();
-if (!empty($debug)) {
-    echo json_encode(["php_warning" => $debug]);
-    exit;
-}
-
 echo json_encode(["error" => "Invalid request"]);
+exit;

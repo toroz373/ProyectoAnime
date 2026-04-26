@@ -31,7 +31,6 @@ export class CommentsComponent implements OnChanges {
   comments$: Observable<Comment[]> = of([]);
 
   constructor(private commentsService: CommentsService) {
-    // 🔥 escuchar cambios globales
     this.commentsService.refreshTrigger.subscribe(() => {
       this.refreshComments();
     });
@@ -75,7 +74,6 @@ export class CommentsComponent implements OnChanges {
       }),
       shareReplay(1)
     );
-    // Trigger initial load
     console.log('Triggering initial load');
     this.refreshTrigger.next();
   }
@@ -113,8 +111,6 @@ export class CommentsComponent implements OnChanges {
     }
 
     this.isSubmitting = true;
-
-    // 🔒 normaliza una sola vez
     const cleanText = this.commentText.trim().substring(0, 300);
 
     const newComment: Comment = {

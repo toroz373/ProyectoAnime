@@ -6,6 +6,7 @@ import { Anime } from '../models/anime.model';
 export class AnimeService {
 
   private apiUrl = 'https://api.jikan.moe/v4/anime';
+  private backendUrl = 'http://localhost/ProyectoAnime/backend-php/api/anime.php';
   private commentsUrl = 'http://localhost/ProyectoAnime/backend-php/api/comments.php';
 
   private animes = signal<Anime[]>([]);
@@ -16,14 +17,11 @@ export class AnimeService {
     this.searchTerm.set(term);
   }
 
-  // 🔹 Ordenación
   private sortOption = signal<'rating' | 'az'>('rating');
-
   setSortOption(option: 'rating' | 'az') {
     this.sortOption.set(option);
   }
 
-  // 🔹 Filtro + orden
   filteredAnimes = computed(() => {
     const term = this.searchTerm().toLowerCase().trim();
     let list = this.animes();
@@ -51,35 +49,46 @@ export class AnimeService {
     this.loadAnimes();
   }
 
-  // ✅ CARGA DESDE API EXTERNA + RATING DESDE BACKEND
+  // ============================================================
+  // CARGAR ANIMES DESDE TU BASE DE DATOS (NO DESDE JIKAN)
+  // ============================================================
   loadAnimes() {
-    this.http.get<any>(this.apiUrl).subscribe(response => {
+    this.http.get<any[]>(this.backendUrl).subscribe(data => {
+      this.setMappedAnimes(data);
 
-      const mapped: Anime[] = response.data.map((a: any) => ({
-        id: a.mal_id,
-        api_id: a.mal_id,
-        title: a.title,
-        image: a.images.jpg.image_url,
-        rating: 0,
-        description: a.synopsis,
-        episodes: a.episodes,
-        isAiring: a.status === 'Currently Airing'
-      }));
-
-      this.animes.set(mapped);
-
-      // 🔹 Obtener rating medio desde tu backend PHP
+      // Cargar medias reales
+      const mapped = this.animes();
       mapped.forEach((anime, index) => {
         this.getAnimeAverage(anime.id).subscribe(avg => {
           mapped[index].rating = avg?.avg_rating ?? 0;
-          this.animes.set([...mapped]); // refresca signal
+          this.animes.set([...mapped]);
         });
       });
 
     });
   }
 
-  // 🔹 Obtener media de puntuaciones
+  // ============================================================
+  // MAPEO CORRECTO USANDO ID INTERNO + API_ID
+  // ============================================================
+  private setMappedAnimes(data: any[]) {
+    const mapped: Anime[] = data.map((a: any) => ({
+      id: a.id,              // ✔ ID interno de tu BD
+      api_id: a.api_id,      // ✔ ID externo (mal_id)
+      title: a.title,
+      image: a.image,
+      rating: a.avg_rating ?? 0,
+      description: a.description,
+      episodes: a.episodes ?? 0,
+      isAiring: false        // si quieres, puedes guardar esto también en BD
+    }));
+
+    this.animes.set(mapped);
+  }
+
+  // ============================================================
+  // RATING Y COMENTARIOS USAN EL ID INTERNO
+  // ============================================================
   getAnimeAverage(animeId: number) {
     return this.http.get<any>(`${this.commentsUrl}?average=1&animeId=${animeId}`);
   }
@@ -87,7 +96,7 @@ export class AnimeService {
   // 🔹 Guardar valoración
   saveRating(animeId: number, rating: number, userId: number) {
     return this.http.post<any>(this.commentsUrl, {
-      anime_id: animeId,
+      anime_id: animeId,   // ✔ ID interno
       user_id: userId,
       content: "",
       rating: rating

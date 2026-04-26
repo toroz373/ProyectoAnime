@@ -7,7 +7,7 @@
   max-width: 100%;
   background: white;
   border-radius: 12px;
-  box-shadow: 0 8px 32px rgba(168, 85, 247, 0.15);
+  box-shadow: 0 8px 32px rgba(88, 46, 128, 0.15);
   overflow: visible; /* FIX: permitir crecer */
   box-sizing: border-box;
 }

@@ -4,6 +4,7 @@ import { Anime } from '../../core/models/anime.model';
 import { CommentsComponent } from '../comments/comments';
 import { CommentsService } from '../../core/services/comments';
 import { AnimeListService, AnimeStatus } from '../../core/services/anime-list';
+import { EstadoService } from '../../core/services/estado.service';
 import { Subscription } from 'rxjs';
 import { EstadoService } from '../../core/services/estado.service';
 
@@ -37,25 +38,16 @@ export class AnimeCardComponent implements OnInit, OnDestroy {
   private sub?: Subscription;
 
   ngOnInit() {
-    console.log('AnimeCard init');
-
-    // 🔥 Escuchar cambios globales (CLAVE)
     this.sub = this.commentsService.refreshTrigger.subscribe(() => {
-      if (this.anime?.id) {
-        console.log('🔄 Refresh global → actualizando stats');
-        this.refreshStats();
-      }
+      this.refreshStats();
     });
 
-    // 🔥 Carga inicial
-    setTimeout(() => {
-      if (this.anime?.id) {
-        this.refreshStats();
-      }
-    }, 0);
+    setTimeout(() => this.refreshStats(), 0);
 
     if (this.showStatusButtons) {
-      this.currentStatus.set(this.animeListService.getAnimeStatus(this.anime.id));
+      this.currentStatus.set(
+        this.animeListService.getAnimeStatus(this.anime.id)
+      );
     }
   }
 
@@ -106,5 +98,16 @@ export class AnimeCardComponent implements OnInit, OnDestroy {
 
   toggleDescription() {
     this.isExpanded.update(v => !v);
+  }
+
+  // 🔥 AQUÍ SE ACTUALIZA EL ESTADO
+  setStatus(status: AnimeStatus) {
+    if (!this.currentUserId || !this.anime?.id) return;
+
+    this.estadoService.setEstado(this.currentUserId, this.anime.id, status)
+      .subscribe(() => {
+        this.currentStatus.set(status);
+        this.animeListService.setAnimeStatus(this.anime.id, status);
+      });
   }
 }
