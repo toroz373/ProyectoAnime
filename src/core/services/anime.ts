@@ -16,14 +16,14 @@ export class AnimeService {
     this.searchTerm.set(term);
   }
 
-  // 🔹 NUEVO: opción de ordenación
+  // 🔹 Ordenación
   private sortOption = signal<'rating' | 'az'>('rating');
 
   setSortOption(option: 'rating' | 'az') {
     this.sortOption.set(option);
   }
 
-  // 🔹 MODIFICADO: ahora también ordena
+  // 🔹 Filtro + orden
   filteredAnimes = computed(() => {
     const term = this.searchTerm().toLowerCase().trim();
     let list = this.animes();
@@ -51,11 +51,13 @@ export class AnimeService {
     this.loadAnimes();
   }
 
+  // ✅ CARGA DESDE API EXTERNA + RATING DESDE BACKEND
   loadAnimes() {
     this.http.get<any>(this.apiUrl).subscribe(response => {
 
       const mapped: Anime[] = response.data.map((a: any) => ({
         id: a.mal_id,
+        api_id: a.mal_id,
         title: a.title,
         image: a.images.jpg.image_url,
         rating: 0,
@@ -66,38 +68,23 @@ export class AnimeService {
 
       this.animes.set(mapped);
 
-      // Cargar medias reales SIN ordenar aquí
+      // 🔹 Obtener rating medio desde tu backend PHP
       mapped.forEach((anime, index) => {
         this.getAnimeAverage(anime.id).subscribe(avg => {
           mapped[index].rating = avg?.avg_rating ?? 0;
-          this.animes.set([...mapped]); // 👈 solo refresca
+          this.animes.set([...mapped]); // refresca signal
         });
-
-        this.setMappedAnimes(apiData);
       });
+
     });
   }
 
-  private setMappedAnimes(data: any[]) {
-  const mapped: Anime[] = data.map((a: any) => ({
-    id: a.id,                     // ID REAL de la BD
-    api_id: a.api_id ?? a.mal_id, // ID de la API externa
-    title: a.title,
-    image: a.images?.jpg?.image_url ?? a.image,
-    rating: a.avg_rating ?? 0,
-    description: a.synopsis ?? a.description,
-    episodes: a.episodes ?? 0,
-    isAiring: a.status ? a.status === 'Currently Airing' : false
-  }));
-
-  this.animes.set(mapped);
-}
-
-
+  // 🔹 Obtener media de puntuaciones
   getAnimeAverage(animeId: number) {
     return this.http.get<any>(`${this.commentsUrl}?average=1&animeId=${animeId}`);
   }
 
+  // 🔹 Guardar valoración
   saveRating(animeId: number, rating: number, userId: number) {
     return this.http.post<any>(this.commentsUrl, {
       anime_id: animeId,

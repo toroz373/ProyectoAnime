@@ -22,7 +22,7 @@
   <div class="logout">
 
      <!-- AVATAR -->
-  <div class="header-avatar">
+  <div class="header-avatar" *ngIf="isLoggedIn">
     <img
       [src]="avatarUrl"
       alt="avatar"

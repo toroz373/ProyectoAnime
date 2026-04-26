@@ -1,7 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { AnimeStatus } from '../../features/anime-card/anime-card';
+import { AnimeStatus } from '../../core/services/anime-list';
 
 @Injectable({ providedIn: 'root' })
 export class EstadoService {

@@ -250,6 +250,11 @@ body.dark-mode option {
   color: white;
 }
 
+body.dark-mode .menu-btn:hover {
+  background: #2a2a2a !important;
+  color: #c084fc !important;
+}
+
 body.dark-mode .submit-btn {
   background: linear-gradient(135deg, #6d28d9 0%, #38bdf8 100%) !important;
   color: white !important;
@@ -302,6 +307,11 @@ body.dark-mode .sort-dropdown {
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
 }
 
+body.dark-mode .sort-container .sort-options div {
+  color: #f5f5f5;
+}
+
+
 /* hover botón */
 body.dark-mode .sort-dropdown:hover {
   background: #2a2a2a;
@@ -315,17 +325,26 @@ body.dark-mode .arrow {
 
 /* dropdown opciones */
 body.dark-mode .sort-options {
-  background: #1e1e1e;
-  border: 1px solid #333;
+  background: #121212;
+  border: 1px solid #a855f7;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.6);
 }
 
-/* cada opción */
+/* opciones */
 body.dark-mode .sort-options div {
-  color: #e9d5ff;
+  color: #f3e8ff;
+  padding: 12px 16px;
+  font-weight: 500;
+  transition: all 0.2s ease;
 }
 
-/* hover opción */
+/* hover MUCHO más visible */
 body.dark-mode .sort-options div:hover {
-  background: #a855f7;
+  background: linear-gradient(135deg, #a855f7, #6d28d9);
   color: white;
+}
+
+/* separación visual entre items */
+body.dark-mode .sort-options div:not(:last-child) {
+  border-bottom: 1px solid #2a2a2a;
 }

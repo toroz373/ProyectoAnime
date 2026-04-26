@@ -5,6 +5,7 @@ import { CommentsComponent } from '../comments/comments';
 import { CommentsService } from '../../core/services/comments';
 import { AnimeListService, AnimeStatus } from '../../core/services/anime-list';
 import { Subscription } from 'rxjs';
+import { EstadoService } from '../../core/services/estado.service';
 
 @Component({
   selector: 'app-anime-card',
@@ -31,6 +32,7 @@ export class AnimeCardComponent implements OnInit, OnDestroy {
 
   private commentsService = inject(CommentsService);
   private estadoService = inject(EstadoService);
+  private animeListService = inject(AnimeListService);
 
   private sub?: Subscription;
 
@@ -63,6 +65,19 @@ export class AnimeCardComponent implements OnInit, OnDestroy {
 
   get averageStars() {
     return Math.round(this.averageRating());
+  }
+
+  setStatus(status: AnimeStatus) {
+    this.currentStatus.set(status);
+
+    this.estadoService.setEstado(
+      this.currentUserId,
+      this.anime.id,
+      status
+    ).subscribe();
+
+    // opcional: actualizar lista local
+    this.animeListService.setAnimeStatus(this.anime.id, status);
   }
 
   refreshStats() {
