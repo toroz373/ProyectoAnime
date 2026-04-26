@@ -10,7 +10,6 @@ export class EstadoService {
 
   private statusUrl = 'http://localhost/ProyectoAnime/backend-php/api/estado.php';
 
-  // 🔥 REFRESH GLOBAL
   refreshTrigger = new Subject<void>();
 
   getEstado(userId: number, animeId: number): Observable<{ status: AnimeStatus } | null> {
@@ -27,7 +26,7 @@ export class EstadoService {
 
     return this.http.post(this.statusUrl, body, { responseType: 'json' })
       .pipe(
-        tap(() => this.refreshTrigger.next()) // 🔥 Notificar a toda la app
+        tap(() => this.refreshTrigger.next())
       );
   }
 

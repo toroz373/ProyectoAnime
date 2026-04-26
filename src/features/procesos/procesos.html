@@ -6,11 +6,20 @@
   <main class="content">
     <h2>Animes en proceso</h2>
 
-    <div class="anime-list">
+    <div *ngIf="loading">
+      Cargando animes...
+    </div>
+
+    <div *ngIf="!loading && animes.length === 0">
+      No tienes animes en proceso
+    </div>
+
+    <div class="anime-list" *ngIf="!loading && animes.length > 0">
       <app-anime-mini-card
         *ngFor="let anime of animes"
         [anime]="anime">
       </app-anime-mini-card>
     </div>
+
   </main>
 </div>

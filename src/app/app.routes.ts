@@ -1,5 +1,4 @@
 import { Routes } from '@angular/router';
-
 import { LoginComponent } from '../features/login/login';
 import { PublicFeedComponent } from '../features/public-feed/public-feed';
 import { PrivateFeedComponent } from '../features/private-feed/private-feed';

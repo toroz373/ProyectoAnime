@@ -50,7 +50,7 @@ export class AnimeService {
   }
 
   // ============================================================
-  // 🔥 CARGAR ANIMES DESDE TU BASE DE DATOS (NO DESDE JIKAN)
+  // CARGAR ANIMES DESDE TU BASE DE DATOS (NO DESDE JIKAN)
   // ============================================================
   loadAnimes() {
     this.http.get<any[]>(this.backendUrl).subscribe(data => {
@@ -68,7 +68,7 @@ export class AnimeService {
   }
 
   // ============================================================
-  // 🔥 MAPEO CORRECTO USANDO ID INTERNO + API_ID
+  // MAPEO CORRECTO USANDO ID INTERNO + API_ID
   // ============================================================
   private setMappedAnimes(data: any[]) {
     const mapped: Anime[] = data.map((a: any) => ({
@@ -86,7 +86,7 @@ export class AnimeService {
   }
 
   // ============================================================
-  // 🔥 RATING Y COMENTARIOS USAN EL ID INTERNO
+  // RATING Y COMENTARIOS USAN EL ID INTERNO
   // ============================================================
   getAnimeAverage(animeId: number) {
     return this.http.get<any>(`${this.commentsUrl}?average=1&animeId=${animeId}`);
