@@ -64,6 +64,7 @@ export class AnimeService {
           this.animes.set([...mapped]);
         });
       });
+
     });
   }
 
@@ -92,6 +93,7 @@ export class AnimeService {
     return this.http.get<any>(`${this.commentsUrl}?average=1&animeId=${animeId}`);
   }
 
+  // 🔹 Guardar valoración
   saveRating(animeId: number, rating: number, userId: number) {
     return this.http.post<any>(this.commentsUrl, {
       anime_id: animeId,   // ✔ ID interno

@@ -23,6 +23,9 @@ export class AjustesComponent implements OnInit {
   mensajeDescripcion: string = '';
   errorPerfil: string = '';
 
+  // 🔥 NUEVO: control del modal
+  showDeleteModal = false;
+
   constructor(
     private http: HttpClient,
     private router: Router,
@@ -37,22 +40,16 @@ export class AjustesComponent implements OnInit {
   cargarPerfil() {
     const user = this.auth.currentUser();
 
-    // 🔥 SOLO redirige si SABES que no está logueado
     if (!user) {
-
       const storedUser = localStorage.getItem('user');
 
-      // 🔥 SI NO hay usuario en localStorage → login
       if (!storedUser) {
         this.router.navigate(['/login']);
         return;
       }
 
-      // 🔥 SI sí hay → reconstruir usuario
       const parsedUser = JSON.parse(storedUser);
       this.auth.currentUser.set(parsedUser);
-
-      // 🔁 volver a intentar
       this.cargarPerfil();
       return;
     }
@@ -63,9 +60,7 @@ export class AjustesComponent implements OnInit {
 
       if (res.exito) {
         this.usuario = { ...res.usuario };
-
         if (!this.usuario.theme) this.usuario.theme = 'light';
-
         this.cd.detectChanges();
       }
 
@@ -73,19 +68,12 @@ export class AjustesComponent implements OnInit {
   }
 
   guardarCambios() {
-
-    // ❌ VALIDACIÓN LINK
     if (!this.usuario.link || !this.usuario.link.includes('@')) {
       this.errorPerfil = 'El link debe contener @';
-      
-      setTimeout(() => {
-        this.errorPerfil = '';
-      }, 3000);
-
-      return; // 🚫 no continúa
+      setTimeout(() => this.errorPerfil = '', 3000);
+      return;
     }
 
-    // ✅ limpia error si todo bien
     this.errorPerfil = '';
 
     this.http.post<any>(
@@ -100,10 +88,7 @@ export class AjustesComponent implements OnInit {
     ).subscribe(() => {
 
       this.mensajePerfil = 'Perfil actualizado correctamente';
-
-      setTimeout(() => {
-        this.mensajePerfil = '';
-      }, 3000);
+      setTimeout(() => this.mensajePerfil = '', 3000);
 
       this.cargarPerfil();
       this.usuario = { ...this.usuario };
@@ -114,16 +99,13 @@ export class AjustesComponent implements OnInit {
     const archivo = event.target.files[0];
     if (!archivo) return;
 
-    // 🔥 PREVIEW INMEDIATO
     const reader = new FileReader();
     reader.onload = () => {
       this.usuario.avatar = reader.result as string;
-
-      this.cd.detectChanges(); // 🔥 clave real
+      this.cd.detectChanges();
     };
     reader.readAsDataURL(archivo);
 
-    // 🔥 SUBIDA
     const formData = new FormData();
     formData.append('imagen', archivo);
     formData.append('id', this.usuario.id);
@@ -134,11 +116,8 @@ export class AjustesComponent implements OnInit {
     ).subscribe(res => {
 
       if (res.exito) {
-
-        // 🔥 evita caché SIEMPRE
         this.usuario.avatar = res.avatar + '?t=' + new Date().getTime();
-
-        this.cd.detectChanges(); // 🔥 refresco inmediato
+        this.cd.detectChanges();
       }
 
     });
@@ -151,15 +130,8 @@ export class AjustesComponent implements OnInit {
     ).subscribe(res => {
 
       if (res.exito) {
-
-        // 🔥 fuerza imagen por defecto directamente
         this.usuario.avatar = null;
-
-        // 🔥 fuerza render REAL
         this.cd.detectChanges();
-
-        // ❌ NO recargar perfil aquí
-        // this.cargarPerfil();  ← QUITAR ESTO
       }
 
     });
@@ -178,12 +150,11 @@ export class AjustesComponent implements OnInit {
     ).subscribe(() => {
 
       this.mensajeDescripcion = 'Descripción guardada correctamente';
-
-      this.cd.detectChanges(); // 🔥 CLAVE
+      this.cd.detectChanges();
 
       setTimeout(() => {
         this.mensajeDescripcion = '';
-        this.cd.detectChanges(); // 🔥 otra vez
+        this.cd.detectChanges();
       }, 3000);
 
       this.usuario = { ...this.usuario };
@@ -194,7 +165,6 @@ export class AjustesComponent implements OnInit {
     const nuevoTema = this.usuario.theme === 'dark' ? 'light' : 'dark';
     this.usuario.theme = nuevoTema;
 
-    // 🔥 aplicar SIEMPRE primero
     if (nuevoTema === 'dark') {
       document.body.classList.add('dark-mode');
     } else {
@@ -213,14 +183,20 @@ export class AjustesComponent implements OnInit {
     ).subscribe();
   }
 
-  confirmarEliminarCuenta() {
-    const confirmacion = window.confirm(
-      '⚠️ ¿Estás seguro de que quieres eliminar tu perfil? Esta acción no se puede deshacer.'
-    );
+  // 🔥 NUEVO: abrir modal
+  abrirModalEliminar() {
+    this.showDeleteModal = true;
+  }
 
-    if (confirmacion) {
-      this.eliminarCuenta();
-    }
+  // 🔥 NUEVO: cerrar modal
+  cerrarModalEliminar() {
+    this.showDeleteModal = false;
+  }
+
+  // 🔥 NUEVO: confirmar eliminación
+  confirmarEliminarCuenta() {
+    this.eliminarCuenta();
+    this.cerrarModalEliminar();
   }
 
   eliminarCuenta() {
@@ -233,12 +209,7 @@ export class AjustesComponent implements OnInit {
           localStorage.removeItem('user');
           this.auth.currentUser.set(null);
           this.router.navigate(['/login']);
-        } else {
-          console.error('No se pudo eliminar:', res);
         }
-      },
-      error: (err) => {
-        console.error('Error eliminando cuenta:', err);
       }
     });
   }

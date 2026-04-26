@@ -12,14 +12,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
 include '../config/database.php';
 
 $data = json_decode(file_get_contents("php://input"), true);
-
 $id = $data['id'] ?? null;
 
 if (!$id) {
-    echo json_encode([
-        "ok" => false,
-        "error" => "ID no recibido"
-    ]);
+    echo json_encode(["ok" => false, "error" => "ID no recibido"]);
     exit;
 }
 
@@ -27,21 +23,34 @@ $conn->begin_transaction();
 
 try {
 
-    // 1. BORRAR COMENTARIOS DEL USUARIO (tu tabla es comments)
+    // 🔥 1. OBTENER AVATAR
+    $stmt0 = $conn->prepare("SELECT avatar FROM usuarios WHERE id = ?");
+    $stmt0->bind_param("i", $id);
+    $stmt0->execute();
+    $result = $stmt0->get_result();
+    $user = $result->fetch_assoc();
+
+    if ($user && $user['avatar']) {
+        $filePath = "../uploads/" . $user['avatar'];
+
+        if (file_exists($filePath)) {
+            unlink($filePath); // 🔥 BORRA IMAGEN
+        }
+    }
+
+    // 🔥 2. BORRAR COMENTARIOS
     $stmt1 = $conn->prepare("DELETE FROM comments WHERE user_id = ?");
     $stmt1->bind_param("i", $id);
     $stmt1->execute();
 
-    // 2. BORRAR USUARIO
+    // 🔥 3. BORRAR USUARIO
     $stmt2 = $conn->prepare("DELETE FROM usuarios WHERE id = ?");
     $stmt2->bind_param("i", $id);
     $stmt2->execute();
 
     $conn->commit();
 
-    echo json_encode([
-        "ok" => true
-    ]);
+    echo json_encode(["ok" => true]);
 
 } catch (Exception $e) {
 

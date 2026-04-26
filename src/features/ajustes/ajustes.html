@@ -103,9 +103,21 @@
               🌙
             </div>
 
-            <button class="btn-eliminar-cuenta" (click)="confirmarEliminarCuenta()">
+            <button class="btn-eliminar-cuenta" (click)="abrirModalEliminar()">
               Eliminar perfil
             </button>
+
+            <div class="modal-backdrop" *ngIf="showDeleteModal">
+              <div class="modal">
+                <h2>Eliminar cuenta</h2>
+                <p>Esta acción no se puede deshacer. ¿Estás seguro?</p>
+
+                <div class="actions">
+                  <button (click)="confirmarEliminarCuenta()">Sí, eliminar</button>
+                  <button (click)="cerrarModalEliminar()">Cancelar</button>
+                </div>
+              </div>
+            </div>
 
           </div>
 
