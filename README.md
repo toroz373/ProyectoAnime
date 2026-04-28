@@ -1,4 +1,4 @@
-Proyectoanime
+Miruzone
 Este proyecto fue generado utilizando Angular CLI versión 21.2.3.
 
 Instalación inicial del proyecto
