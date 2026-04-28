@@ -4,7 +4,7 @@
   <app-sidebar></app-sidebar>
 
   <main class="content">
-    <h2>Animes deseados</h2>
+
 
     <div *ngIf="loading">
       Cargando animes...
@@ -14,11 +14,36 @@
       No tienes animes deseados
     </div>
 
-    <div class="anime-list" *ngIf="!loading && animes.length > 0">
-      <app-anime-mini-card
-        *ngFor="let anime of animes"
-        [anime]="anime">
-      </app-anime-mini-card>
+    <div class="anime-grid" *ngIf="!loading && animes.length > 0">
+      
+      <div class="anime-card" *ngFor="let anime of animes">
+
+        <div class="card-image">
+          <img [src]="anime.imagen" alt="{{anime.titulo}}" />
+
+          <!-- Menú 3 puntos -->
+          <div class="menu">
+            <button (click)="toggleMenu(anime)">⋮</button>
+
+            <div class="dropdown" *ngIf="anime.showMenu">
+              <button (click)="moverA('visto', anime)">Mover a vistos</button>
+              <button (click)="moverA('proceso', anime)">Mover a proceso</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Botón sinopsis -->
+        <button class="btn-sinopsis" (click)="toggleSinopsis(anime)">
+          {{ anime.showSinopsis ? 'Ocultar sinopsis' : 'Ver sinopsis' }}
+        </button>
+
+        <!-- Sinopsis -->
+        <div class="sinopsis" *ngIf="anime.showSinopsis">
+          {{ anime.sinopsis }}
+        </div>
+
+      </div>
+
     </div>
 
   </main>

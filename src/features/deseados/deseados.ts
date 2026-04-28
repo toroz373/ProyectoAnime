@@ -3,14 +3,13 @@ import { isPlatformBrowser, CommonModule } from '@angular/common';
 import { Subject, takeUntil } from 'rxjs';
 
 import { EstadoService } from '../../core/services/estado.service';
-import { AnimeMiniCardComponent } from '../anime-mini-card/anime-mini-card';
 import { HeaderComponent } from '../header/header';
 import { SidebarComponent } from '../sidebar/sidebar';
 
 @Component({
   selector: 'app-deseados',
   standalone: true,
-  imports: [CommonModule, AnimeMiniCardComponent, HeaderComponent, SidebarComponent],
+  imports: [CommonModule, HeaderComponent, SidebarComponent],
   templateUrl: './deseados.html',
   styleUrls: ['./deseados.css']
 })
@@ -66,12 +65,57 @@ export class DeseadosComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.destroy$))
       .subscribe({
         next: (res) => {
-          this.animes = res || [];
+
+          console.log('DESEADOS RESPONSE:', res);
+
+          this.animes = (res || []).map((anime: any) => ({
+            id: anime.id,
+
+            // 🔥 MAPPING ROBUSTO (clave del problema)
+            titulo: anime.titulo || anime.title || '',
+            imagen: anime.imagen || anime.image || anime.image_url || '',
+            sinopsis: anime.sinopsis || anime.description || '',
+
+            showSinopsis: false,
+            showMenu: false
+          }));
+
           this.loading = false;
           this.cdr.detectChanges();
         },
-        error: () => {
+        error: (err) => {
+          console.error('Error loading deseados:', err);
           this.loading = false;
+        }
+      });
+  }
+
+  // 🔹 Mostrar/ocultar sinopsis
+  toggleSinopsis(anime: any) {
+    anime.showSinopsis = !anime.showSinopsis;
+  }
+
+  // 🔹 Mostrar/ocultar menú
+  toggleMenu(anime: any) {
+    this.animes.forEach(a => {
+      if (a !== anime) a.showMenu = false;
+    });
+
+    anime.showMenu = !anime.showMenu;
+  }
+
+  // 🔹 Mover anime de estado
+  moverA(status: any, anime: any) {
+    if (!this.userId || !anime?.id) return;
+
+    this.estadoService.setEstado(this.userId, anime.id, status)
+      .subscribe({
+        next: () => {
+          // 🔥 quitar del array actual (deseados)
+          this.animes = this.animes.filter(a => a.id !== anime.id);
+        },
+        error: (err) => {
+          console.error('Error cambiando estado:', err);
         }
       });
   }

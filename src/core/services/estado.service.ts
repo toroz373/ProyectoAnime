@@ -35,4 +35,15 @@ export class EstadoService {
       `${this.statusUrl}?user_id=${userId}&status=${status}`
     );
   }
+
+  updateEstado(userId: number, animeId: number, status: AnimeStatus): Observable<any> {
+    return this.http.post(
+      `${this.statusUrl}`,
+      {
+        user_id: userId,
+        anime_id: animeId,
+        status: status
+      }
+    );
+  }
 }
