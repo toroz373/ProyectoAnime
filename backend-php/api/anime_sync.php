@@ -34,7 +34,7 @@ function saveAnimeIfNotExists($pdo, $anime) {
     $stmt->execute([$api_id]);
 
     if ($stmt->fetch()) {
-        return false; // Ya existe
+        return false; 
     }
 
     // Insertar
