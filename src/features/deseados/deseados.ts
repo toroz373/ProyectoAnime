@@ -66,16 +66,11 @@ export class DeseadosComponent implements OnInit, OnDestroy {
       .subscribe({
         next: (res) => {
 
-          console.log('DESEADOS RESPONSE:', res);
-
           this.animes = (res || []).map((anime: any) => ({
             id: anime.id,
-
-            // 🔥 MAPPING ROBUSTO (clave del problema)
             titulo: anime.titulo || anime.title || '',
             imagen: anime.imagen || anime.image || anime.image_url || '',
             sinopsis: anime.sinopsis || anime.description || '',
-
             showSinopsis: false,
             showMenu: false
           }));
@@ -90,12 +85,10 @@ export class DeseadosComponent implements OnInit, OnDestroy {
       });
   }
 
-  // 🔹 Mostrar/ocultar sinopsis
   toggleSinopsis(anime: any) {
     anime.showSinopsis = !anime.showSinopsis;
   }
 
-  // 🔹 Mostrar/ocultar menú
   toggleMenu(anime: any) {
     this.animes.forEach(a => {
       if (a !== anime) a.showMenu = false;
@@ -104,19 +97,27 @@ export class DeseadosComponent implements OnInit, OnDestroy {
     anime.showMenu = !anime.showMenu;
   }
 
-  // 🔹 Mover anime de estado
   moverA(status: any, anime: any) {
     if (!this.userId || !anime?.id) return;
 
     this.estadoService.setEstado(this.userId, anime.id, status)
       .subscribe({
         next: () => {
-          // 🔥 quitar del array actual (deseados)
           this.animes = this.animes.filter(a => a.id !== anime.id);
         },
-        error: (err) => {
-          console.error('Error cambiando estado:', err);
-        }
+        error: (err) => console.error('Error cambiando estado:', err)
+      });
+  }
+
+  eliminarDeDeseados(anime: any) {
+    if (!this.userId || !anime?.id) return;
+
+    this.estadoService.deleteEstado(this.userId, anime.id)
+      .subscribe({
+        next: () => {
+          this.animes = this.animes.filter(a => a.id !== anime.id);
+        },
+        error: (err) => console.error('Error eliminando anime:', err)
       });
   }
 

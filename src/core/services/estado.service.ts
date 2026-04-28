@@ -25,9 +25,7 @@ export class EstadoService {
     body.append('status', status);
 
     return this.http.post(this.statusUrl, body, { responseType: 'json' })
-      .pipe(
-        tap(() => this.refreshTrigger.next())
-      );
+      .pipe(tap(() => this.refreshTrigger.next()));
   }
 
   getAnimesByStatus(userId: number, status: AnimeStatus): Observable<any[]> {
@@ -37,13 +35,22 @@ export class EstadoService {
   }
 
   updateEstado(userId: number, animeId: number, status: AnimeStatus): Observable<any> {
-    return this.http.post(
-      `${this.statusUrl}`,
-      {
-        user_id: userId,
-        anime_id: animeId,
-        status: status
-      }
+    return this.http.post(this.statusUrl, {
+      user_id: userId,
+      anime_id: animeId,
+      status
+    });
+  }
+
+  // ✅ NUEVO: eliminar anime
+  deleteEstado(userId: number, animeId: number) {
+    const body = new FormData();
+    body.append('user_id', String(userId));
+    body.append('anime_id', String(animeId));
+    body.append('action', 'delete');
+
+    return this.http.post(this.statusUrl, body).pipe(
+      tap(() => this.refreshTrigger.next())
     );
   }
 }

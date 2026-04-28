@@ -5,7 +5,6 @@
 
   <main class="content">
 
-
     <div *ngIf="loading">
       Cargando animes...
     </div>
@@ -15,29 +14,27 @@
     </div>
 
     <div class="anime-grid" *ngIf="!loading && animes.length > 0">
-      
+
       <div class="anime-card" *ngFor="let anime of animes">
 
         <div class="card-image">
-          <img [src]="anime.imagen" alt="{{anime.titulo}}" />
+          <img [src]="anime.imagen" [alt]="anime.titulo" />
 
-          <!-- Menú 3 puntos -->
           <div class="menu">
             <button (click)="toggleMenu(anime)">⋮</button>
 
             <div class="dropdown" *ngIf="anime.showMenu">
               <button (click)="moverA('visto', anime)">Mover a vistos</button>
-              <button (click)="moverA('proceso', anime)">Mover a proceso</button>
+              <button (click)="moverA('en_proceso', anime)">Mover a proceso</button>
+              <button (click)="eliminarDeDeseados(anime)">Eliminar</button>
             </div>
           </div>
         </div>
 
-        <!-- Botón sinopsis -->
         <button class="btn-sinopsis" (click)="toggleSinopsis(anime)">
           {{ anime.showSinopsis ? 'Ocultar sinopsis' : 'Ver sinopsis' }}
         </button>
 
-        <!-- Sinopsis -->
         <div class="sinopsis" *ngIf="anime.showSinopsis">
           {{ anime.sinopsis }}
         </div>
