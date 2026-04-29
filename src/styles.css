@@ -352,3 +352,7 @@ body.dark-mode .sort-options div:not(:last-child) {
 body.dark-mode .sinopsis {
   color: #ffffff !important;
 }
+
+body.dark-mode .empty-state p {
+  color: #ffffff !important;
+}
