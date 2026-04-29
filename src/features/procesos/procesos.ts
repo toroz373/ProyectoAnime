@@ -3,14 +3,13 @@ import { isPlatformBrowser, CommonModule } from '@angular/common';
 import { Subject, takeUntil } from 'rxjs';
 
 import { EstadoService } from '../../core/services/estado.service';
-import { AnimeMiniCardComponent } from '../anime-mini-card/anime-mini-card';
 import { HeaderComponent } from '../header/header';
 import { SidebarComponent } from '../sidebar/sidebar';
 
 @Component({
   selector: 'app-procesos',
   standalone: true,
-  imports: [CommonModule, AnimeMiniCardComponent, HeaderComponent, SidebarComponent],
+  imports: [CommonModule, HeaderComponent, SidebarComponent],
   templateUrl: './procesos.html',
   styleUrls: ['./procesos.css']
 })
@@ -66,13 +65,59 @@ export class ProcesosComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.destroy$))
       .subscribe({
         next: (res) => {
-          this.animes = res || [];
+
+          this.animes = (res || []).map((anime: any) => ({
+            id: anime.id,
+            titulo: anime.titulo || anime.title || '',
+            imagen: anime.imagen || anime.image || anime.image_url || '',
+            sinopsis: anime.sinopsis || anime.description || '',
+            showSinopsis: false,
+            showMenu: false
+          }));
+
           this.loading = false;
           this.cdr.detectChanges();
         },
-        error: () => {
+        error: (err) => {
+          console.error('Error loading procesos:', err);
           this.loading = false;
         }
+      });
+  }
+
+  toggleSinopsis(anime: any) {
+    anime.showSinopsis = !anime.showSinopsis;
+  }
+
+  toggleMenu(anime: any) {
+    this.animes.forEach(a => {
+      if (a !== anime) a.showMenu = false;
+    });
+
+    anime.showMenu = !anime.showMenu;
+  }
+
+  moverA(status: any, anime: any) {
+    if (!this.userId || !anime?.id) return;
+
+    this.estadoService.setEstado(this.userId, anime.id, status)
+      .subscribe({
+        next: () => {
+          this.animes = this.animes.filter(a => a.id !== anime.id);
+        },
+        error: (err) => console.error('Error cambiando estado:', err)
+      });
+  }
+
+  eliminarDeDeseados(anime: any) {
+    if (!this.userId || !anime?.id) return;
+
+    this.estadoService.deleteEstado(this.userId, anime.id)
+      .subscribe({
+        next: () => {
+          this.animes = this.animes.filter(a => a.id !== anime.id);
+        },
+        error: (err) => console.error('Error eliminando anime:', err)
       });
   }
 

@@ -26,7 +26,7 @@
             <div class="dropdown" *ngIf="anime.showMenu">
               <button (click)="moverA('visto', anime)">Mover a vistos</button>
               <button (click)="moverA('en_proceso', anime)">Mover a proceso</button>
-              <button (click)="eliminarDeDeseados(anime)">Eliminar</button>
+              <button class="btn-eliminar" (click)="eliminarDeDeseados(anime)">Eliminar</button>
             </div>
           </div>
         </div>

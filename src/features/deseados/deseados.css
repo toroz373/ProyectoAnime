@@ -147,3 +147,14 @@
 .dropdown button:hover {
   background: linear-gradient(135deg, #a855f7, #667eea);
 }
+
+.btn-eliminar {
+  transition: all 0.2s ease;
+  border-radius: 6px;
+}
+
+.dropdown button.btn-eliminar:hover {
+  background: #ff4d4d;
+  color: white;
+  transform: scale(1.03);
+}

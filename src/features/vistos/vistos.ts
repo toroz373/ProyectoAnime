@@ -3,14 +3,13 @@ import { isPlatformBrowser, CommonModule } from '@angular/common';
 import { Subject, takeUntil } from 'rxjs';
 
 import { EstadoService } from '../../core/services/estado.service';
-import { AnimeMiniCardComponent } from '../anime-mini-card/anime-mini-card';
 import { HeaderComponent } from '../header/header';
 import { SidebarComponent } from '../sidebar/sidebar';
 
 @Component({
   selector: 'app-vistos',
   standalone: true,
-  imports: [CommonModule, AnimeMiniCardComponent, HeaderComponent, SidebarComponent],
+  imports: [CommonModule, HeaderComponent, SidebarComponent],
   templateUrl: './vistos.html',
   styleUrls: ['./vistos.css']
 })
@@ -27,13 +26,11 @@ export class VistosComponent implements OnInit, OnDestroy {
   loading = true;
 
   ngOnInit() {
-    // Evita problemas con SSR
     if (!isPlatformBrowser(this.platformId)) return;
 
     const userStr = localStorage.getItem('user');
 
     if (!userStr) {
-      console.warn('No hay user en localStorage');
       this.loading = false;
       return;
     }
@@ -42,25 +39,19 @@ export class VistosComponent implements OnInit, OnDestroy {
       const user = JSON.parse(userStr);
 
       if (!user?.id) {
-        console.warn('User sin id:', user);
         this.loading = false;
         return;
       }
 
       this.userId = user.id;
 
-      // 🔥 Carga inicial
       this.load();
 
-      // 🔥 Escucha cambios
       this.estadoService.refreshTrigger
         .pipe(takeUntil(this.destroy$))
-        .subscribe(() => {
-          this.load();
-        });
+        .subscribe(() => this.load());
 
-    } catch (e) {
-      console.error('Error parseando user:', e);
+    } catch {
       this.loading = false;
     }
   }
@@ -74,17 +65,59 @@ export class VistosComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.destroy$))
       .subscribe({
         next: (res) => {
-          console.log('Respuesta API:', res);
-          this.animes = res || [];
-          this.loading = false;
 
-          // 🔥 Fuerza actualización de vista
+          this.animes = (res || []).map((anime: any) => ({
+            id: anime.id,
+            titulo: anime.titulo || anime.title || '',
+            imagen: anime.imagen || anime.image || anime.image_url || '',
+            sinopsis: anime.sinopsis || anime.description || '',
+            showSinopsis: false,
+            showMenu: false
+          }));
+
+          this.loading = false;
           this.cdr.detectChanges();
         },
         error: (err) => {
-          console.error('Error cargando animes:', err);
+          console.error('Error cargando vistos:', err);
           this.loading = false;
         }
+      });
+  }
+
+  toggleSinopsis(anime: any) {
+    anime.showSinopsis = !anime.showSinopsis;
+  }
+
+  toggleMenu(anime: any) {
+    this.animes.forEach(a => {
+      if (a !== anime) a.showMenu = false;
+    });
+
+    anime.showMenu = !anime.showMenu;
+  }
+
+  moverA(status: any, anime: any) {
+    if (!this.userId || !anime?.id) return;
+
+    this.estadoService.setEstado(this.userId, anime.id, status)
+      .subscribe({
+        next: () => {
+          this.animes = this.animes.filter(a => a.id !== anime.id);
+        },
+        error: (err) => console.error('Error cambiando estado:', err)
+      });
+  }
+
+  eliminarDeDeseados(anime: any) {
+    if (!this.userId || !anime?.id) return;
+
+    this.estadoService.deleteEstado(this.userId, anime.id)
+      .subscribe({
+        next: () => {
+          this.animes = this.animes.filter(a => a.id !== anime.id);
+        },
+        error: (err) => console.error('Error eliminando anime:', err)
       });
   }
 
