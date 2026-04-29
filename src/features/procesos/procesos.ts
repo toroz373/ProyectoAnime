@@ -47,7 +47,7 @@ export class ProcesosComponent implements OnInit, OnDestroy {
 
       this.load();
 
-      this.estadoService.refreshTrigger
+      this.estadoService.refreshTrigger$
         .pipe(takeUntil(this.destroy$))
         .subscribe(() => this.load());
 

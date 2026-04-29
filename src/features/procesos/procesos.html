@@ -9,8 +9,15 @@
       Cargando animes...
     </div>
 
-    <div *ngIf="!loading && animes.length === 0">
-      No tienes animes en proceso
+    <div class="empty-state" *ngIf="!loading && animes.length === 0">
+  
+      <div class="empty-icon">
+        <img src="logo-procesos.png" alt="Deseados" />
+      </div>
+
+      <h2>Tu lista está vacía</h2>
+      <p>No tienes animes en procesos todavía</p>
+
     </div>
 
     <div class="anime-grid" *ngIf="!loading && animes.length > 0">

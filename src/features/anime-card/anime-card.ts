@@ -7,7 +7,6 @@ import { AnimeListService, AnimeStatus } from '../../core/services/anime-list';
 import { EstadoService } from '../../core/services/estado.service';
 import { Subscription } from 'rxjs';
 
-
 @Component({
   selector: 'app-anime-card',
   standalone: true,
@@ -36,23 +35,47 @@ export class AnimeCardComponent implements OnInit, OnDestroy {
   private animeListService = inject(AnimeListService);
 
   private sub?: Subscription;
+  private estadoSub?: Subscription; // 🔥 NUEVO
 
   ngOnInit() {
+
+    // 🔥 comentarios
     this.sub = this.commentsService.refreshTrigger.subscribe(() => {
       this.refreshStats();
     });
 
     setTimeout(() => this.refreshStats(), 0);
 
+    // 🔥 estado inicial
     if (this.showStatusButtons) {
-      this.currentStatus.set(
-        this.animeListService.getAnimeStatus(this.anime.id)
-      );
+      this.loadEstadoActual();
     }
+
+    // 🔥 🔥 🔥 AQUÍ ESTÁ LA MAGIA
+    this.estadoSub = this.estadoService.refreshTrigger$.subscribe(() => {
+      this.loadEstadoActual();
+    });
   }
 
   ngOnDestroy() {
     this.sub?.unsubscribe();
+    this.estadoSub?.unsubscribe(); // 🔥 IMPORTANTE
+  }
+
+  // 🔥 NUEVA FUNCIÓN CLAVE
+  loadEstadoActual() {
+    if (!this.currentUserId || !this.anime?.id) return;
+
+    this.estadoService.getEstado(this.currentUserId, this.anime.id)
+      .subscribe(res => {
+        const status = res?.status ?? null;
+
+        this.currentStatus.set(status);
+
+        if (status !== null) {
+          this.animeListService.setAnimeStatus(this.anime.id, status);
+        }
+      });
   }
 
   get averageStars() {
@@ -87,7 +110,6 @@ export class AnimeCardComponent implements OnInit, OnDestroy {
     this.isExpanded.update(v => !v);
   }
 
-  // 🔥 AQUÍ SE ACTUALIZA EL ESTADO
   setStatus(status: AnimeStatus) {
     if (!this.currentUserId || !this.anime?.id) return;
 

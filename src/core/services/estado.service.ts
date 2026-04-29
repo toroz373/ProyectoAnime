@@ -10,7 +10,16 @@ export class EstadoService {
 
   private statusUrl = 'http://localhost/ProyectoAnime/backend-php/api/estado.php';
 
-  refreshTrigger = new Subject<void>();
+  // 🔥 Subject privado
+  private refreshSubject = new Subject<void>();
+
+  // 🔥 Observable público (los componentes escuchan esto)
+  refreshTrigger$ = this.refreshSubject.asObservable();
+
+  // 🔥 Método para lanzar evento
+  triggerRefresh() {
+    this.refreshSubject.next();
+  }
 
   getEstado(userId: number, animeId: number): Observable<{ status: AnimeStatus } | null> {
     return this.http.get<{ status: AnimeStatus } | null>(
@@ -25,7 +34,9 @@ export class EstadoService {
     body.append('status', status);
 
     return this.http.post(this.statusUrl, body, { responseType: 'json' })
-      .pipe(tap(() => this.refreshTrigger.next()));
+      .pipe(
+        tap(() => this.triggerRefresh()) // 🔥 IMPORTANTE
+      );
   }
 
   getAnimesByStatus(userId: number, status: AnimeStatus): Observable<any[]> {
@@ -39,10 +50,12 @@ export class EstadoService {
       user_id: userId,
       anime_id: animeId,
       status
-    });
+    }).pipe(
+      tap(() => this.triggerRefresh()) // 🔥 añadido también aquí
+    );
   }
 
-  // ✅ NUEVO: eliminar anime
+  // eliminar anime
   deleteEstado(userId: number, animeId: number) {
     const body = new FormData();
     body.append('user_id', String(userId));
@@ -50,7 +63,7 @@ export class EstadoService {
     body.append('action', 'delete');
 
     return this.http.post(this.statusUrl, body).pipe(
-      tap(() => this.refreshTrigger.next())
+      tap(() => this.triggerRefresh()) // 🔥 IMPORTANTE
     );
   }
 }

@@ -158,3 +158,53 @@
   color: white;
   transform: scale(1.03);
 }
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  margin-top: 80px;
+  padding: 40px;
+
+  text-align: center;
+
+  background: rgba(120, 60, 140, 0.35);
+  border: 1px solid rgba(168, 85, 247, 0.2);
+  border-radius: 16px;
+
+  backdrop-filter: blur(8px);
+
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+.empty-icon img {
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
+  opacity: 0.9;
+  filter: drop-shadow(0 8px 12px rgba(168, 85, 247, 0.25));
+}
+
+.empty-state h2 {
+  color: #a855f7;
+  margin-bottom: 6px;
+}
+
+.empty-state p {
+  color: #555;
+  font-size: 14px;
+}
+
+/* animación suave */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
