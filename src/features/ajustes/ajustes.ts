@@ -23,7 +23,6 @@ export class AjustesComponent implements OnInit {
   mensajeDescripcion: string = '';
   errorPerfil: string = '';
 
-  // 🔥 NUEVO: control del modal
   showDeleteModal = false;
 
   constructor(
@@ -117,6 +116,20 @@ export class AjustesComponent implements OnInit {
 
       if (res.exito) {
         this.usuario.avatar = res.avatar + '?t=' + new Date().getTime();
+
+        // 🔥 CLAVE: actualizar usuario global
+        const current = this.auth.currentUser();
+        if (current) {
+          this.auth.currentUser.set({
+            ...current,
+            avatar: this.usuario.avatar
+          });
+          localStorage.setItem('user', JSON.stringify({
+            ...current,
+            avatar: this.usuario.avatar
+          }));
+        }
+
         this.cd.detectChanges();
       }
 
@@ -131,6 +144,20 @@ export class AjustesComponent implements OnInit {
 
       if (res.exito) {
         this.usuario.avatar = null;
+
+        // 🔥 actualizar global
+        const current = this.auth.currentUser();
+        if (current) {
+          this.auth.currentUser.set({
+            ...current,
+            avatar: undefined
+          });
+          localStorage.setItem('user', JSON.stringify({
+            ...current,
+            avatar: null
+          }));
+        }
+
         this.cd.detectChanges();
       }
 
@@ -183,17 +210,14 @@ export class AjustesComponent implements OnInit {
     ).subscribe();
   }
 
-  // 🔥 NUEVO: abrir modal
   abrirModalEliminar() {
     this.showDeleteModal = true;
   }
 
-  // 🔥 NUEVO: cerrar modal
   cerrarModalEliminar() {
     this.showDeleteModal = false;
   }
 
-  // 🔥 NUEVO: confirmar eliminación
   confirmarEliminarCuenta() {
     this.eliminarCuenta();
     this.cerrarModalEliminar();

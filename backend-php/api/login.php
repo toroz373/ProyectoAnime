@@ -16,8 +16,8 @@ $data = json_decode(file_get_contents("php://input"), true);
 $usuario = $data['usuario'] ?? '';
 $password = $data['password'] ?? '';
 
-// 🔥 IMPORTANTE: incluir theme
-$sql = "SELECT id, usuario, password, theme FROM usuarios WHERE usuario = ?";
+// 🔥 AÑADIDO avatar
+$sql = "SELECT id, usuario, password, theme, avatar FROM usuarios WHERE usuario = ?";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("s", $usuario);
 $stmt->execute();
@@ -33,7 +33,8 @@ if ($result->num_rows === 1) {
             'user' => [
                 'id' => $user['id'],
                 'usuario' => $user['usuario'],
-                'theme' => $user['theme'] ?? 'light' // 🔥 fallback
+                'theme' => $user['theme'] ?? 'light',
+                'avatar' => $user['avatar'] // 🔥 CLAVE
             ]
         ]);
 
