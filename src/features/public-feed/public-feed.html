@@ -11,9 +11,9 @@
     @for (anime of animeService.filteredAnimes(); track anime.id) {
       <app-anime-card 
         [anime]="anime"
-        [isLoggedIn]="authService.isLoggedIn()"
-        [currentUserId]="currentUserId"
-        [currentUserName]="authService.currentUser()?.name || ''">
+        [isLoggedIn]="false"
+        [currentUserId]="0"
+        [currentUserName]="''">
       </app-anime-card>
     }
   </div>
@@ -35,4 +35,3 @@
     <div (click)="selectSort('az')">A-Z</div>
   </div>
 </div>
-  

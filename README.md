@@ -1,4 +1,4 @@
-Proyectoanime
+Miruzone
 Este proyecto fue generado utilizando Angular CLI versión 21.2.3.
 
 Instalación inicial del proyecto
@@ -59,35 +59,5 @@ Código
 http://localhost:4200/
 La aplicación se recargará automáticamente al modificar archivos fuente.
 
-Generación de código
-Para crear un nuevo componente:
-
-bash
-ng generate component nombre-del-componente
-Para ver todos los schematics disponibles:
-
-bash
-ng generate --help
-Construcción del proyecto
-Para compilar el proyecto:
-
-bash
-ng build
-Los archivos generados se guardarán en dist/, optimizados para producción.
-
-Pruebas unitarias
-Para ejecutar pruebas unitarias con Vitest:
-
-bash
-ng test
-Pruebas end-to-end
-Para ejecutar pruebas e2e:
-
-bash
-ng e2e
-Angular CLI no incluye un framework e2e por defecto, así que puedes elegir el que prefieras.
-
-Recursos adicionales
-Más información sobre Angular CLI:
-
-Angular CLI Overview and Command Reference
+Iniciar sesión:
+Se puede acceder sin usuario teniendo limitadas las acciones, para acceder con todo las herramientas debes de darte de alta usando la funcion en la pantalla principal de nuevo usuario.

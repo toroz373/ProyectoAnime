@@ -1,11 +1,5 @@
 <?php
 
-// Enable error logging
-error_reporting(E_ALL);
-ini_set('display_errors', '0');
-ini_set('log_errors', '1');
-ini_set('error_log', 'd:/xampp/htdocs/ProyectoAnime/backend-php/api/php_errors.log');
-
 $allowedOrigins = [
     'http://localhost:4200',
     'http://127.0.0.1:4200',

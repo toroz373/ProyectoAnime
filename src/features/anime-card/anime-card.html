@@ -20,7 +20,13 @@
                   <button 
                     (click)="setStatus('deseado')" 
                     [class.active]="currentStatus() === 'deseado'">
-                    Deseado
+                    Deseados
+                  </button>
+
+                  <button 
+                    (click)="setStatus('visto')" 
+                    [class.active]="currentStatus() === 'visto'">
+                    Vistos
                   </button>
 
                   <button 

@@ -23,7 +23,6 @@ export class PrivateFeedComponent {
   // Exponer el currentUserId explícitamente
   get currentUserId(): number {
     const user = this.authService.currentUser();
-    console.log('PrivateFeedComponent - currentUserId getter, user:', user);
     return user?.id ?? 0;
   }
 
