@@ -21,14 +21,14 @@ export class HeaderComponent {
   showSearch = true;
   showLogoLink = true;
 
-  // 🔥 NUEVO: control de sesión
+  // control de sesión
   isLoggedIn = false;
 
   avatarUrl: string = 'assets/default-avatar.png';
 
   constructor() {
 
-    // 🔥 REACTIVO usuario + avatar
+    // usuario + avatar
     effect(() => {
       const user = this.authService.currentUser();
 
@@ -53,7 +53,7 @@ export class HeaderComponent {
 
         this.showLogoLink = !url.startsWith('/public-feed');
 
-        // 🔥 OCULTAR AVATAR EN PUBLIC FEED
+        // OCULTAR AVATAR EN PUBLIC FEED
         if (url.startsWith('/public-feed')) {
           this.isLoggedIn = false;
         }

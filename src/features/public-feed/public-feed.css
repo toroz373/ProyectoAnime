@@ -3,7 +3,7 @@
   top: 80px;
   bottom: 0;
 
-  /* 🔥 CLAVE: centrado real horizontal */
+  /* centrado horizontal */
   left: 50%;
   transform: translateX(-50%);
 
@@ -32,7 +32,7 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;  /* 🔥 centra horizontalmente todo */
+  align-items: center; 
   justify-content: center;
   text-align: center;
 }
@@ -74,7 +74,7 @@
   scroll-behavior: smooth;
 }
 
-/* 🔥 LIMITA ANCHO REAL DE LAS TARJETAS */
+/* LIMITA ANCHO DE LAS TARJETAS */
 .feed-content > * {
   width: 100%;
   max-width: 900px;
@@ -120,8 +120,8 @@
 
 /* BOTÓN PRINCIPAL */
 .sort-dropdown {
-  background: #a855f7; /* 🔥 color principal */
-  color: #fff; /* texto blanco */
+  background: #a855f7; 
+  color: #fff; 
   padding: 10px 16px;
   border-radius: 12px;
   cursor: pointer;
@@ -139,9 +139,8 @@
   min-width: 160px;
 }
 
-/* EFECTO HOVER PRO */
 .sort-dropdown:hover {
-  background: #6a4194; /* un poco más oscuro */
+  background: #6a4194; 
   transform: translateY(-1px);
   box-shadow: 0 10px 22px rgba(118, 75, 162, 0.5);
 }
@@ -167,7 +166,6 @@
   animation: fadeIn 0.2s ease;
 }
 
-/* OPCIONES */
 .sort-options div {
   padding: 12px 16px;
   cursor: pointer;
@@ -176,7 +174,6 @@
   transition: all 0.2s ease;
 }
 
-/* HOVER OPCIONES */
 .sort-options div:hover {
   background: linear-gradient(135deg, #667eea20, #764ba220);
   color: #333;

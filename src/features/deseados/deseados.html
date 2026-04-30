@@ -5,31 +5,39 @@
 
   <main class="content">
 
+    <!-- Mensaje mientras se están cargando los animes -->
     <div *ngIf="loading">
       Cargando animes...
     </div>
 
+    <!-- Estado vacío cuando no hay animes -->
     <div class="empty-state" *ngIf="!loading && animes.length === 0">
   
+      <!-- logo -->
       <div class="empty-icon">
         <img src="logo-deseados.png" alt="Deseados" />
       </div>
 
+      <!-- Texto indicando que la lista está vacía -->
       <h2>Tu lista está vacía</h2>
       <p>No tienes animes en deseados todavía</p>
 
     </div>
 
+    <!-- Grid donde se muestran los animes si hay contenido -->
     <div class="anime-grid" *ngIf="!loading && animes.length > 0">
 
+      <!-- Recorre la lista de animes y crea una tarjeta por cada uno -->
       <div class="anime-card" *ngFor="let anime of animes">
 
         <div class="card-image">
           <img [src]="anime.imagen" [alt]="anime.titulo" />
 
+          <!-- Menú de opciones -->
           <div class="menu">
             <button (click)="toggleMenu(anime)">⋮</button>
 
+            <!-- Dropdown con acciones para el anime -->
             <div class="dropdown" *ngIf="anime.showMenu">
               <button (click)="moverA('visto', anime)">Mover a vistos</button>
               <button (click)="moverA('en_proceso', anime)">Mover a proceso</button>
@@ -38,10 +46,12 @@
           </div>
         </div>
 
+        <!-- Botón para mostrar u ocultar la sinopsis -->
         <button class="btn-sinopsis" (click)="toggleSinopsis(anime)">
           {{ anime.showSinopsis ? 'Ocultar sinopsis' : 'Ver sinopsis' }}
         </button>
 
+        <!-- Sinopsis del anime -->
         <div class="sinopsis" *ngIf="anime.showSinopsis">
           {{ anime.sinopsis }}
         </div>

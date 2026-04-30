@@ -49,9 +49,9 @@ export class AnimeService {
     this.loadAnimes();
   }
 
-  // ============================================================
+
   // CARGAR ANIMES DESDE TU BASE DE DATOS (NO DESDE JIKAN)
-  // ============================================================
+
   loadAnimes() {
     this.http.get<any[]>(this.backendUrl).subscribe(data => {
       this.setMappedAnimes(data);
@@ -68,9 +68,9 @@ export class AnimeService {
     });
   }
 
-  // ============================================================
+
   // MAPEO CORRECTO USANDO ID INTERNO + API_ID
-  // ============================================================
+
   private setMappedAnimes(data: any[]) {
     const mapped: Anime[] = data.map((a: any) => ({
       id: a.id,              // ✔ ID interno de tu BD
@@ -86,14 +86,13 @@ export class AnimeService {
     this.animes.set(mapped);
   }
 
-  // ============================================================
   // RATING Y COMENTARIOS USAN EL ID INTERNO
-  // ============================================================
+
   getAnimeAverage(animeId: number) {
     return this.http.get<any>(`${this.commentsUrl}?average=1&animeId=${animeId}`);
   }
 
-  // 🔹 Guardar valoración
+  //  Guardar valoración
   saveRating(animeId: number, rating: number, userId: number) {
     return this.http.post<any>(this.commentsUrl, {
       anime_id: animeId,   // ✔ ID interno

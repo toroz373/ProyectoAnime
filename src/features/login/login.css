@@ -8,14 +8,13 @@
   flex-direction: column;
 }
 
-/* botón de sin usuario arriba a la derecha */
+/* botón sin usuario */
 .guest-container {
   display: flex;
   justify-content: flex-end;
   padding: 20px;
 }
 
-/* botón de entrar sin usuario */
 .guest-button {
   background-color: #F8CEFF;
   border: none;
@@ -25,7 +24,7 @@
   font-size: 14px;
 }
 
-/* contenedor principal del login */
+/* contenedor principal */
 .login-container {
   flex: 1;
   display: flex;
@@ -36,14 +35,13 @@
   transform: translateY(-20px);
 }
 
-/* logo grande de la app */
+/* logo */
 .logo {
   width: 480px;
   margin-bottom: -190px;
   transform: translateY(-160px);
 }
 
-/* inputs normales */
 .login-container input {
   width: 280px;
   padding: 12px;
@@ -72,7 +70,6 @@
   transform: translateX(13px);
 }
 
-/* efecto hover en links */
 .link-button:hover {
   text-decoration: underline;
 }
@@ -94,7 +91,6 @@
   animation: fadeIn 0.2s ease;
 }
 
-/* errores debajo de inputs */
 .field-error {
   width: 280px;
   color: #d10000;
@@ -130,19 +126,16 @@
   width: 280px;
 }
 
-/* inputs */
 input {
   transition: all 0.2s ease;
   outline: none;
 }
 
-/* efecto focus */
 input:focus {
   border-color: #a855f7;
   box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.2);
 }
 
-/* error */
 input.error {
   border: 1px solid red;
   background-color: #fff5f5;
@@ -154,14 +147,12 @@ input.error {
   width: 110%;
 }
 
-/* input del wrapper de password */
 .password-wrapper input {
   width: 100%;
   padding: 12px 40px 12px 12px;
   box-sizing: border-box;
 }
 
-/* botón del ojo */
 .eye-button {
   position: absolute;
   right: 10px;
@@ -178,7 +169,6 @@ input.error {
   justify-content: center;
 }
 
-/* hover del ojo */
 .eye-button:hover {
   color: #000;
 }

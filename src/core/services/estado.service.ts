@@ -10,13 +10,13 @@ export class EstadoService {
 
   private statusUrl = 'http://localhost/ProyectoAnime/backend-php/api/estado.php';
 
-  // 🔥 Subject privado
+  // Subject privado
   private refreshSubject = new Subject<void>();
 
-  // 🔥 Observable público (los componentes escuchan esto)
+  // Observable público 
   refreshTrigger$ = this.refreshSubject.asObservable();
 
-  // 🔥 Método para lanzar evento
+  // lanzar evento
   triggerRefresh() {
     this.refreshSubject.next();
   }
@@ -35,7 +35,7 @@ export class EstadoService {
 
     return this.http.post(this.statusUrl, body, { responseType: 'json' })
       .pipe(
-        tap(() => this.triggerRefresh()) // 🔥 IMPORTANTE
+        tap(() => this.triggerRefresh()) 
       );
   }
 
@@ -51,7 +51,7 @@ export class EstadoService {
       anime_id: animeId,
       status
     }).pipe(
-      tap(() => this.triggerRefresh()) // 🔥 añadido también aquí
+      tap(() => this.triggerRefresh()) 
     );
   }
 
@@ -63,7 +63,7 @@ export class EstadoService {
     body.append('action', 'delete');
 
     return this.http.post(this.statusUrl, body).pipe(
-      tap(() => this.triggerRefresh()) // 🔥 IMPORTANTE
+      tap(() => this.triggerRefresh()) 
     );
   }
 }

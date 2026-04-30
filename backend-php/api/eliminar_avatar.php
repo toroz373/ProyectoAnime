@@ -35,7 +35,7 @@ if ($user && $user['avatar']) {
     }
 }
 
-// actualizar BD SIEMPRE
+// actualizar BD 
 $sql2 = "UPDATE usuarios SET avatar=NULL WHERE id=?";
 $stmt2 = $conn->prepare($sql2);
 $stmt2->bind_param("i", $id);

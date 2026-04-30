@@ -16,7 +16,6 @@ $data = json_decode(file_get_contents("php://input"), true);
 $usuario = $data['usuario'] ?? '';
 $password = $data['password'] ?? '';
 
-// 🔥 AÑADIDO avatar
 $sql = "SELECT id, usuario, password, theme, avatar FROM usuarios WHERE usuario = ?";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("s", $usuario);

@@ -1,12 +1,12 @@
 <div class="header">
   <div class="logo">
 
-    <!-- 🔥 SI TIENE LINK -->
+    <!-- SI TIENE LINK -->
     <a *ngIf="showLogoLink" [routerLink]="['/private-feed']">
       <img src="Logo MiruZone.png">
     </a>
 
-    <!-- 🔥 SI NO TIENE LINK -->
+    <!-- NO TIENE LINK -->
     <img *ngIf="!showLogoLink" src="Logo MiruZone.png">
 
   </div>

@@ -1,3 +1,4 @@
+/* Barra superior fija */
 .header {
   position: fixed;
   top: 0;
@@ -11,38 +12,16 @@
   z-index: 1000;
 }
 
-/* 🔥 Quitamos reparto automático */
+/* Logo */
 .logo {
   margin-right: 20px;
-}
-
-.search {
-  margin-left: 450px; /* 👈 lo acerca al logo */
-}
-
-.logout {
-  margin-left: auto; /* 👈 empuja pero no tanto */
-  margin-right: 40px; /* 👈 lo separa del borde */
 }
 
 .logo img {
   height: 100px;
 }
 
-.search input {
-  width: 250px;
-  padding: 8px;
-  border-radius: 20px;
-  border: none;
-}
-
-.logout button {
-  padding: 8px 25px;
-  border-radius: 20px;
-  border: none;
-  cursor: pointer;
-}
-
+/* logo sea clicable */
 .logo a {
   display: flex;
   align-items: center;
@@ -53,13 +32,38 @@
   height: 100px;
 }
 
+/* Buscador */
+.search {
+  margin-left: 450px; 
+}
+
+.search input {
+  width: 250px;
+  padding: 8px;
+  border-radius: 20px;
+  border: none;
+}
+
+/* logout y avatar */
+.logout {
+  margin-left: auto; 
+  margin-right: 40px; 
+}
+
+.logout button {
+  padding: 8px 25px;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+}
+
 .header-avatar {
   width: 42px;
   height: 42px;
   border-radius: 50%;
   overflow: hidden;
   border: 3px solid rgb(225, 190, 255);
-  flex-shrink: 0; /* 🔥 evita que se deforme */
+  flex-shrink: 0; 
 }
 
 .header-avatar img {
@@ -74,5 +78,6 @@
 
   display: flex;
   align-items: center;
-  gap: 12px; /* 🔥 separación entre avatar y botón */
+  gap: 12px; 
 }
+
