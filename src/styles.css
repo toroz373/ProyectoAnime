@@ -1,4 +1,4 @@
-/* 🌙MODO OSCURO GLOBAL */
+/* MODO OSCURO GLOBAL */
 
 body.dark-mode {
   background-color: #222222;
@@ -17,7 +17,12 @@ body.dark-mode .header {
   background-color: #F8CEFF;
 }
 
-/* BUSCADOR SIEMPRE BLANCO (PRIORIDAD TOTAL) */
+.header input {
+  background-color: white !important;
+  color: black !important;
+}
+
+/* BUSCADOR SIEMPRE BLANCO */
 body.dark-mode .header input,
 .header input {
   background-color: white !important;
@@ -38,7 +43,6 @@ body.dark-mode textarea {
   border: 1px solid #555;
 }
 
-/* PLACEHOLDERS */
 body.dark-mode input::placeholder {
   color: #aaa;
 }
@@ -59,13 +63,12 @@ footer p {
   color: black !important;
 }
 
-/* (refuerzo en dark por si acaso) */
 body.dark-mode footer,
 body.dark-mode footer p {
   color: black !important;
 }
 
-/*  BOTÓN VOLVER (GLOBAL) */
+/*  BOTÓN VOLVER */
 body.dark-mode .back-button {
   background-color: #222222 !important;
   color: white !important;
@@ -75,12 +78,6 @@ body.dark-mode .back-button {
 body.dark-mode .back-button:hover {
   background-color: #333 !important;
   color: white !important;
-}
-
-/*  INPUT BUSCADOR HEADER */
-.header input {
-  background-color: white !important;
-  color: black !important;
 }
 
 /*  BOTÓN LOGOUT */
@@ -94,7 +91,6 @@ body.dark-mode .back-button:hover {
   background-color: #2f2f2f;
 }
 
-/*  TRANSICIÓN SUAVE ENTRE MODOS */
 body {
   transition: background-color 0.3s, color 0.3s;
 }
@@ -130,17 +126,17 @@ body.dark-mode .card-content {
   background: #1e1e1e;
 }
 
-/* 🧾 TEXTO GENERAL */
+/* TEXTO GENERAL */
 body.dark-mode .card-header h3 {
   color: #e9d5ff;
 }
 
-/* 📄 DESCRIPCIÓN */
+/* DESCRIPCIÓN */
 body.dark-mode .anime-description {
   color: #d1d5db;
 }
 
-/* 📊 INFO BLOQUE (capítulos / estado) */
+/* capítulos y estado */
 body.dark-mode .anime-info {
   background: #2a2a2a;
 }
@@ -153,7 +149,7 @@ body.dark-mode .info-value {
   color: #e9d5ff;
 }
 
-/* 🎛 MENÚ */
+/* MENÚ */
 body.dark-mode .menu-dropdown {
   background: #1e1e1e;
   border: 2px solid #a855f7;
@@ -170,7 +166,7 @@ body.dark-mode .menu-dropdown button:hover {
   color: white;
 }
 
-/* ⭐ RATING */
+/* RATING */
 body.dark-mode .rating-text {
   color: #e9d5ff;
 }
@@ -187,7 +183,7 @@ body.dark-mode .star-btn {
   color: #555;
 }
 
-/* 💬 BOTÓN COMENTARIOS */
+/* BOTÓN COMENTARIOS */
 body.dark-mode .comments-btn {
   background: #1e1e1e;
   color: #e9d5ff;
@@ -199,7 +195,6 @@ body.dark-mode .comments-btn:hover {
   color: white;
 }
 
-/* 📜 GRADIENTE DE DESCRIPCIÓN (IMPORTANTE) */
 body.dark-mode .anime-description::after {
   background: linear-gradient(to bottom, transparent, #1e1e1e);
 }
@@ -224,7 +219,6 @@ body.dark-mode .comment-user strong {
   color: #e9d5ff;
 }
 
-/* input escribir comentario */
 body.dark-mode .comment-input {
   background: #2a2a2a;
   color: white;
@@ -278,24 +272,22 @@ body.dark-mode .menu-dropdown button {
   border: 2px solid #333 !important;
 }
 
-/* hover */
 body.dark-mode .menu-dropdown button:hover {
   background: #a855f7 !important;
   color: white !important;
 }
 
-/* activo */
 body.dark-mode .menu-dropdown button.active {
   background: linear-gradient(135deg, #a855f7, #9333ea) !important;
   color: white !important;
   border-color: #a855f7 !important;
 }
 
-/* 🔽 BOTÓN ORDENAR - DARK MODE */
+/* BOTÓN ORDENAR */
 
 /* label */
 body.dark-mode .sort-label {
-  color: #e9d5ff; /* mismo tono que textos destacados */
+  color: #e9d5ff; 
 }
 
 /* botón principal */
@@ -311,8 +303,6 @@ body.dark-mode .sort-container .sort-options div {
   color: #f5f5f5;
 }
 
-
-/* hover botón */
 body.dark-mode .sort-dropdown:hover {
   background: #2a2a2a;
   box-shadow: 0 10px 22px rgba(0, 0, 0, 0.7);
@@ -338,13 +328,11 @@ body.dark-mode .sort-options div {
   transition: all 0.2s ease;
 }
 
-/* hover MUCHO más visible */
 body.dark-mode .sort-options div:hover {
   background: linear-gradient(135deg, #a855f7, #6d28d9);
   color: white;
 }
 
-/* separación visual entre items */
 body.dark-mode .sort-options div:not(:last-child) {
   border-bottom: 1px solid #2a2a2a;
 }
