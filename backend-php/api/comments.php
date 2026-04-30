@@ -1,5 +1,5 @@
 <?php
-
+// Lista de origenes permitidos para CORS
 $allowedOrigins = [
     'http://localhost:4200',
     'http://127.0.0.1:4200',
@@ -16,12 +16,16 @@ header('Access-Control-Allow-Headers: Content-Type, Authorization');
 header('Access-Control-Allow-Methods: GET, POST, DELETE, OPTIONS');
 header('Access-Control-Allow-Credentials: true');
 
+// Responder a solicitudes preflight OPTIONS
 if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     http_response_code(200);
     exit;
 }
 
 header('Content-Type: application/json');
+
+
+// CONEXIÓN A LA BD - Conectar a la base de datos MySQL
 
 try {
     $pdo = new PDO("mysql:host=127.0.0.1;port=3306;dbname=miruzone;charset=utf8", "root", "", [
@@ -36,7 +40,11 @@ try {
 }
 
 try {
+
+    // MÉTODO GET - Obtener comentarios de un anime
+
     if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+        // Obtener promedio de rating de un anime
         if (isset($_GET['average']) && isset($_GET['animeId'])) {
             $stmt = $pdo->prepare("SELECT AVG(rating) AS avg_rating FROM comments WHERE anime_id = ?");
             $stmt->execute([$_GET['animeId']]);
@@ -44,6 +52,7 @@ try {
             exit;
         }
 
+        // Validar que se recibio el ID del anime
         if (!isset($_GET['animeId'])) {
             http_response_code(400);
             echo json_encode(['error' => 'animeId requerido']);
@@ -53,6 +62,7 @@ try {
         $animeId = $_GET['animeId'];
         error_log("Fetching comments for animeId: " . $animeId);
         
+        // Obtener comentarios con informacion del usuario
         $stmt = $pdo->prepare("SELECT c.*, u.link AS user_link FROM comments AS c LEFT JOIN usuarios AS u ON c.user_id = u.id WHERE c.anime_id = ? ORDER BY c.created_at DESC");
         $stmt->execute([$animeId]);
 
@@ -62,31 +72,35 @@ try {
         exit;
     }
 
+    // MÉTODO POST - Crear nuevo comentario
+   
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $raw = file_get_contents('php://input');
         error_log("Raw POST data: " . $raw);
         $data = json_decode($raw, true);
 
+        // Validar que el JSON sea valido
         if ($data === null && json_last_error() !== JSON_ERROR_NONE) {
             http_response_code(400);
             echo json_encode(['error' => 'JSON inválido', 'detail' => json_last_error_msg()]);
             exit;
         }
 
+        // Validar que se recibieron todos los datos requeridos
         if (!isset($data['anime_id'], $data['user_id'], $data['content'], $data['rating'])) {
             http_response_code(400);
             echo json_encode(['error' => 'Datos incompletos']);
             exit;
         }
 
-        // Validate user_id exists
+        // Validar que el usuario existe y es valido
         if (!$data['user_id'] || $data['user_id'] <= 0) {
             http_response_code(400);
             echo json_encode(['error' => 'Usuario inválido. Debes estar autenticado para comentar']);
             exit;
         }
 
-        // Check if user exists
+        // Verificar que el usuario existe en la base de datos
         $stmtCheck = $pdo->prepare("SELECT id FROM usuarios WHERE id = ?");
         $stmtCheck->execute([$data['user_id']]);
         if (!$stmtCheck->fetch()) {
@@ -95,6 +109,7 @@ try {
             exit;
         }
 
+        // Insertar el nuevo comentario
         $stmt = $pdo->prepare("INSERT INTO comments (anime_id, user_id, content, rating) VALUES (?, ?, ?, ?)");
         $stmt->execute([
             $data['anime_id'],
@@ -103,10 +118,12 @@ try {
             $data['rating']
         ]);
 
+        // Obtener el comentario recien creado
         $stmt = $pdo->prepare("SELECT c.*, u.link AS user_link FROM comments AS c LEFT JOIN usuarios AS u ON c.user_id = u.id WHERE c.id = ?");
         $stmt->execute([$pdo->lastInsertId()]);
         $comment = $stmt->fetch();
 
+        // Responder con el comentario creado
         echo json_encode($comment ?: [
             'id' => $pdo->lastInsertId(),
             'anime_id' => $data['anime_id'],
@@ -118,13 +135,17 @@ try {
         exit;
     }
 
+    // MÉTODO DELETE - Eliminar comentario
+ 
     if ($_SERVER['REQUEST_METHOD'] === 'DELETE') {
+        // Validar que se recibieron los parametros necesarios
         if (!isset($_GET['id']) || !isset($_GET['userId'])) {
             http_response_code(400);
             echo json_encode(['error' => 'id y userId requeridos']);
             exit;
         }
 
+        // Eliminar comentario solo si pertenece al usuario
         $stmt = $pdo->prepare("DELETE FROM comments WHERE id = ? AND user_id = ?");
         $stmt->execute([$_GET['id'], $_GET['userId']]);
 
@@ -132,6 +153,7 @@ try {
         exit;
     }
 
+    // Responder con error si el metodo no es valido
     http_response_code(405);
     echo json_encode(['error' => 'Método no permitido']);
 } catch (Exception $e) {

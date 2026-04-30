@@ -1,3 +1,4 @@
+// Componente de feed privado (requiere autenticacion)
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AnimeService } from '../../core/services/anime';
@@ -15,30 +16,33 @@ import { SidebarComponent } from '../sidebar/sidebar';
   styleUrl: './private-feed.css'
 })
 export class PrivateFeedComponent {
-  // Para acceder al estado del login y datos del usuario
+  // Inyectar servicio de autenticacion
   protected authService = inject(AuthService);
 
   constructor(protected animeService: AnimeService) {}
 
-  // Exponer el currentUserId explícitamente
+  // Obtener ID del usuario actual
   get currentUserId(): number {
     const user = this.authService.currentUser();
     return user?.id ?? 0;
   }
 
-  // Obtener la lista de todos los animes
+  // Obtener lista de animes filtrados
    get animes() {
     return this.animeService.filteredAnimes;
   }
   
+  // Estados para el menu de ordenamiento
   isSortOpen = false;
 
   selectedSortLabel = 'Valoraciones';
 
+  // Alternar menu de ordenamiento
   toggleSort() {
     this.isSortOpen = !this.isSortOpen;
   }
 
+  // Seleccionar opcion de ordenamiento
   selectSort(option: 'rating' | 'az') {
     this.animeService.setSortOption(option);
 

@@ -1,3 +1,4 @@
+// Componente de lista de animes vistos
 import { Component, OnInit, OnDestroy, inject, PLATFORM_ID, ChangeDetectorRef } from '@angular/core';
 import { isPlatformBrowser, CommonModule } from '@angular/common';
 import { Subject, takeUntil } from 'rxjs';

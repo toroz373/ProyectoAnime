@@ -1,22 +1,21 @@
 <?php
-// ============================
-// CORS PARA ANGULAR
-// ============================
+
+// CORS PARA ANGULAR - Configurar headers para permitir solicitudes desde el frontend
+
 header("Access-Control-Allow-Origin: http://localhost:4200");
 header("Access-Control-Allow-Credentials: true");
 header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
 header("Access-Control-Allow-Headers: Content-Type, Authorization");
 header("Content-Type: application/json; charset=utf-8");
 
-// Preflight
+// Preflight - Responder a solicitudes preflight OPTIONS
 if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     http_response_code(200);
     exit;
 }
 
-// ============================
-// CONEXIÓN BD
-// ============================
+// CONEXIÓN BD - Incluir archivo de conexion a la base de datos
+
 include '../config/database.php';
 
 if (!$conn || $conn->connect_errno) {
@@ -29,16 +28,15 @@ mysqli_report(MYSQLI_REPORT_OFF);
 $method = $_SERVER['REQUEST_METHOD'];
 
 
-// ======================================================
-// ======================   GET   ========================
-// ======================================================
+// GET   - Obtener estados de anime
+
 if ($method === 'GET') {
 
     $user_id = $_GET['user_id'] ?? null;
     $anime_id = $_GET['anime_id'] ?? null;
     $status = $_GET['status'] ?? null;
 
-    // LISTA POR ESTADO
+    // LISTA POR ESTADO - Obtener lista de animes por estado (visto, deseado, en_proceso)
     if ($user_id && $status) {
 
         $valid = ['visto', 'deseado', 'en_proceso'];
@@ -63,7 +61,7 @@ if ($method === 'GET') {
         exit;
     }
 
-    // ESTADO DE UN ANIME
+    // ESTADO DE UN ANIME - Obtener el estado de un anime especifico para un usuario
     if ($user_id && $anime_id) {
 
         $query = $conn->prepare("
@@ -86,9 +84,8 @@ if ($method === 'GET') {
 }
 
 
-// ======================================================
-// ======================   POST   =======================
-// ======================================================
+//  POST - Crear o actualizar estado
+
 if ($method === 'POST') {
 
     $input = json_decode(file_get_contents("php://input"), true);
@@ -98,14 +95,15 @@ if ($method === 'POST') {
     $status   = $_POST['status'] ?? ($input['status'] ?? null);
     $action   = $_POST['action'] ?? ($input['action'] ?? null);
 
+    // Validar que se recibieron los parametros necesarios
     if (!$user_id || !$anime_id) {
         echo json_encode(["error" => "Missing parameters"]);
         exit;
     }
 
-    // ============================
-    // DELETE (ELIMINAR DE LISTA)
-    // ============================
+
+    // DELETE (ELIMINAR DE LISTA) - Eliminar estado de anime del usuario
+
     if ($action === 'delete') {
 
         $stmt = $conn->prepare("
@@ -123,9 +121,8 @@ if ($method === 'POST') {
         exit;
     }
 
-    // ============================
-    // VALIDAR STATUS
-    // ============================
+    // VALIDAR STATUS - Verificar que el estado sea valido
+    
     if (!$status) {
         echo json_encode(["error" => "Missing status"]);
         exit;
@@ -139,9 +136,8 @@ if ($method === 'POST') {
         exit;
     }
 
-    // ============================
-    // INSERT / UPDATE
-    // ============================
+    //  INSERT / UPDATE - Insertar nuevo estado o actualizar existente
+  
     $check = $conn->prepare("
         SELECT id 
         FROM user_anime_status 
@@ -152,6 +148,7 @@ if ($method === 'POST') {
     $check->execute();
     $check->store_result();
 
+    // Si ya existe, actualizar
     if ($check->num_rows > 0) {
 
         $update = $conn->prepare("
@@ -163,7 +160,7 @@ if ($method === 'POST') {
         $update->bind_param("sii", $status, $user_id, $anime_id);
         $update->execute();
 
-    } else {
+    } else { // Si no existe, insertar nuevo
 
         $insert = $conn->prepare("
             INSERT INTO user_anime_status (user_id, anime_id, status) 
@@ -178,9 +175,6 @@ if ($method === 'POST') {
     exit;
 }
 
-
-// ======================================================
-// ERROR
-// ======================================================
+// ERROR - Responder con error si el metodo no es valido
 echo json_encode(["error" => "Invalid request"]);
 exit;

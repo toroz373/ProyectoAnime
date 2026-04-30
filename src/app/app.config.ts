@@ -1,3 +1,4 @@
+// Configuracion global de la aplicacion Angular
 import { ApplicationConfig, inject } from '@angular/core';
 import { provideRouter, Router } from '@angular/router';
 import { routes } from './app.routes';
@@ -6,9 +7,10 @@ import { provideHttpClient, withFetch } from '@angular/common/http';
 
 export const appConfig: ApplicationConfig = {
   providers: [
+    // Proveedor de rutas
     provideRouter(routes),
 
-    // 🔥 Forzar recarga cuando se navega a la misma ruta
+    // Configuracion para forzar recarga al navegar a la misma ruta
     {
       provide: 'forceReloadSameRoute',
       useFactory: () => {
@@ -18,7 +20,10 @@ export const appConfig: ApplicationConfig = {
       }
     },
 
+    // Hidratacion del cliente para SSR
     provideClientHydration(withEventReplay()),
+
+    // Cliente HTTP con soporte para Fetch API
     provideHttpClient(withFetch())
   ]
 };

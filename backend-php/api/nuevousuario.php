@@ -1,4 +1,5 @@
 <?php
+// Configurar headers para permitir solicitudes desde el frontend
 header("Access-Control-Allow-Origin: http://localhost:4200");
 header("Access-Control-Allow-Headers: Content-Type");
 header("Access-Control-Allow-Methods: POST, OPTIONS");
@@ -7,14 +8,16 @@ header('Content-Type: application/json');
 // Conexión a la base de datos
 include '../config/database.php';
 
+// Responder a solicitudes preflight OPTIONS
 if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     http_response_code(200);
     exit();
 }
 
+// Obtener datos del cuerpo de la solicitud
 $data = json_decode(file_get_contents("php://input"), true);
 
-// Si no llega nada, devuelvo error
+// Si no llega nada, devolver error
 if (!$data) {
     echo json_encode([
         'success' => false,
@@ -23,12 +26,12 @@ if (!$data) {
     exit();
 }
 
-// Saco los datos del JSON
+// Sacar los datos del JSON
 $usuario = $data['usuario'] ?? null;
 $link = $data['link'] ?? null;
 $passwordRaw = $data['password'] ?? null;
 
-// Compruebo que no falte nada
+// Comprobar que no falte nada
 if (!$usuario || !$link || !$passwordRaw) {
     echo json_encode([
         'success' => false,
@@ -37,7 +40,7 @@ if (!$usuario || !$link || !$passwordRaw) {
     exit();
 }
 
-// valido que el link empiece por @ 
+// Validar que el link empiece por @
 if (!str_starts_with($link, '@')) {
     echo json_encode([
         'success' => false,
@@ -46,14 +49,14 @@ if (!str_starts_with($link, '@')) {
     exit();
 }
 
-// Compruebo si el usuario ya existe 
+// Comprobar si el usuario ya existe
 $sqlUser = "SELECT id FROM usuarios WHERE usuario = ?";
 $stmtUser = $conn->prepare($sqlUser);
 $stmtUser->bind_param("s", $usuario);
 $stmtUser->execute();
 $resultUser = $stmtUser->get_result();
 
-// Si ya existe, no dejo registrarlo
+// Si ya existe, no dejar registrarlo
 if ($resultUser->num_rows > 0) {
     echo json_encode([
         'success' => false,
@@ -62,14 +65,14 @@ if ($resultUser->num_rows > 0) {
     exit();
 }
 
-// Compruebo si el link ya está usado 
+// Comprobar si el link ya esta usado
 $sqlLink = "SELECT id FROM usuarios WHERE link = ?";
 $stmtLink = $conn->prepare($sqlLink);
 $stmtLink->bind_param("s", $link);
 $stmtLink->execute();
 $resultLink = $stmtLink->get_result();
 
-// Si ya existe el link, tampoco dejo continuar
+// Si ya existe el link, tampoco dejar continuar
 if ($resultLink->num_rows > 0) {
     echo json_encode([
         'success' => false,
@@ -78,10 +81,10 @@ if ($resultLink->num_rows > 0) {
     exit();
 }
 
-// Encripto la contraseña antes de guardarla
+// Encriptar la contrasena antes de guardarla
 $password = password_hash($passwordRaw, PASSWORD_DEFAULT);
 
-// Inserto el usuario en la base de datos
+// Insertar el usuario en la base de datos
 $sql = "INSERT INTO usuarios (usuario, link, password) VALUES (?, ?, ?)";
 $stmt = $conn->prepare($sql);
 
@@ -95,7 +98,7 @@ if (!$stmt) {
 
 $stmt->bind_param("sss", $usuario, $link, $password);
 
-// Ejecuto y devuelvo resultado
+// Ejecutar y devolver resultado
 if ($stmt->execute()) {
     echo json_encode([
         'success' => true,
@@ -108,7 +111,7 @@ if ($stmt->execute()) {
     ]);
 }
 
-// Cierro todo al final
+// Cerrar conexion
 $stmt->close();
 $conn->close();
 ?>

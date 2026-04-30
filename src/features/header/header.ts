@@ -1,3 +1,4 @@
+// Componente de cabecera - barra de navegacion superior
 import { Component, inject, effect } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterLink, NavigationEnd } from '@angular/router';

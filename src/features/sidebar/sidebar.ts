@@ -1,3 +1,4 @@
+// Componente de barra lateral - menu de navegacion
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 

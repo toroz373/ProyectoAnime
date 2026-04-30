@@ -1,3 +1,4 @@
+// Componente de comentarios - lista y formulario de comentarios
 import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';

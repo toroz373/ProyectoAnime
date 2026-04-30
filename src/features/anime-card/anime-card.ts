@@ -1,3 +1,4 @@
+// Componente de tarjeta de anime - muestra info, comentarios y estado
 import { Component, Input, OnInit, OnDestroy, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Anime } from '../../core/models/anime.model';
