@@ -9,6 +9,7 @@
   </div>
   
   <div class="feed-content">
+    <!-- Recorre los animes y muestra una tarjeta por cada uno -->
     @for (anime of animes(); track anime.id) {
       <app-anime-card 
         [anime]="anime"
@@ -22,13 +23,16 @@
 </div>
 
 <div class="sort-container">
+  <!-- Texto de ordenar -->
   <span class="sort-label">Ordenar por:</span>
 
+  <!-- Botón para abrir/cerrar opciones -->
   <div class="sort-dropdown" (click)="toggleSort()">
     <span>{{ selectedSortLabel }}</span>
     <span class="arrow">▼</span>
   </div>
 
+  <!-- Opciones de orden -->
   <div class="sort-options" *ngIf="isSortOpen">
     <div (click)="selectSort('rating')">Valoraciones</div>
     <div (click)="selectSort('az')">A-Z</div>

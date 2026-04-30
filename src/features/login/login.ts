@@ -15,14 +15,14 @@ import { ChangeDetectorRef } from '@angular/core';
 })
 export class LoginComponent {
 
-  // datos del formulario
+  // Datos 
   usuario = '';
   password = '';
 
-  // para mostrar/ocultar contraseña
+  // Para mostrar/ocultar la contraseña
   showPassword = false;
 
-  // mensajes de error
+  // Mensajes de error
   usuarioError = '';
   passwordError = '';
   loginError = '';
@@ -35,19 +35,19 @@ export class LoginComponent {
     private cd: ChangeDetectorRef
   ) {}
 
-  // alterna el ojo de la contraseña
   togglePassword() {
+    // Cambia entre mostrar y ocultar contraseña
     this.showPassword = !this.showPassword;
   }
 
-  // entrar sin login
   enterAsGuest() {
+    // Entrar sin cuenta al feed público
     this.router.navigate(['/public-feed']);
   }
 
   login() {
 
-    // limpio errores antes de validar
+    // Limpia errores anteriores
     this.usuarioError = '';
     this.passwordError = '';
     this.loginError = '';
@@ -55,25 +55,25 @@ export class LoginComponent {
 
     let hasError = false;
 
-    // validación usuario
+    // Validación del usuario
     if (!this.usuario) {
       this.usuarioError = 'El usuario es obligatorio';
       hasError = true;
     }
 
-    // validación contraseña
+    // Validación de la contraseña
     if (!this.password) {
       this.passwordError = 'La contraseña es obligatoria';
       hasError = true;
     }
 
-    // si hay errores, paro
+    // Si hay errores, no sigue
     if (hasError) {
       this.cd.detectChanges();
       return;
     }
 
-    // hago la petición al backend para loguear
+    // Petición para hacer login
     this.http.post<any>('http://localhost/ProyectoAnime/backend-php/api/login.php', {
       usuario: this.usuario,
       password: this.password
@@ -81,26 +81,27 @@ export class LoginComponent {
 
       next: (response) => {
 
-        // si todo va bien, guardo el usuario y entro
         if (response.success) {
 
+          // Guarda los datos del usuario en el servicio
           this.authService.login({
             id: response.user.id,
-            name: response.user.usuario
+            name: response.user.usuario,
+            avatar: response.user.avatar 
           });
 
-          // 🔥 aplicar tema del usuario
+          // Aplica tema claro/oscuro según el usuario
           if (response.user.theme === 'dark') {
             document.body.classList.add('dark-mode');
           } else {
             document.body.classList.remove('dark-mode');
           }
 
+          // Redirige al feed privado
           this.router.navigate(['/private-feed']);
 
         } else {
-
-          // si el backend devuelve error
+          // Error si las credenciales no son correctas
           this.loginError = response.message;
           this.showLoginError = true;
           this.cd.detectChanges();
@@ -108,8 +109,7 @@ export class LoginComponent {
       },
 
       error: () => {
-
-        // error de conexión con el servidor
+        // Error si falla la conexión
         this.loginError = 'Error de conexión con el servidor';
         this.showLoginError = true;
         this.cd.detectChanges();

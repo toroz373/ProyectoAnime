@@ -1,15 +1,15 @@
 .sidebar {
   position: fixed;
-  top: 120px; /* 👈 separación con header */
-  left: 0px; /* 👈 separación lateral */
+  top: 120px; /* separación con header */
+  left: 0px; /* separación lateral */
   width: 50px;
-  height: calc(100vh - 320px); /* 👈 no toca abajo */
+  height: calc(100vh - 320px);
   z-index: 1000; /* alto */
   
-  background-color: rgba(248, 206, 255, 0.7); /* 👈 transparente */
+  background-color: rgba(248, 206, 255, 0.7); /* transparente */
   
-  border-radius: 10px; /* 👈 bordes redondeados */
-  backdrop-filter: blur(10px); /* 👈 efecto pro */
+  border-radius: 10px; /* bordes redondeados */
+  backdrop-filter: blur(10px); 
   
   display: flex;
   flex-direction: column;
@@ -55,13 +55,13 @@
   white-space: nowrap;
 }
 
-/* 🔥 ITEM ACTIVO */
+/* ITEM ACTIVO */
 .item.active {
   background-color: rgba(255, 255, 255, 0.6);
   box-shadow: inset 0 0 0 2px white;
 }
 
-/* icono más pequeño cuando está activo (modo cerrado) */
+/* icono más pequeño cuando está activo */
 .sidebar:not(:hover) .item.active img {
   width: 28px;
   height: 28px;

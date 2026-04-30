@@ -11,17 +11,17 @@ export class CommentsService {
 
   private apiUrl = 'http://localhost/ProyectoAnime/backend-php/api/comments.php';
 
-  // 🔥 NUEVO → sistema reactivo global
+  // sistema reactivo global
   private refresh$ = new BehaviorSubject<void>(undefined);
 
   constructor(private http: HttpClient) {}
 
-  // 🔁 Observable para escuchar cambios
+  // escuchar cambios
   get refreshTrigger() {
     return this.refresh$.asObservable();
   }
 
-  // 🔥 Lanzar actualización global
+  // actualización global
   triggerRefresh() {
     this.refresh$.next();
   }
@@ -32,13 +32,13 @@ export class CommentsService {
 
   addComment(comment: Comment): Observable<Comment> {
     return this.http.post<Comment>(this.apiUrl, comment).pipe(
-      tap(() => this.triggerRefresh()) // 🔥 actualiza TODO
+      tap(() => this.triggerRefresh()) 
     );
   }
 
   deleteComment(commentId: number, userId: number) {
     return this.http.delete(`${this.apiUrl}?id=${commentId}&userId=${userId}`).pipe(
-      tap(() => this.triggerRefresh()) // 🔥 actualiza TODO
+      tap(() => this.triggerRefresh()) 
     );
   }
 

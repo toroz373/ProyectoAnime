@@ -34,7 +34,6 @@ if (empty($usuario) || empty($nuevaPassword)) {
 
 $passwordHash = password_hash($nuevaPassword, PASSWORD_DEFAULT);
 
-// 🔥 CORREGIDO
 $stmt = $conn->prepare("SELECT id FROM usuarios WHERE usuario = ?");
 $stmt->bind_param("s", $usuario);
 $stmt->execute();

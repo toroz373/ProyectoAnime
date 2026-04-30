@@ -17,13 +17,13 @@ import { ChangeDetectorRef } from '@angular/core';
 })
 export class AjustesComponent implements OnInit {
 
+  // Datos del usuario y estados de la pantalla
   usuario: any = {};
   editar = false;
   mensajePerfil: string = '';
   mensajeDescripcion: string = '';
   errorPerfil: string = '';
 
-  // 🔥 NUEVO: control del modal
   showDeleteModal = false;
 
   constructor(
@@ -34,33 +34,41 @@ export class AjustesComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    // Carga el perfil al entrar
     this.cargarPerfil();
   }
 
   cargarPerfil() {
     const user = this.auth.currentUser();
 
+    // Si no hay usuario, intenta sacarlo del localStorage
     if (!user) {
       const storedUser = localStorage.getItem('user');
 
+      // Si tampoco hay nada guardado, manda al login
       if (!storedUser) {
         this.router.navigate(['/login']);
         return;
       }
 
+      // Lo recupera y vuelve a intentar cargar
       const parsedUser = JSON.parse(storedUser);
       this.auth.currentUser.set(parsedUser);
       this.cargarPerfil();
       return;
     }
 
+    // Pide los datos del perfil al backend
     this.http.get<any>(
       `http://localhost/ProyectoAnime/backend-php/api/obtener_perfil.php?id=${user.id}`
     ).subscribe(res => {
 
       if (res.exito) {
         this.usuario = { ...res.usuario };
+
+        // Si no tiene tema, pone claro por defecto
         if (!this.usuario.theme) this.usuario.theme = 'light';
+
         this.cd.detectChanges();
       }
 
@@ -68,6 +76,7 @@ export class AjustesComponent implements OnInit {
   }
 
   guardarCambios() {
+    // Validación simple del link
     if (!this.usuario.link || !this.usuario.link.includes('@')) {
       this.errorPerfil = 'El link debe contener @';
       setTimeout(() => this.errorPerfil = '', 3000);
@@ -76,6 +85,7 @@ export class AjustesComponent implements OnInit {
 
     this.errorPerfil = '';
 
+    // Guarda los cambios del perfil
     this.http.post<any>(
       'http://localhost/ProyectoAnime/backend-php/api/actualizar_perfil.php',
       {
@@ -90,6 +100,7 @@ export class AjustesComponent implements OnInit {
       this.mensajePerfil = 'Perfil actualizado correctamente';
       setTimeout(() => this.mensajePerfil = '', 3000);
 
+      // Recarga los datos
       this.cargarPerfil();
       this.usuario = { ...this.usuario };
     });
@@ -99,6 +110,7 @@ export class AjustesComponent implements OnInit {
     const archivo = event.target.files[0];
     if (!archivo) return;
 
+    // Muestra la imagen al momento
     const reader = new FileReader();
     reader.onload = () => {
       this.usuario.avatar = reader.result as string;
@@ -106,6 +118,7 @@ export class AjustesComponent implements OnInit {
     };
     reader.readAsDataURL(archivo);
 
+    // Sube la imagen al backend
     const formData = new FormData();
     formData.append('imagen', archivo);
     formData.append('id', this.usuario.id);
@@ -116,7 +129,22 @@ export class AjustesComponent implements OnInit {
     ).subscribe(res => {
 
       if (res.exito) {
+        // Actualiza la imagen 
         this.usuario.avatar = res.avatar + '?t=' + new Date().getTime();
+
+        // Actualiza también el usuario global
+        const current = this.auth.currentUser();
+        if (current) {
+          this.auth.currentUser.set({
+            ...current,
+            avatar: this.usuario.avatar
+          });
+          localStorage.setItem('user', JSON.stringify({
+            ...current,
+            avatar: this.usuario.avatar
+          }));
+        }
+
         this.cd.detectChanges();
       }
 
@@ -124,6 +152,7 @@ export class AjustesComponent implements OnInit {
   }
 
   eliminarAvatar() {
+    // Borra la imagen del usuario
     this.http.post<any>(
       'http://localhost/ProyectoAnime/backend-php/api/eliminar_avatar.php',
       { id: this.usuario.id }
@@ -131,6 +160,20 @@ export class AjustesComponent implements OnInit {
 
       if (res.exito) {
         this.usuario.avatar = null;
+
+        // Actualiza también el usuario global
+        const current = this.auth.currentUser();
+        if (current) {
+          this.auth.currentUser.set({
+            ...current,
+            avatar: undefined
+          });
+          localStorage.setItem('user', JSON.stringify({
+            ...current,
+            avatar: null
+          }));
+        }
+
         this.cd.detectChanges();
       }
 
@@ -138,6 +181,7 @@ export class AjustesComponent implements OnInit {
   }
 
   guardarDescripcion() {
+    // Guarda solo la descripción
     this.http.post<any>(
       'http://localhost/ProyectoAnime/backend-php/api/actualizar_perfil.php',
       {
@@ -149,6 +193,7 @@ export class AjustesComponent implements OnInit {
       }
     ).subscribe(() => {
 
+      // Mensaje de éxito
       this.mensajeDescripcion = 'Descripción guardada correctamente';
       this.cd.detectChanges();
 
@@ -162,9 +207,11 @@ export class AjustesComponent implements OnInit {
   }
 
   cambiarTema() {
+    // Cambia entre claro y oscuro
     const nuevoTema = this.usuario.theme === 'dark' ? 'light' : 'dark';
     this.usuario.theme = nuevoTema;
 
+    // Aplica el cambio en la página
     if (nuevoTema === 'dark') {
       document.body.classList.add('dark-mode');
     } else {
@@ -183,29 +230,29 @@ export class AjustesComponent implements OnInit {
     ).subscribe();
   }
 
-  // 🔥 NUEVO: abrir modal
   abrirModalEliminar() {
     this.showDeleteModal = true;
   }
 
-  // 🔥 NUEVO: cerrar modal
   cerrarModalEliminar() {
     this.showDeleteModal = false;
   }
 
-  // 🔥 NUEVO: confirmar eliminación
   confirmarEliminarCuenta() {
+    // Confirma y elimina
     this.eliminarCuenta();
     this.cerrarModalEliminar();
   }
 
   eliminarCuenta() {
+    // Llama al backend para borrar la cuenta
     this.http.post<any>(
       'http://localhost/ProyectoAnime/backend-php/api/eliminar_usuario.php',
       { id: this.usuario.id }
     ).subscribe({
       next: (res) => {
         if (res.ok) {
+          // Limpia datos y vuelve al login
           localStorage.removeItem('user');
           this.auth.currentUser.set(null);
           this.router.navigate(['/login']);

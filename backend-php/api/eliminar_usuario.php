@@ -23,7 +23,7 @@ $conn->begin_transaction();
 
 try {
 
-    //  1. OBTENER AVATAR
+    // OBTENER AVATAR
     $stmt0 = $conn->prepare("SELECT avatar FROM usuarios WHERE id = ?");
     $stmt0->bind_param("i", $id);
     $stmt0->execute();
@@ -34,16 +34,16 @@ try {
         $filePath = "../uploads/" . $user['avatar'];
 
         if (file_exists($filePath)) {
-            unlink($filePath);
+            unlink($filePath); // BORRA IMAGEN
         }
     }
 
-    //  2. BORRAR COMENTARIOS
+    // BORRAR COMENTARIOS
     $stmt1 = $conn->prepare("DELETE FROM comments WHERE user_id = ?");
     $stmt1->bind_param("i", $id);
     $stmt1->execute();
 
-    //  3. BORRAR USUARIO
+    // BORRAR USUARIO
     $stmt2 = $conn->prepare("DELETE FROM usuarios WHERE id = ?");
     $stmt2->bind_param("i", $id);
     $stmt2->execute();

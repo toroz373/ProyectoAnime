@@ -1,26 +1,17 @@
 <?php
-// Angular (localhost:4200) puede hacer peticiones a este backend
 header("Access-Control-Allow-Origin: http://localhost:4200");
-
-// Envia cabeceras como Content-Type desde el frontend
 header("Access-Control-Allow-Headers: Content-Type");
-
-// Peticiones POST y también OPTIONS (esto es por el CORS)
 header("Access-Control-Allow-Methods: POST, OPTIONS");
-
-// Respuesta siempre en JSON
 header('Content-Type: application/json');
 
 // Conexión a la base de datos
 include '../config/database.php';
 
-// Si la petición es OPTIONS, responde OK y paro todo
 if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     http_response_code(200);
     exit();
 }
 
-// Leo lo que manda el frontend
 $data = json_decode(file_get_contents("php://input"), true);
 
 // Si no llega nada, devuelvo error
@@ -46,7 +37,7 @@ if (!$usuario || !$link || !$passwordRaw) {
     exit();
 }
 
-// Aquí valido que el link empiece por @ 
+// valido que el link empiece por @ 
 if (!str_starts_with($link, '@')) {
     echo json_encode([
         'success' => false,
@@ -87,8 +78,6 @@ if ($resultLink->num_rows > 0) {
     exit();
 }
 
-// Si todo está bien, creo el usuario 
-
 // Encripto la contraseña antes de guardarla
 $password = password_hash($passwordRaw, PASSWORD_DEFAULT);
 
@@ -96,7 +85,6 @@ $password = password_hash($passwordRaw, PASSWORD_DEFAULT);
 $sql = "INSERT INTO usuarios (usuario, link, password) VALUES (?, ?, ?)";
 $stmt = $conn->prepare($sql);
 
-// Si algo falla con la query
 if (!$stmt) {
     echo json_encode([
         'success' => false,
@@ -105,7 +93,6 @@ if (!$stmt) {
     exit();
 }
 
-// Paso los datos a la consulta
 $stmt->bind_param("sss", $usuario, $link, $password);
 
 // Ejecuto y devuelvo resultado

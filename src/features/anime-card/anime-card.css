@@ -1,3 +1,4 @@
+/* Contenedor principal */
 .anime-card-wrapper {
   display: flex;
   flex-direction: column;
@@ -8,16 +9,18 @@
   background: white;
   border-radius: 12px;
   box-shadow: 0 8px 32px rgba(88, 46, 128, 0.15);
-  overflow: visible; /* FIX: permitir crecer */
+  overflow: visible; 
   box-sizing: border-box;
 }
 
+/* Parte izquierda */
 .card-left {
   flex: 0 0 auto;
   min-width: auto;
-  overflow: visible; /* FIX */
+  overflow: visible; 
 }
 
+/* Parte derecha  */
 .card-right {
   flex: 0 0 auto;
   min-width: auto;
@@ -29,19 +32,20 @@
   overflow-y: auto;
   display: flex;
   flex-direction: column;
-  min-height: auto; /* FIX */
+  min-height: auto; 
   width: 750px;
   box-sizing: border-box;
 }
 
+/* Card principal */
 .anime-card {
   background: white;
   border-radius: 0;
   border: none;
-  overflow: visible; /* FIX */
+  overflow: visible; 
   transition: none;
   box-shadow: none;
-  min-height: auto; /* FIX */
+  min-height: auto; 
   display: flex;
   flex-direction: column;
 }
@@ -51,6 +55,7 @@
   box-shadow: none;
 }
 
+/* Imagen del anime */
 .card-image {
   width: 750px;
   height: 360px;
@@ -64,6 +69,7 @@
   padding: 10px;
 }
 
+/* Imagen dentro de la card */
 .card-image img {
   width: 100%;
   height: 100%;
@@ -76,16 +82,18 @@
   transform: scale(1.02);
 }
 
+/* Contenido general */
 .card-content {
   padding: 20px;
   flex: 1;
   display: flex;
   flex-direction: column;
-  overflow: visible; /* FIX */
+  overflow: visible; 
   width: 750px;
   box-sizing: border-box;
 }
 
+/* Cabecera del título + menú */
 .card-header {
   display: flex;
   justify-content: space-between;
@@ -104,15 +112,15 @@
   flex: 1;
 }
 
-/* Sección de descripción y metadatos */
 .anime-meta {
   margin-bottom: 16px;
   flex: 1;
-  display: flex;          /* FIX */
-  flex-direction: column; /* FIX */
-  gap: 10px;              /* FIX */
+  display: flex;          
+  flex-direction: column; 
+  gap: 10px;              
 }
 
+/* Descripción del anime */
 .anime-description {
   margin: 0 0 8px 0;
   font-size: 14px;
@@ -120,12 +128,13 @@
   line-height: 1.5;
 
   display: -webkit-box;
-  -webkit-line-clamp: 3; /* 👈 número de líneas */
+  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   line-clamp: 3;
   overflow: hidden;
 }
 
+/* Caja de info (estado, fecha, etc.) */
 .anime-info {
   display: flex;
   gap: 20px;
@@ -154,6 +163,7 @@
   color: #6b21a8;
 }
 
+/* Estado del anime  */
 .info-value.airing {
   color: #16a34a;
   font-weight: 700;
@@ -164,6 +174,7 @@
   font-weight: 700;
 }
 
+/* Contenedor del menú */
 .menu-container {
   position: relative;
 }
@@ -240,6 +251,7 @@
   border-color: #a855f7;
 }
 
+/* Footer */
 .card-footer {
   display: flex;
   align-items: center;
@@ -250,6 +262,7 @@
   margin-top: auto;
 }
 
+/* Sección de rating */
 .rating-section {
   display: flex;
   align-items: center;
@@ -308,12 +321,14 @@
   color: #6b21a8;
 }
 
+/* Media del rating */
 .rating-average {
   font-size: 12px;
   color: #999;
   font-weight: 600;
 }
 
+/* Botón de comentarios */
 .comments-btn {
   flex: 0 0 auto;
   padding: 10px 20px;
@@ -346,10 +361,6 @@
   font-size: 18px;
 }
 
-/* =============================== */
-/*   MOSTRAR MÁS / MOSTRAR MENOS   */
-/* =============================== */
-
 .anime-description {
   max-height: 150px;
   overflow: hidden;
@@ -377,6 +388,7 @@
   display: none;
 }
 
+/* botón de mostrar más/menos */
 .toggle-description-btn {
   background: none;
   border: none;
@@ -386,7 +398,7 @@
   margin-top: 8px;
   font-size: 14px;
   transition: color 0.2s ease;
-  display: block; /* FIX */
+  display: block;
 }
 
 .toggle-description-btn:hover {

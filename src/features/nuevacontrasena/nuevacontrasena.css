@@ -11,7 +11,7 @@ html, body {
   flex-direction: column;
 }
 
-/* botón de volver arriba a la derecha */
+/* botón de volver */
 .top-left {
   position: absolute;
   top: 20px;
@@ -19,7 +19,6 @@ html, body {
   z-index: 20;
 }
 
-/* botón de volver */
 .back-button {
   text-decoration: none;
   color: #57A0FF;
@@ -32,7 +31,6 @@ html, body {
   background-color: white;
 }
 
-/* hover botón volver */
 .back-button:hover {
   background-color: #57A0FF;
   color: white;
@@ -49,7 +47,7 @@ html, body {
   transform: translateY(20px);
 }
 
-/* logo grande */
+/* logo */
 .logo {
   width: 480px;
   margin-bottom: -190px;
@@ -85,12 +83,10 @@ html, body {
   cursor: pointer;
 }
 
-/* hover botón */
 .login-container button:hover {
   opacity: 0.9;
 }
 
-/* mensaje flotante */
 .mensaje {
   position: absolute;
   top: 80px;
@@ -114,7 +110,6 @@ html, body {
   animation: fadeIn 0.2s ease;
 }
 
-/* error general */
 .login-error {
   display: flex;
   align-items: center;
@@ -127,6 +122,11 @@ html, body {
   font-size: 13px;
   color: #b00020;
   margin-top: 10px;
+}
+
+.error-icon {
+  width: 44px;
+  height: 44px;
 }
 
 /* mensaje de éxito */
@@ -144,28 +144,20 @@ html, body {
   margin-top: 10px;
 }
 
-/* texto del éxito */
 .success-text {
   display: flex;
   flex-direction: column;
 }
 
-/* título éxito */
 .title {
   font-weight: bold;
 }
 
-/* subtítulo éxito */
 .subtitle {
   font-size: 12px;
   opacity: 0.8;
 }
 
-/* icono error */
-.error-icon {
-  width: 44px;
-  height: 44px;
-}
 
 /* wrapper de password + ojo */
 .password-wrapper {
@@ -173,14 +165,12 @@ html, body {
   width: 100%;
 }
 
-/* input de password wrapper */
 .password-wrapper input {
   width: 100%;
   padding: 12px 40px 12px 12px;
   box-sizing: border-box;
 }
 
-/* botón del ojo */
 .eye-button {
   position: absolute;
   right: 10px;
@@ -199,7 +189,6 @@ html, body {
   justify-content: center;
 }
 
-/* hover del ojo */
 .eye-button:hover {
   color: #000;
 }
