@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 25-04-2026 a las 00:14:33
+-- Tiempo de generación: 05-05-2026 a las 15:19:39
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -67,10 +67,8 @@ INSERT INTO `animes` (`id`, `api_id`, `title`, `image`, `description`, `created_
 (24, 16, 'Hachimitsu to Clover', 'https://myanimelist.net/images/anime/1301/133577.jpg', 'Yuuta Takemoto, a sophomore at an arts college, shares a cheap apartment with two seniors—the eccentric Shinobu Morita, who keeps failing to graduate due to his absenteeism, and the sensible Takumi Mayama, who acts as a proper senior to Takemoto, often looking out for him.\n\nTakemoto had not given much thought to his future until one fine spring day, when he meets the endearing Hagumi Hanamoto and falls in love at first sight. Incredibly gifted in the arts, Hagumi enrolls in Takemoto\'s university and soon befriends the popular pottery student Ayumi Yamada. Ayumi is already well acquainted with the three flatmates and secretly harbors deep feelings for one of them.\n\nHachimitsu to Clover is a heartwarming tale of youth, love, soul-searching, and self-discovery, intricately woven through the complex relationships between five dear friends.\n\n[Written by MAL Rewrite]', '2026-04-21 16:39:09'),
 (25, 31, 'Shinseiki Evangelion Movie: Shi to Shinsei', 'https://myanimelist.net/images/anime/1993/113122.jpg', 'In the year 2015, more than a decade has passed since the catastrophic event known as Second Impact befell mankind. During this time of recovery, a select few learned of beings known as the Angels—colossal malevolent entities with the intention of triggering the Third Impact and wiping out the rest of humanity.\n\nCalled into the city of Tokyo-3 by his father Gendou Ikari, teenager Shinji is thrust headlong into humanity\'s struggle. Separated from Gendou since the death of his mother, Shinji presumes that his father wishes to repair their shattered familial bonds; instead, he discovers that he was brought to pilot a giant machine capable of fighting the Angels, Evangelion Unit-01. Forced to battle against wave after wave of mankind\'s greatest threat, the young boy finds himself caught in the middle of a plan that could affect the future of humanity forever.\n\n[Written by MAL Rewrite]', '2026-04-21 16:39:09'),
 (26, 2, 'Bouken Ou Beet', 'https://myanimelist.net/images/anime/7/21569.jpg', 'It is the dark century and the people are suffering under the rule of the devil, Vandel, who is able to manipulate monsters. The Vandel Busters are a group of people who hunt these devils, and among them, the Zenon Squad is known to be the strongest busters on the continent. A young boy, Beet, dreams of joining the Zenon Squad. However, one day, as a result of Beet\'s fault, the Zenon squad was defeated by the devil, Beltose. The five dying busters sacrificed their life power into their five weapons, Saiga. After giving their weapons to Beet, they passed away. Years have passed since then and the young Vandel Buster, Beet, begins his adventure to carry out the Zenon Squad\'s will to put an end to the dark century.', '2026-04-22 19:03:15'),
-(27, 999, 'Sousou no Frieren', 'https://myanimelist.net/images/anime/1015/138006.jpg','After defeating the Demon King, the hero party disbands and each member goes their separate way. Frieren, an elven mage with an almost endless lifespan, watches her former companions age and pass away while she remains unchanged. Regretting that she never truly understood their feelings, she begins a journey to learn about humans, emotions, and what it means to live. Joined by new allies, Frieren faces magical and personal challenges as she tries to honor the memory of those she once traveled with.','2026-04-24 23:22:00'),
-(28, 1000, 'Dragon Ball', 'https://myanimelist.net/images/anime/1887/92364.jpg','Goku, a young boy with a monkey tail and extraordinary strength, lives alone in the mountains until he meets Bulma, a girl searching for the legendary Dragon Balls. Together they embark on an adventure filled with martial arts, humor, and strange enemies. As Goku trains and grows stronger, he faces tournaments, villains, and challenges that push him toward becoming one of the greatest fighters in the world.','2026-04-24 23:22:00');
-
-
+(27, 999, 'Sousou no Frieren', 'https://myanimelist.net/images/anime/1015/138006.jpg', 'After defeating the Demon King, the hero party disbands and each member goes their separate way. Frieren, an elven mage with an almost endless lifespan, watches her former companions age and pass away while she remains unchanged. Regretting that she never truly understood their feelings, she begins a journey to learn about humans, emotions, and what it means to live. Joined by new allies, Frieren faces magical and personal challenges as she tries to honor the memory of those she once traveled with.', '2026-04-24 23:22:00'),
+(28, 1000, 'Dragon Ball', 'https://myanimelist.net/images/anime/1887/92364.jpg', 'Goku, a young boy with a monkey tail and extraordinary strength, lives alone in the mountains until he meets Bulma, a girl searching for the legendary Dragon Balls. Together they embark on an adventure filled with martial arts, humor, and strange enemies. As Goku trains and grows stronger, he faces tournaments, villains, and challenges that push him toward becoming one of the greatest fighters in the world.', '2026-04-24 23:22:00');
 
 -- --------------------------------------------------------
 
@@ -92,8 +90,8 @@ CREATE TABLE `comments` (
 --
 
 INSERT INTO `comments` (`id`, `anime_id`, `user_id`, `content`, `rating`, `created_at`) VALUES
-(5, 26, 1, 'hermoso, el mejor anime', 5, '2026-04-24 17:11:51'),
-(6, 21, 1, 'muy bueno', 5, '2026-04-24 17:12:17');
+(8, 27, 1, 'El mejor anime del mundo', 5, '2026-04-30 07:22:11'),
+(9, 21, 1, 'Una gran historia', 5, '2026-04-30 07:22:40');
 
 -- --------------------------------------------------------
 
@@ -109,16 +107,6 @@ CREATE TABLE `user_anime_status` (
   `created_at` datetime DEFAULT current_timestamp(),
   `updated_at` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `user_anime_status`
---
-
-INSERT INTO `user_anime_status` (`id`, `user_id`, `anime_id`, `status`, `created_at`, `updated_at`) VALUES
-(87, 1, 1, 'deseado', '2026-04-24 17:57:07', '2026-04-24 18:09:48'),
-(88, 1, 5, 'deseado', '2026-04-24 17:57:14', '2026-04-24 17:57:14'),
-(89, 1, 26, 'en_proceso', '2026-04-24 18:09:54', '2026-04-24 18:09:54'),
-(90, 1, 25, 'deseado', '2026-04-24 18:10:32', '2026-04-24 18:11:04');
 
 -- --------------------------------------------------------
 
@@ -141,9 +129,7 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `usuario`, `link`, `password`, `avatar`, `descripcion`, `theme`) VALUES
-(1, 'admin', '@admin', '$2y$10$A87FwQv9DtUFlvEnvS7LUuxZLJXCcZtaRUlV0eHj2D0.JRi3O1sdm', NULL, 'Hola, soy Miru', 'light'),
-(5, 'David', '@toro', '$2y$10$V1EdymZfGQmgeu3ywFqXp.qvRruLBq39etX/svj2SySwyiVXdA4F.', NULL, NULL, 'light'),
-(43, 'test', '@test', '$2y$10$oxwE4hongJ2JlLVcv8AZcer6e0RctR4jcedC.b8mNFtqPKZjVCT92', '1776687638_816AbVQc+0L.jpg', '', 'light');
+(1, 'admin', '@admin', '$2y$10$A87FwQv9DtUFlvEnvS7LUuxZLJXCcZtaRUlV0eHj2D0.JRi3O1sdm', '1777468473_mirucerrada.png', 'Hola, soy Miru', 'dark');
 
 --
 -- Índices para tablas volcadas
@@ -186,25 +172,25 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `animes`
 --
 ALTER TABLE `animes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT de la tabla `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT de la tabla `user_anime_status`
 --
 ALTER TABLE `user_anime_status`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=145;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 
 --
 -- Restricciones para tablas volcadas
